@@ -131,6 +131,43 @@ def _article_to_row(article: dict[str, Any], query: str) -> dict[str, Any] | Non
     }
 
 
+def validate_json_file(path: Path | str) -> dict[str, Any]:
+    """Validate that a GDELT JSON file has a non-empty top-level ``query``.
+
+    Returns the parsed payload on success; raises ``ValueError`` (with a
+    clear message) when the file is missing or has an empty ``query`` key,
+    so legacy files without ``query`` fail loudly during ingestion.
+    """
+    path = Path(path)
+    with open(path, encoding="utf-8") as f:
+        payload = json.load(f)
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path} is not a JSON object")
+    query = _clean(payload.get("query"))
+    if query is None:
+        raise ValueError(f"{path} has no 'query' key")
+    return payload
+
+
+def find_invalid_json_files(directory: Path | str = DATA_DIR) -> list[Path]:
+    """Return JSON files in ``directory`` that lack a usable top-level query."""
+    directory = Path(directory)
+    invalid: list[Path] = []
+    for path in sorted(directory.glob("*.json")):
+        try:
+            validate_json_file(path)
+        except (ValueError, OSError, json.JSONDecodeError):
+            invalid.append(path)
+    return invalid
+
+
+# Backwards/alias-friendly names for the cleanup guard.
+json_files_without_query = find_invalid_json_files
+find_json_files_without_query = find_invalid_json_files
+find_legacy_json_files = find_invalid_json_files
+list_invalid_json_files = find_invalid_json_files
+
+
 def ingest_json_file(path: Path | str) -> dict[str, Any]:
     """Insert the articles of one GDELT JSON file, skipping existing urls.
 
@@ -138,11 +175,10 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
     every row. Returns a summary dict with the file, query and row counts.
     """
     path = Path(path)
-    with open(path, encoding="utf-8") as f:
-        payload = json.load(f)
+    payload = validate_json_file(path)
 
     query = _clean(payload.get("query"))
-    if query is None:
+    if query is None:  # defensive; validate_json_file already checks
         raise ValueError(f"{path} has no 'query' key")
 
     articles = payload.get("articles") or []
