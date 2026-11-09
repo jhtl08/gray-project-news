@@ -11,6 +11,7 @@ sys.path.insert(0, str(BACKEND_DIR))
 
 from gdelt_api import get_gdelt_json, DEFAULT_QUERY
 from db_operations import get_connection, init_db, ingest_json_file
+from laya_processes import get_router
 import os
 
 app = FastAPI(title="Gray Project News API")
@@ -37,6 +38,10 @@ def startup_event():
         init_db()
     except Exception as e:
         print(f"Warning: init_db failed: {e}")
+    try:
+        get_router()
+    except Exception as e:
+        print(f"Warning: model preload failed: {e}")
 
 
 @app.get("/api/health")
