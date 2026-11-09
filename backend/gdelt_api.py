@@ -10,7 +10,7 @@ import requests
 #https://api.gdeltproject.org/api/v2/doc/doc?query=(iran%20OR%20hormuz)&mode=artlist&maxrecords=200&timespan=1h&sort=datedesc&format=json
 
 BASE_URL = "https://api.gdeltproject.org/api/v2/doc/doc"
-DEFAULT_QUERY = "(iran OR hormuz)"
+DEFAULT_QUERY = "(the OR and OR of OR to)" # more general default than "(iran OR hormuz)", for specific queries, user will specify
 
 # GDELT rate-limits by IP and can return 429 for rapid/bursty requests.
 # Its 429 body asks for at most one request every 5 seconds, so start the

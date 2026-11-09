@@ -1,0 +1,775 @@
+{
+  "query": "(iran OR hormuz)",
+  "articles": [
+    {
+      "url": "http://www.oklahomastar.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "oklahomastar.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.southcarolinapublicradio.org/news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "https://www.southcarolinapublicradio.org/news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels?_amp=true",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "southcarolinapublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.bankingnews.gr/diethni/articles/906953/tromeri-apokalypsi-to-iran-tha-xtypisei-amerikanoys-stratigoys-kai-diplomates-epeigon-minyma-ston-rubio-diktya-irgc-kai-stis-ipa",
+      "url_mobile": "",
+      "title": "Τρομερή αποκάλυψη : Το Ιράν θα χτυπήσει Αμερικανούς στρατηγούς και διπλωμάτες , επείγον μήνυμα στον Rubio – Δίκτυα IRGC στις ΗΠΑ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.bankingnews.gr/media/k2/items/cache/f447c03725b0f665851227b4af8e54b9_XL.jpg",
+      "domain": "bankingnews.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.bankingnews.gr/diethni/articles/906953/tromeri-apokalypsi-to-iran-tha-xtypisei-amerikanoys-stratigoys-kai-diplomates-epeigon-minyma-ston-rubio-diktya-irgc-kai-stis-ipa%20title=",
+      "url_mobile": "",
+      "title": "Τρομερή αποκάλυψη : Το Ιράν θα χτυπήσει Αμερικανούς στρατηγούς και διπλωμάτες , επείγον μήνυμα στον Rubio – Δίκτυα IRGC στις ΗΠΑ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.bankingnews.gr/media/k2/items/cache/f447c03725b0f665851227b4af8e54b9_XL.jpg",
+      "domain": "bankingnews.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.bankingnews.gr/diethni/articles/906957/suspicious-f-35-incident-in-iran-as-trump-signals-a-new-epic-fury-operation-soon",
+      "url_mobile": "",
+      "title": "Suspicious F - 35 incident in Iran as Trump signals a new Epic Fury operation soon",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.bankingnews.gr/media/k2/items/cache/09f659e65279c65f4d65cbb9a554a1e3_XL.jpg",
+      "domain": "bankingnews.gr",
+      "language": "English",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198444/world/region/iran-in-advanced-stages-of-planning-attacks-against-americans-us-officials",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198444",
+      "title": "Iran in  advanced stage of planning attacks against Americans : US officials",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555159.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://www.middleeasteye.net/live-blog/live-blog-update/saudi-led-coalition-says-it-destroyed-houthi-ballistic-missiles-fired",
+      "url_mobile": "",
+      "title": "Saudi - led coalition says it destroyed Houthi ballistic missiles fired towards Yanbu and Taif",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.middleeasteye.net/sites/default/files/2026-10/2026-10-21T124052Z_1038613498_RC2L7OA4YR1H_RTRMADP_3_IRAN-CRISIS-YEMEN-TAIZ.JPG",
+      "domain": "middleeasteye.net",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.wctrib.com/news/minnesota/rep-michelle-fischbach-talks-trade-fuel-prices-immigration-in-bid-for-reelection",
+      "url_mobile": "",
+      "title": "Rep . Michelle Fischbach talks trade , fuel prices , immigration in bid for reelection",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://forum-communications-production-web.s3.us-west-2.amazonaws.com/brightspot/71/1b/d82cab9546f5bd5305868c808b20/053026-dmg-n-satgop-c15.jpg",
+      "domain": "wctrib.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.haberturk.com/dunya/artik-ukrayna-yalniz-putin-taviz-vermeden-trump-i-nasil-yanina-cekti-3921743",
+      "url_mobile": "",
+      "title": "Artık Ukrayna yalnız : Putin taviz vermeden Trump  ı nasıl yanına çekti ? - Güncel Dünya Haberleri",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "haberturk.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://www.middleeasteye.net/news/pakistan-ratifies-mecca-pact-saudi-arabia-faces-attacks-and-israel-holds-military-drills",
+      "url_mobile": "",
+      "title": "Pakistan ratifies Mecca pact as Saudi Arabia faces attacks and Israel holds military drills",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.middleeasteye.net/sites/default/files/images-story/Pakistan%27s%20army%20Major%20General%20Shahid%20%28L%29%20gives%20briefing%20to%20an%20international%20media%20team%20at%20Horran%20village.jpg",
+      "domain": "middleeasteye.net",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.cna.com.tw/news/aopl/202610240143.aspx",
+      "url_mobile": "",
+      "title": "伊朗 ： 美軍任何情況下都禁入波斯灣 | 國際 | 中央社 CNA",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "cna.com.tw",
+      "language": "Chinese",
+      "sourcecountry": "Taiwan"
+    },
+    {
+      "url": "https://www.ryt9.com/s/iq/12851983",
+      "url_mobile": "",
+      "title": "สงครามอิหร่านพลิกตลาด LNG โลก กาตาร์หันทำสัญญาซื้อก๊าซสหรัฐฯ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "ryt9.com",
+      "language": "Thai",
+      "sourcecountry": "Thailand"
+    },
+    {
+      "url": "https://www.thehindu.com/news/national/india-uzbekistan-discuss-bilateral-ties-during-jaishankars-azerbaijan-visit/article71619675.ece",
+      "url_mobile": "https://www.thehindu.com/news/national/india-uzbekistan-discuss-bilateral-ties-during-jaishankars-azerbaijan-visit/article71619675.ece/amp/",
+      "title": "India , Uzbekistan discuss bilateral ties during Jaishankar Azerbaijan visit",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://th-i.thgim.com/public/incoming/jgwq/article71619762.ece/alternates/LANDSCAPE_1200/20261024007L.jpg",
+      "domain": "thehindu.com",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "http://www.newzealandstar.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "newzealandstar.com",
+      "language": "English",
+      "sourcecountry": "New Zealand"
+    },
+    {
+      "url": "https://www.kenw.org/npr-news/2026-10-23/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack",
+      "url_mobile": "https://www.kenw.org/npr-news/2026-10-23/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack?_amp=true",
+      "title": "Israeli PM pledges massive military operation after West Bank checkpoint attack",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "kenw.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wiky.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "wiky.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.postregister.com/businessreport/technology/inflation-earnings-reports-and-the-mood-of-consumers-and-the-federal-reserve-fill-out-a/article_9d38cf9e-b9dc-525f-8c56-e4ecb48faa97.html",
+      "url_mobile": "https://www.postregister.com/businessreport/technology/inflation-earnings-reports-and-the-mood-of-consumers-and-the-federal-reserve-fill-out-a/article_9d38cf9e-b9dc-525f-8c56-e4ecb48faa97.amp.html",
+      "title": "Inflation , earnings reports and the mood of consumers and the Federal Reserve fill out a busy week",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/postregister.com/content/tncms/assets/v3/editorial/0/52/05271fda-3bca-591a-ba01-66d41cc34b3b/6ad9e646f1ad6.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "postregister.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.chinatimes.com/realtimenews/20261024002807-260408",
+      "url_mobile": "",
+      "title": "大陸籲聯國停審伊朗核問題 ： 2231號決議早已到期終止 - 政治圈",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://images.chinatimes.com/newsphoto/2026-10-24/656/20261024002820.jpg",
+      "domain": "chinatimes.com",
+      "language": "Chinese",
+      "sourcecountry": "Taiwan"
+    },
+    {
+      "url": "https://divyamarathi.bhaskar.com/international/news/turkiye-saudi-mecca-defense-pact-statement-yasar-guler-houthi-stance-139473696.html",
+      "url_mobile": "https://divyamarathi.bhaskar.com/amp/international/news/turkiye-saudi-mecca-defense-pact-statement-yasar-guler-houthi-stance-139473696.html",
+      "title": "Turkiye - Saudi Mecca Defense Pact Statement | Yasar Guler Houthi Stance",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "divyamarathi.bhaskar.com",
+      "language": "Marathi",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://www.publicradiotulsa.org/npr-national-news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "https://www.publicradiotulsa.org/npr-national-news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels?_amp=true",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "publicradiotulsa.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://ziare.com/donald-trump/administratii-biden-cereri-elon-musk-oprire-starlink-tari-2043521",
+      "url_mobile": "https://m.ziare.com/amp/donald-trump/administratii-biden-cereri-elon-musk-oprire-starlink-tari-2043521",
+      "title": "Administrațiile Biden și Trump i - au cerut de mai multe ori lui Elon Musk să activeze sau să dezactiveze Starlink în diferite țări . Dezvăluirile unor foști oficiali",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://s2.ziareromania.ro/?mmid=755b456b3398872d07",
+      "domain": "ziare.com",
+      "language": "Romanian",
+      "sourcecountry": "Romania"
+    },
+    {
+      "url": "http://www.bignewsnetwork.com/news/279396017/on-egypt-visit-un-chief-guterres-says-we-need-to-stop-the-widening-of-war",
+      "url_mobile": "",
+      "title": "On Egypt visit , UN chief Guterres says",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/3c14155/15eb827c-7f7b-45dc-9565-265567a7296e/0/ANI-20261024093417-600x315.jpg",
+      "domain": "bignewsnetwork.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.al-monitor.com/originals/2026/10/hormuz-data-centers-how-irans-threats-are-raising-stakes-renewed-war",
+      "url_mobile": "",
+      "title": "From Hormuz to data centers : How Iran threats are raising stakes of renewed war - AL - MONITOR : The Middle Eastʼs leading independent news source since 2012",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "al-monitor.com",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://24-ore.com/asani-serish-shahu-i-iranit-lojtari-kuqezi-shenon-gol-dhe-behet-protagonist-ne-kampionat/",
+      "url_mobile": "",
+      "title": "Asani sërish  shahu  i Iranit , lojtari kuqezi shënon gol dhe bëhet protagonist në kampionat ! – 24 ore",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://24-ore.com/wp-content/uploads/2026/10/asani.jpg",
+      "domain": "24-ore.com",
+      "language": "Albanian",
+      "sourcecountry": "Albania"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198443/world/europe/frances-luxury-stores-board-up-windows-ahead-of-fresh-protests",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198443",
+      "title": "France luxury stores board up windows ahead of fresh protests",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555158.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://freebeacon.com/columns/realignment-and-the-realities-of-the-middle-east/",
+      "url_mobile": "",
+      "title": "Realignment and the Realities of the Middle East",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "freebeacon.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wypr.org/2026-10-23/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack",
+      "url_mobile": "",
+      "title": "Israeli PM pledges massive military operation after West Bank checkpoint attack",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "wypr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wiky.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies | 104 . 1 WIKY",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "wiky.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.rtvslo.si/svet/trump-ni-izkljucil-novih-vojaskih-operacij-proti-iranu/797962",
+      "url_mobile": "",
+      "title": "Trump ni izključil novih vojaških operacij proti Iranu",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://img.rtvcdn.si/_up/upload/2026/09/18/67105374_fp-fb.jpg",
+      "domain": "rtvslo.si",
+      "language": "Slovenian",
+      "sourcecountry": "Slovenia"
+    },
+    {
+      "url": "https://www.al-monitor.com/originals/2026/10/what-netanyahu-win-or-loss-could-mean-israels-economy",
+      "url_mobile": "",
+      "title": "What Netanyahu win or loss could mean for Israel economy - AL - MONITOR : The Middle Eastʼs leading independent news source since 2012",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "al-monitor.com",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.al-monitor.com/originals/2026/10/jordan-tightens-security-after-deadly-church-attack-kills-eight",
+      "url_mobile": "",
+      "title": "Jordan tightens security after deadly church attack kills eight",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "al-monitor.com",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://24-ore.com/koalicioni-rrezon-dy-raketa-balistike-te-huthi-ve-drejt-taifit-dhe-yanbu-se-alarme-te-shkurtra-ne-meke-dhe-jeddah/",
+      "url_mobile": "",
+      "title": "Koalicioni rrëzon dy raketa balistike të Huthi - ve drejt Taifit dhe Yanbu - së , alarme të shkurtra në Mekë dhe Jeddah",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://24-ore.com/wp-content/uploads/2026/10/taif-yanbu-alert-20261024-1024x683.jpg",
+      "domain": "24-ore.com",
+      "language": "Albanian",
+      "sourcecountry": "Albania"
+    },
+    {
+      "url": "https://www.foxnews.com/politics/canada-feeling-pain-trumps-tariffs-trade-fight-didnt-start-overnight",
+      "url_mobile": "https://www.foxnews.com/politics/canada-feeling-pain-trumps-tariffs-trade-fight-didnt-start-overnight.amp",
+      "title": "Trump Canada tariffs put dairy , lumber and market access at risk",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://static.foxnews.com/foxnews.com/content/uploads/2026/09/trump-carney-white-house.png",
+      "domain": "foxnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.russiaherald.com/news/279396017/on-egypt-visit-un-chief-guterres-says-we-need-to-stop-the-widening-of-war",
+      "url_mobile": "",
+      "title": "On Egypt visit , UN chief Guterres says",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/3c14155/15eb827c-7f7b-45dc-9565-265567a7296e/0/ANI-20261024093417-600x315.jpg",
+      "domain": "russiaherald.com",
+      "language": "English",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://www.ecoticias.com/medio-ambiente/delitos-ambientales-onu-negociacion-protocolo-crimen-organizado",
+      "url_mobile": "",
+      "title": "Delitos ambientales : 83 países respaldan abrir la negociación de un protocolo mundial contra las redes criminales",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.ecoticias.com/wp-content/uploads/2026/10/Delitos-ambientales-negociacion-internacional-contra-las-redes-criminales.jpg",
+      "domain": "ecoticias.com",
+      "language": "Spanish",
+      "sourcecountry": "Spain"
+    },
+    {
+      "url": "https://www.aol.co.uk/articles/no-unions-low-taxes-why-110031000.html",
+      "url_mobile": "",
+      "title": "No unions , low taxes : why some of Britain top chefs are opening outposts in Gulf states",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://hermes.media.static.aol.com/media/2026/10/24/087de804-3e9b-38c8-be7f-a05bf8b43f41/685bb26b-0b83-49bf-a4fd-7d0c01976b88.jpg",
+      "domain": "aol.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.klcc.org/npr-top-stories/2026-10-23/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack",
+      "url_mobile": "",
+      "title": "Israeli PM pledges massive military operation after West Bank checkpoint attack",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "klcc.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198448/business/markets/oman-crude-surges-in-line-with-global-trends",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198448",
+      "title": "Oman Crude surges in line with global trends",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555166.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://wiadomosci.gazeta.pl/polityka/7,198013,33096579,usa-zmniejsza-personel-ambasad-na-bliskim-wschodzie-wywiad.html",
+      "url_mobile": "",
+      "title": "USA zmniejsza personel ambasad na Bliskim Wschodzie . Wywiad : Zagrożenie ze strony Iranu",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bi.im-g.pl/im/21/8e/1f/z33088801IER,Marco-Rubio--zdjecie-archiwalne-.jpg",
+      "domain": "wiadomosci.gazeta.pl",
+      "language": "Polish",
+      "sourcecountry": "Poland"
+    },
+    {
+      "url": "https://www.theadvocate.com/baton_rouge/news/politics/national_politics/louisiana-delegation-unenthusiastic-about-trump-diesel-order/article_d04e3f38-4c6f-5788-91f5-5f3f596f879a.html",
+      "url_mobile": "https://www.theadvocate.com/baton_rouge/news/politics/national_politics/louisiana-delegation-unenthusiastic-about-trump-diesel-order/article_d04e3f38-4c6f-5788-91f5-5f3f596f879a.amp.html",
+      "title": "Louisiana delegation unenthusiastic about Trump diesel order | State Politics",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/theadvocate.com/content/tncms/assets/v3/editorial/5/3c/53c87fdf-7430-557e-8ba9-811d88e5361a/6ad90cf0cb479.image.jpg?crop=1762%2C926%2C0%2C124",
+      "domain": "theadvocate.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www1.folha.uol.com.br/mundo/2026/10/cuba-diz-que-eua-estao-desesperados-apos-governo-trump-convocar-cubanos-a-colaborar-com-a-cia.shtml",
+      "url_mobile": "",
+      "title": "Cuba ironiza  desespero  dos EUA após convocao pra CIA - 24 / 10 / 2026 - Mundo",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "folha.uol.com.br",
+      "language": "Portuguese",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "url": "https://runews24.ru/articles/24/10/2026/ne-russkaya-myortvaya-ruka-a-strashnee-iran-pridumal-kak-perezhit-unichtozhenie-svoego-rukovodstva",
+      "url_mobile": "https://runews24.ru/amp/articles/24/10/2026/ne-russkaya-myortvaya-ruka-a-strashnee-iran-pridumal-kak-perezhit-unichtozhenie-svoego-rukovodstva",
+      "title": "Не русская « мёртвая рука », а страшнее : Иран придумал , как пережить уничтожение своего руководства",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://runews24.ru/assets/components/phpthumbof/cache/d055604548d2c1498dc820d32a9bee3a.6a856ca6cd9ae14d34cf1b572b5935db.jpg",
+      "domain": "runews24.ru",
+      "language": "Russian",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "http://www.russiaherald.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "russiaherald.com",
+      "language": "English",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://knpr.org/npr/2026-10-23/israeli-pm-pledges-massive-military-operation-after-west-bank-checkpoint-attack",
+      "url_mobile": "",
+      "title": "Israeli PM pledges massive military operation after West Bank checkpoint attack",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "knpr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.ekriti.gr/oikonomia/standard-and-poors-ametabliti-sto-bbb-i-axiologisi-tis-elladas",
+      "url_mobile": "",
+      "title": "Standard and Poor : Αμετάβλητη στο « BBB » η αξιολόγηση της Ελλάδας",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://www.ekriti.gr/sites/default/files/2026-10/sp-greece.webp",
+      "domain": "ekriti.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://nuclear-news.net/2026/10/24/5-b1-deep-concerns-regarding-the-rolls-royce-development-at-the-wylfa-site/",
+      "url_mobile": "",
+      "title": "Deep concerns regarding the Rolls - Royce development at the Wylfa site",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://nuclear-news.net/wp-content/uploads/2018/03/people-against-wylfa-b-e1609732236725.jpg",
+      "domain": "nuclear-news.net",
+      "language": "English",
+      "sourcecountry": "Japan"
+    },
+    {
+      "url": "https://www.kenw.org/npr-news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "https://www.kenw.org/npr-news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels?_amp=true",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "kenw.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198440/oman/his-majesty/joint-statement-between-oman-and-the-uk",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198440",
+      "title": "Joint Statement between Oman and the united kingdom ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555152.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://baijiahao.baidu.com/s?id=1879926359592127188",
+      "url_mobile": "",
+      "title": " （ 外代一线 ） 八国外长呼吁重开霍尔木兹海峡",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "baijiahao.baidu.com",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "https://www.svoboda.org/a/kristofer-uoker-my-nahodimsya-v-razgare-voyny-polnogo-spektra/33880853.html",
+      "url_mobile": "https://www.svoboda.org/amp/kristofer-uoker-my-nahodimsya-v-razgare-voyny-polnogo-spektra/33880853.html",
+      "title": "Кристофер Уокер :  Мы находимся в разгаре войны полного спектра  ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://gdb.rferl.org/EDC82464-D6F1-4548-849B-12EFC5E1FAFF.jpg",
+      "domain": "svoboda.org",
+      "language": "Russian",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://www.wcvb.com/article/how-reliant-ukraine-us-support-kyiv-russia-war/74237015",
+      "url_mobile": "",
+      "title": "How much does Ukraine still rely on US support ? ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/270abbb2-858a-4f36-82ae-1da949c0a7db.jpg?crop=1.00xw%3A0.847xh%3B0%2C0.0671xh",
+      "domain": "wcvb.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.theguardian.com/food/2026/oct/24/uk-tsunami-taxes-top-london-restaurants-expand-abroad",
+      "url_mobile": "",
+      "title": "No unions , low taxes : why some of Britain top chefs are opening outposts in Gulf states | Restaurants",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://i.guim.co.uk/img/media/8169ff71c023a4ac8a94eb1f541f83ce182d7093/118_0_4570_3655/master/4570.jpg?&quality=85&auto=format&fit=crop&precrop=40:21,offset-x50,offset-y0&overlay-align=bottom%2Cleft&overlay-width=100p&overlay-base64=L2ltZy9zdGF0aWMvb3ZlcmxheXMvdGctZGVmYXVsdC5wbmc&enable=upscale&s=77c3245c69bb87b81549e4514b2c3ff3",
+      "domain": "theguardian.com",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.fortmorgantimes.com/2026/10/24/5th-congressional-district-jeff-crank-jessica-killin/",
+      "url_mobile": "",
+      "title": "Democrat Jessica Killin aims to defy once - safe seat of Rep . Jeff Crank",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.fortmorgantimes.com/wp-content/uploads/2026/10/TDP-Z-CRANK-KILLIN-DEBATE-KS-09182026271.jpg",
+      "domain": "fortmorgantimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://novatv.mk/od-letechki-bombi-do-inteligentni-mashini-smrtonosnata-evoluczi%D1%98a-na-dronovite/",
+      "url_mobile": "",
+      "title": "Од летечки бомби до интелигентни машини : Смртоносната еволуција на дроновите",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://novatv.b-cdn.net/wp-content/uploads/2026/10/drones-through-a-dystopian-warfront-signed.png",
+      "domain": "novatv.mk",
+      "language": "Macedonian",
+      "sourcecountry": "Macedonia"
+    },
+    {
+      "url": "https://www.klcc.org/npr-news/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "klcc.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.mzamin.com/article/52943",
+      "url_mobile": "",
+      "title": "রিয়াদে জোড়া বিস্ফোরণ - MZamin",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.mzamin.com/uploads/news/24102026/1792836214_SR-01.webp",
+      "domain": "mzamin.com",
+      "language": "Bengali",
+      "sourcecountry": "Bangladesh"
+    },
+    {
+      "url": "https://www.royalgazette.com/religion/lifestyle/article/20261024/as-un-turns-81-what-of-its-founding-ideals/",
+      "url_mobile": "",
+      "title": "As UN turns 81 , what of its founding ideals ? ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://imengine.public.prod.rgb.navigacloud.com/?uuid=85d2dc63-95d0-5b42-a730-87c6641499f6&function=fit&type=preview",
+      "domain": "royalgazette.com",
+      "language": "English",
+      "sourcecountry": "Bermuda"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198445/business/markets/trump-exempts-some-canadian-foods-from-tariffs",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198445",
+      "title": "Trump exempts some Canadian foods from tariffs",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555160.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://sana.sy/economy/2615718/",
+      "url_mobile": "",
+      "title": "بيسنت : صادرات النفط من الخليج تتجاوز مستويات ما قبل الحرب",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://cdn.sananews.sy/2026/10/SgmiciUY-5-15.jpg",
+      "domain": "sana.sy",
+      "language": "Arabic",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "https://agroinformacion.com/la-tractora-del-28-o-pedira-un-plan-de-choque-frente-al-aumento-de-los-costes-mientras-el-gobierno-ve-un-perfil-claramente-politico-en-la-protesta/",
+      "url_mobile": "",
+      "title": "La tractora del 28 - O pedirá un plan de choque frente al aumento de los costes mientras el Gobierno ve un perfil  claramente político  en la protesta",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://agroinformacion.com/wp-content/uploads/2026/10/TRACTORADA-DEL-28-O-PLAN-CHOQUE-PERFIL-POLITICO.jpg",
+      "domain": "agroinformacion.com",
+      "language": "Spanish",
+      "sourcecountry": "Spain"
+    },
+    {
+      "url": "https://news.bg/int-politics/tramp-shte-se-zanimava-s-kuba-sled-kato-priklyuchi-s-iran.html",
+      "url_mobile": "",
+      "title": "Тръмп ще се занимава с Куба , след като приключи с Иран",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://webnews.bg/uploads/images/16/8216/778216/768x432.jpg?_=1789147164",
+      "domain": "news.bg",
+      "language": "Bulgarian",
+      "sourcecountry": "Bulgaria"
+    },
+    {
+      "url": "http://www.hngnews.com/nation_world/ap-news-in-brief-at-6-04-a-m-edt/article_308ba634-be48-5901-8c6f-96aba5e25c1c.html",
+      "url_mobile": "",
+      "title": "AP News in Brief at 6 : 04 a . m . EDT",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/hngnews.com/content/tncms/custom/image/ab050ce8-ef00-11eb-9947-3fa732d15a79.jpg",
+      "domain": "hngnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.madhyamam.com/world/irans-pezeshkian-to-meet-putin-in-moscow-next-week-fm-araghchi-1565954",
+      "url_mobile": "https://www.madhyamam.com/amp/world/irans-pezeshkian-to-meet-putin-in-moscow-next-week-fm-araghchi-1565954",
+      "title": "ഇറാൻ – റഷ്യ നയതന്ത്ര നീക്കം ശക്തമാകുന്നു ; അടുത്ത ആഴ്ച പുടിനുമായി പെസെഷ്കിയാൻ കൂടിക്കാഴ്ച നടത്തും | Iran Pezeshkian to meet Putin in Moscow next week : FM Araghchi",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.madhyamam.com/h-upload/2026/10/24/2936670-new-project-55.jpg",
+      "domain": "madhyamam.com",
+      "language": "Malayalam",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://sana.sy/international/2615771/",
+      "url_mobile": "",
+      "title": "ترامب يلوّح بتصعيد جديد ضد إيران وسط تحذيرات أمنية أمريكية",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://cdn.sananews.sy/2026/10/AxHir5L9-30-1.jpg",
+      "domain": "sana.sy",
+      "language": "Arabic",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "https://ziare.com/israel/raport-cia-israel-razboi-civil-2043513",
+      "url_mobile": "https://m.ziare.com/amp/israel/raport-cia-israel-razboi-civil-2043513",
+      "title": "CIA avertizează asupra riscului unui război civil în Israel . Ce ar putea duce la prăbușirea țării",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://s2.ziareromania.ro/?mmid=404b456b28470fbe1d",
+      "domain": "ziare.com",
+      "language": "Romanian",
+      "sourcecountry": "Romania"
+    },
+    {
+      "url": "https://knpr.org/npr/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "knpr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.bankingnews.gr/diethni/articles/906952/historic-russia-and-china-energy-deal-sila-baikala-reroutes-gas-and-shifts-world-order",
+      "url_mobile": "",
+      "title": "Historic Russia and China energy deal Sila Baikala reroutes gas and shifts world order",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.bankingnews.gr/media/k2/items/cache/d7256092984c77374e40b1e0063c5572_XL.jpg",
+      "domain": "bankingnews.gr",
+      "language": "English",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.mzamin.com/article/52952",
+      "url_mobile": "",
+      "title": "মার্কিন চাপে ইরানের সঙ্গে গুরুত্বপূর্ণ স্থলপথ বন্ধ করলো পাকিস্তান - ইরাক",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.mzamin.com/uploads/news/24102026/1792839363_SR-03.webp",
+      "domain": "mzamin.com",
+      "language": "Bengali",
+      "sourcecountry": "Bangladesh"
+    },
+    {
+      "url": "https://www.expansion.com/opinion/2026/10/24/temblores-bursatiles-escalada-belica.html",
+      "url_mobile": "https://amp.expansion.com/opinion/2026/10/24/temblores-bursatiles-escalada-belica.html",
+      "title": "Temblores bursátiles por la escalada bélica",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://e00-xlk-ue-expansion.uecdn.es/files/article_main_microformat/uploads/2026/10/16/17793724344804.webp",
+      "domain": "expansion.com",
+      "language": "Spanish",
+      "sourcecountry": "Spain"
+    },
+    {
+      "url": "https://www.wypr.org/2026-10-24/drinking-water-supplies-dwindle-in-yemeni-city-besieged-by-houthi-rebels",
+      "url_mobile": "",
+      "title": "Drinking water supplies dwindle in Yemeni city besieged by Houthi rebels",
+      "seendate": "20261024T113000Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/48/f2/bed4f4df43b197d5bb5247c6c0e3/ap26296551585852.jpg",
+      "domain": "wypr.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.hngnews.com/nation_world/israel-imposes-closures-across-a-west-bank-city-after-attacks-and-other-mideast-news/article_626b0793-bbc2-54f6-9d4c-3bc5227a1720.html",
+      "url_mobile": "",
+      "title": "Israel imposes closures across a West Bank city after attacks , and other Mideast news",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/hngnews.com/content/tncms/assets/v3/editorial/e/80/e8024bdf-41b1-59bf-9b9b-a03f086ec97f/6adc67478e9ff.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "hngnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.la-croix.com/international/itamar-yaar-de-commanders-for-israel-s-security-les-violences-des-colons-sont-contraires-aux-interets-disrael-20261024",
+      "url_mobile": "",
+      "title": "Itamar Yaar , de Commanders for Israel Security :  Les violences des colons sont contraires aux intérts dIsraël ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "",
+      "domain": "la-croix.com",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://24tv.ua/ru/vybory-ssha-intervju-djevidom-tafuri-o-snjatii-sankcij-rossii_n3166738",
+      "url_mobile": "https://24tv.ua/ru/vybory-ssha-intervju-djevidom-tafuri-o-snjatii-sankcij-rossii_n3166738/amp",
+      "title": "Выборы в США – интервью с Дэвидом Тафури о снятии санкций с России и поддержке Украины",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://24tv.ua/resources/photos/news/202610/3166738.jpg?v=1792830328000&fit=cover",
+      "domain": "24tv.ua",
+      "language": "Russian",
+      "sourcecountry": "Ukraine"
+    },
+    {
+      "url": "https://www.omanobserver.om/article/1198449/oman/ballistic-missiles-targeting-saudi-cities-intercepted",
+      "url_mobile": "https://www.omanobserver.om/ampArticle/1198449",
+      "title": "Ballistic missiles targeting Saudi cities intercepted",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.omanobserver.om/omanobserver/uploads/images/2026/10/24/thumbs/600x600/3555257.jpg",
+      "domain": "omanobserver.om",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "http://www.hngnews.com/nation_world/ap-news-summary-at-6-52-a-m-edt/article_4377b7f8-afbb-5ad9-8bfd-2fb82c3d6e21.html",
+      "url_mobile": "",
+      "title": "AP News Summary at 6 : 52 a . m . EDT",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/hngnews.com/content/tncms/custom/image/ab050ce8-ef00-11eb-9947-3fa732d15a79.jpg",
+      "domain": "hngnews.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.madata.gr/epikairotita/world/989507-synagermos-stis-ipa-gia-schedia-dolofonias-axiomatoychon-apo-to-iran.html",
+      "url_mobile": "https://www.madata.gr/amp/epikairotita/world/989507-synagermos-stis-ipa-gia-schedia-dolofonias-axiomatoychon-apo-to-iran.html",
+      "title": "Συναγερμός στις ΗΠΑ για σχέδια δολοφονίας αξιωματούχων από το Ιράν",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://www.madata.gr/gimimage/1200/675/2026/10/synagermos-stis-ipa-gia-schedia-dolofonias-axiomatoychon-apo-to-iran.webp",
+      "domain": "madata.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://anf-news.com/ortado%C4%9Fu/irak-ve-pakistan-in-sinir-kapilarini-kapatmasinin-ardindan-Iran-ekonomisi-felc-oldu-234642",
+      "url_mobile": "",
+      "title": "ANF | Irak ve Pakistan  ın sınır kapılarını kapatması İran ekonomisini felç etti ! ",
+      "seendate": "20261024T113000Z",
+      "socialimage": "https://anf-news.com/uploads/tr/articles/2026/10/20261024-drwaz-snwwryykany-raq-chy-karygryyky-lsr-yran-dbt-750x430-1-png1cd747-image.jpg",
+      "domain": "anf-news.com",
+      "language": "Turkish",
+      "sourcecountry": ""
+    }
+  ]
+}

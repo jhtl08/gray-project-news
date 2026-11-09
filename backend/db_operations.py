@@ -23,6 +23,12 @@ from typing import Any, Iterator
 import psycopg
 from dotenv import load_dotenv
 
+try:
+    from laya_processes import score_headlines
+except Exception:
+    def score_headlines(headlines: list[str]) -> list[int]:
+        return [0] * len(headlines)
+
 BASE_DIR = Path(__file__).resolve().parent
 # Load backend/.env regardless of the directory the script is run from.
 load_dotenv(BASE_DIR / ".env")
@@ -39,23 +45,23 @@ SEENDATE_FORMAT = "%Y%m%dT%H%M%SZ"
 # is added, so an HNSW/IVFFlat index can be created.
 CREATE_NEWS_TABLE = """
 CREATE TABLE IF NOT EXISTS news (
-    id             BIGSERIAL PRIMARY KEY,
-    query          TEXT NOT NULL,
-    url            TEXT NOT NULL UNIQUE,
-    title          TEXT,
-    seendate       TIMESTAMPTZ,
-    language       TEXT,
-    sourcecountry  TEXT,
-    content_vector VECTOR,
-    created_at     TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    id                  BIGSERIAL PRIMARY KEY,
+    query               TEXT NOT NULL,
+    url                 TEXT NOT NULL UNIQUE,
+    title               TEXT UNIQUE,
+    seendate            TIMESTAMPTZ,
+    language            TEXT,
+    sourcecountry       TEXT,
+    disruptiveness_score INTEGER,
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 """
 
 INSERT_NEWS = """
 INSERT INTO news (query, url, title, seendate, language, sourcecountry)
 VALUES (%(query)s, %(url)s, %(title)s, %(seendate)s, %(language)s, %(sourcecountry)s)
-ON CONFLICT (url) DO NOTHING
-RETURNING id;
+ON CONFLICT DO NOTHING
+RETURNING id, title;
 """
 
 
@@ -71,6 +77,15 @@ def init_db() -> None:
     with get_connection() as conn:
         conn.execute("CREATE EXTENSION IF NOT EXISTS vector;")
         conn.execute(CREATE_NEWS_TABLE)
+        # Ensure columns/constraints exist for upgrades
+        try:
+            conn.execute("ALTER TABLE news ADD COLUMN IF NOT EXISTS disruptiveness_score INTEGER;")
+        except Exception:
+            pass
+        try:
+            conn.execute("ALTER TABLE news ADD CONSTRAINT news_title_key UNIQUE (title);")
+        except Exception:
+            pass
 
 
 def latest_json_file(directory: Path | str = DATA_DIR) -> Path:
@@ -137,16 +152,40 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
         if (row := _article_to_row(article, query)) is not None
     ]
 
-    inserted = 0
+    inserted_rows = []
     with get_connection() as conn:
         with conn.cursor() as cur:
             if rows:
                 cur.executemany(INSERT_NEWS, rows, returning=True)
                 while True:
-                    if cur.fetchone() is not None:  # None = url already existed
-                        inserted += 1
+                    result = cur.fetchone()
+                    if result is not None:
+                        inserted_rows.append(result)
                     if not cur.nextset():
                         break
+        inserted = len(inserted_rows)
+
+        # Score newly inserted rows by title
+        if inserted_rows:
+            try:
+                titles_to_score = []
+                ids_to_score = []
+                for row_res in inserted_rows:
+                    inserted_id = row_res[0]
+                    inserted_title = row_res[1]
+                    if inserted_title and inserted_title.strip():
+                        titles_to_score.append(inserted_title)
+                        ids_to_score.append(inserted_id)
+                if titles_to_score:
+                    scores = score_headlines(titles_to_score)
+                    with conn.cursor() as cur:
+                        for inserted_id, score in zip(ids_to_score, scores):
+                            cur.execute(
+                                "UPDATE news SET disruptiveness_score = %s WHERE id = %s",
+                                (int(score), inserted_id),
+                            )
+            except Exception:
+                pass
 
     return {
         "file": str(path),

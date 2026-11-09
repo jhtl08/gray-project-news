@@ -1,0 +1,2005 @@
+{
+  "query": "(israel OR iran OR netanyahu)",
+  "articles": [
+    {
+      "url": "https://www.shorouknews.com/news/view.aspx?cdate=24102026&id=6cda695e-c83d-4419-add4-e3d7d0352a2c",
+      "url_mobile": "",
+      "title": "نيويورك تايمز : تأهب أمريكي تحسبًا لهجمات إيرانية - بوابة الشروق",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.shorouknews.com/uploadedimages/Other/original/56765987099876543.JPG",
+      "domain": "shorouknews.com",
+      "language": "Arabic",
+      "sourcecountry": "Egypt"
+    },
+    {
+      "url": "https://kfgo.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "kfgo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aktuality.sk/clanok/HyVR4Zi/saudske-nalety-na-jemen-si-vyziadali-obete-husiovia-hlasia-utoky-na-hlavne-mesto/",
+      "url_mobile": "",
+      "title": "Saudské nálety na Jemen si vyžiadali obete , húsíovia hlásia útoky na hlavné mesto",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "aktuality.sk",
+      "language": "Slovak",
+      "sourcecountry": "Slovak Republic"
+    },
+    {
+      "url": "http://www.brazilsun.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "brazilsun.com",
+      "language": "English",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "url": "https://palinfo.com/news/2026/10/24/1121814/",
+      "url_mobile": "",
+      "title": "الغارديان : الاحتلال يصعّد إجراءاته العقابية في الخليل ويمهّد لتهجير سكانها",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://palinfo.com/wp-content/uploads/2026/10/4583.jpg",
+      "domain": "palinfo.com",
+      "language": "Arabic",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.capital.gr/diethni/4025547/m-pezeskian-oi-amerikanoi-euthunontai-gia-tin-apotuxia-ton-sunomilion/",
+      "url_mobile": "https://www.capital.gr/diethni/4025547/m-pezeskian-oi-amerikanoi-euthunontai-gia-tin-apotuxia-ton-sunomilion/?amp=true",
+      "title": "Μ . Πεζεσκιάν : Οι Αμερικανοί ευθύνονται για την αποτυχία των συνομιλιών",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.capital.gr/Content/ImagesDatabase/fb/1000x523/crop/both/cd/cd73b9dd9e744f499f0a13b3c2881dfa.jpg",
+      "domain": "capital.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.tayyar.org/News/Lebanon/746171/_guid=746171",
+      "url_mobile": "",
+      "title": "tayyar . org - بالفيديو - فيصل عبد الساتر لـ TTV plus : السلطة أخدة البلد إلى 700 أياّر وأسهم  الحرب  ترتفع ! ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://static.tayyar.org/Content/ResizedImages/663/423/outside/WhatsApp-Image-2026-10-24-at-3.36.46-PM.jpeg",
+      "domain": "tayyar.org",
+      "language": "Arabic",
+      "sourcecountry": "Lebanon"
+    },
+    {
+      "url": "https://whbl.com/2026/10/24/irans-pezeshkian-blames-us-for-interim-deal-failure-urges-new-try/",
+      "url_mobile": "",
+      "title": "Iran Pezeshkian blames US for interim deal failure , urges new try",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T130310Z_1_LYNXNPEM9N0BU_RTROPTP_3_RUSSIA-IRAN-PUTIN-PEZESHKIAN.JPG",
+      "domain": "whbl.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thefrontierpost.com/pakistan-saudi-arabia-european-powers-urge-diplomacy-amid-middle-east-conflicts/",
+      "url_mobile": "https://thefrontierpost.com/pakistan-saudi-arabia-european-powers-urge-diplomacy-amid-middle-east-conflicts/amp/",
+      "title": "Pakistan , Saudi Arabia , European powers urge diplomacy amid Middle East conflicts",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://jetpack.com/redirect/?source=sigenerate&query=t%3DeyJpbWciOiJodHRwczpcL1wvdGhlZnJvbnRpZXJwb3N0LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNlwvMTBcLzcxYjIwMTJkLTY5ZTctNDRlZi1iNzI0LTc3MjdmNGMzNGI1NS0xMDI0eDYwMy53ZWJwIiwidHh0IjoiUGFraXN0YW4sIFNhdWRpIEFyYWJpYSwgRXVyb3BlYW4gcG93ZXJzIHVyZ2UgZGlwbG9tYWN5IGFtaWQgTWlkZGxlIEVhc3QgY29uZmxpY3RzIiwidGVtcGxhdGUiOiJoaWdod2F5IiwiZm9udCI6IiIsImJsb2dfaWQiOjEzNzU4MjM0M30.5ARr3k8cNqgaDdivq23FERxnPW9MZw7S_G2JbyJDDssMQ",
+      "domain": "thefrontierpost.com",
+      "language": "English",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://www.akasyam.com/sumud-ve-ozgurluk-filolari-davasi-istanbulda-goruluyor-205693/",
+      "url_mobile": "https://www.akasyam.com/amp/sumud-ve-ozgurluk-filolari-davasi-istanbulda-goruluyor-205693/",
+      "title": "Sumud ve Özgürlük filoları davası İstanbulda görülüyor",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.akasyam.com/files/uploads/news/default/2026/10/1792842171-ff241.webp",
+      "domain": "akasyam.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://hot96.com/2026/10/24/kamala-harris-returns-to-us-campaign-trail-with-midterms-2028-in-view/",
+      "url_mobile": "",
+      "title": "Kamala Harris returns to US campaign trail with midterms , 2028 in view",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100306Z_1_LYNXNPEM9N07G_RTROPTP_3_USA-ELECTION-HARRIS.JPG",
+      "domain": "hot96.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.azerbaijannews.net/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "azerbaijannews.net",
+      "language": "English",
+      "sourcecountry": "Azerbaijan"
+    },
+    {
+      "url": "https://dominicanrepublicpost.com/is-iran-planning-attacks-on-americans-why-is-the-us-on-alert/",
+      "url_mobile": "",
+      "title": "Is Iran planning attacks on Americans ; why is the US on alert ? - Dominican Republic Post – Caribbean News , Business , Travel & Culture",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://dominicanrepublicpost.com/app/uploads/2026/10/epa_6ad49897d480-1792317591-Yerqlv.jpg",
+      "domain": "dominicanrepublicpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thefrontierpost.com/irans-pezeshkian-blames-us-for-interim-deal-failure-urges-new-try/",
+      "url_mobile": "https://thefrontierpost.com/irans-pezeshkian-blames-us-for-interim-deal-failure-urges-new-try/amp/",
+      "title": "Iran Pezeshkian blames US for interim deal failure , urges new try – The Frontier Post",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://jetpack.com/redirect/?source=sigenerate&query=t%3DeyJpbWciOiJodHRwczpcL1wvdGhlZnJvbnRpZXJwb3N0LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNlwvMTBcL1czT0FPU1ZEVkZPRFhMVFBBVVZQNE1QS0E0LmF2aWYiLCJ0eHQiOiJJcmFuJiM4MjE3O3MgUGV6ZXNoa2lhbiBibGFtZXMgVVMgZm9yIGludGVyaW0gZGVhbCBmYWlsdXJlLCB1cmdlcyBuZXcgdHJ5IiwidGVtcGxhdGUiOiJoaWdod2F5IiwiZm9udCI6IiIsImJsb2dfaWQiOjEzNzU4MjM0M30.XiKr_y-mUssinvR8WNI21cDydUSYbJ5wZqLaIs-IV6AMQ",
+      "domain": "thefrontierpost.com",
+      "language": "English",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://www.newser.com/story/398755/us-irans-plans-to-attack-americans-in-advanced-stages.html",
+      "url_mobile": "",
+      "title": "US : Iran Plans to Attack Americans in  Advanced Stages  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cdn.newser.com/image/1720010-12-20261024092548.jpeg",
+      "domain": "newser.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://rtcg.me/vijesti/bbc/896016/gadi-ajzenkot-ko-je-netanjahuov-glavni-rival-na-izborima-u-izraelu.html",
+      "url_mobile": "",
+      "title": "Gadi Ajzenkot : Ko je Netanjahuov glavni rival na izborima u Izraelu :: BBC :: RTCG - Radio Televizija Crne Gore",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://rtcg.me/upload/",
+      "domain": "rtcg.me",
+      "language": "Bosnian",
+      "sourcecountry": "Montenegro"
+    },
+    {
+      "url": "https://www.lematin.ch/story/yemen-les-combattants-houthis-accusent-riyad-de-frappes-meurtrieres-103655249",
+      "url_mobile": "",
+      "title": "Yémen : Les combattants houthis accusent Riyad de frappes meurtrières",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://image.lematin.ch/2026/10/24/4f038c75-834f-41cc-9cf2-0a0c23618c62.jpg?auto=format%2Ccompress%2Cenhance&fit=max&rect=0%2C0%2C3402%2C2268&s=57171d0e24be97cee792426d4a836a05",
+      "domain": "lematin.ch",
+      "language": "French",
+      "sourcecountry": "Switzerland"
+    },
+    {
+      "url": "https://isp.netscape.com:443/news/story/0001/20261024/0b1126f30969a21710ba995416c5b905",
+      "url_mobile": "",
+      "title": "Halloween candy sales are off to a slow start amid high chocolate prices and affordability concerns",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "isp.netscape.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.trinidadtimes.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "trinidadtimes.com",
+      "language": "English",
+      "sourcecountry": "Trinidad and Tobago"
+    },
+    {
+      "url": "https://www.timeslive.co.za/news/2026-10-24-five-italian-activists-held-in-west-bank-have-been-repatriated-ministry-says/",
+      "url_mobile": "",
+      "title": "Five Italian activists held in West Bank have been repatriated , ministry says",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.timeslive.co.za/resizer/v2/4GR6WPJC6FLXHL5HGVA2SVJ6G4.jpg?smart=true&auth=e9d5c0258d07eb9bfef44d4d633ec3d190266a73c43532550a4ec4c0a94682f2",
+      "domain": "timeslive.co.za",
+      "language": "English",
+      "sourcecountry": "South Africa"
+    },
+    {
+      "url": "http://www.myanmarnews.net/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "myanmarnews.net",
+      "language": "English",
+      "sourcecountry": "Myanmar"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/tgb-baskani-celik-ankara-da-israil-secimi-oncesi-20362589-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/tgb-baskani-celik-ankara-da-israil-secimi-oncesi-20362589-haberi/",
+      "title": "TGB Başkanı Çelik , Ankarada İsrail seçimi öncesi Netanyahuya  yargılanacaksın  dedi",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://foto.haberler.com/haber/2026/10/24/tgb-baskani-celik-ankara-da-israil-secimi-onc-20362589_amp.jpg",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://www.aurora-israel.co.il/confrontacion-entre-estados-unidos-e-iran-presion/",
+      "url_mobile": "",
+      "title": "Confrontación entre Estados Unidos e Irán : presión larga",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://aurora-israel.co.il/wp-content/uploads/2024/05/aurora-preview.jpg",
+      "domain": "aurora-israel.co.il",
+      "language": "Spanish",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://informer.rs/planeta/vesti/1163839/sad-pretnja-konfucijevi-instituti",
+      "url_mobile": "",
+      "title": "Američko Ministarstvo odbrane : Konfučijeve institute vidimo kao pretnju",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://informer.rs/data/images/2024-12-13/1068530_12_f.jpg",
+      "domain": "informer.rs",
+      "language": "Serbian",
+      "sourcecountry": "Serbia"
+    },
+    {
+      "url": "https://www.afrique-asie.fr/que-se-passe-t-il-exactement-a-la-frontiere-irano-pakistanaise/",
+      "url_mobile": "",
+      "title": "Que se passe - t - il exactement à la frontière irano - pakistanaise ? ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.afrique-asie.fr/wp-content/uploads/2026/10/Que-se-passe-t-il.jpg",
+      "domain": "afrique-asie.fr",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://thefrontierpost.com/israel-imposes-closures-across-a-west-bank-city-after-attacks/",
+      "url_mobile": "https://thefrontierpost.com/israel-imposes-closures-across-a-west-bank-city-after-attacks/amp/",
+      "title": "Israel imposes closures across a West Bank city after attacks",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://jetpack.com/redirect/?source=sigenerate&query=t%3DeyJpbWciOiJodHRwczpcL1wvdGhlZnJvbnRpZXJwb3N0LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNlwvMTBcLzEyOTcyYWM2LTc3ZGQtNDVhMC1hZmM4LTQ1N2E5OWMwOGJkMy0xMDI0eDY4My53ZWJwIiwidHh0IjoiSXNyYWVsIGltcG9zZXMgY2xvc3VyZXMgYWNyb3NzIGEgV2VzdCBCYW5rIGNpdHkgYWZ0ZXIgYXR0YWNrcyIsInRlbXBsYXRlIjoiaGlnaHdheSIsImZvbnQiOiIiLCJibG9nX2lkIjoxMzc1ODIzNDN9.bjFblxnmMs3TTVoUCgpCySejbw1EZeEKkMZDPylg0NMMQ",
+      "domain": "thefrontierpost.com",
+      "language": "English",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://www.aol.com/articles/peter-schiff-warns-crash-could-133000000.html",
+      "url_mobile": "",
+      "title": "Peter Schiff warns a crash could hit before the midterms beware  the most expensive stock market in history  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://hermes.media.transform.aol.com/3d542f6bdb1bf3393019867da93cfb238df85aa6/w_1200,c_scale,f_auto,q_auto/https://hermes.media.static.aol.com/media/2026/10/24/5c30cb90-aaa2-3dfd-9870-c809ee9b42d7/4d1ec196-77fe-44f6-a5b8-c1a8e46193dc.jpg",
+      "domain": "aol.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.shorouknews.com/news/view.aspx?cdate=24102026&id=29139a56-1a36-4614-830c-3e343e7ae61c",
+      "url_mobile": "",
+      "title": "سفارة أمريكا بالرياض تحذر من هجمات إيرانية وحوثية محتملة في السعودية",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.shorouknews.com/uploadedimages/Other/original/54675876087-0978675.JPG",
+      "domain": "shorouknews.com",
+      "language": "Arabic",
+      "sourcecountry": "Egypt"
+    },
+    {
+      "url": "https://www.afrique-asie.fr/usa-alors-que-de-plus-en-plus-de-syndicats-sopposent-a-lice-et-a-israel-la-droite-intensifie-sa-repression/",
+      "url_mobile": "",
+      "title": "USA Alors que de plus en plus de syndicats sopposent à lICE et à Israël , la droite intensifie sa répression . ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.afrique-asie.fr/wp-content/uploads/2026/10/USA-Alors-que-de-plus-en-plus-de-syndicats--1024x683.jpg",
+      "domain": "afrique-asie.fr",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://www.enanyang.my/news/20261024/Nation/1426142",
+      "url_mobile": "",
+      "title": "重大决策不应草率决定 杨美盈 : 勿仓促全面禁Waze",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://vega.enanyang.my/wp-content/uploads/2026/10/yang9752.jpg",
+      "domain": "enanyang.my",
+      "language": "Chinese",
+      "sourcecountry": "Malaysia"
+    },
+    {
+      "url": "https://www.merkur.de/politik/zehntausende-fliegen-nach-israel-um-netanjahu-abzuwaehlen-zr-94556616.html",
+      "url_mobile": "",
+      "title": "Knesset - Wahl : Tausende Auslands - Israelis fliegen zur Wahl nach Israel",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "merkur.de",
+      "language": "German",
+      "sourcecountry": "Germany"
+    },
+    {
+      "url": "https://article.wn.com/view/2026/10/24/How_Houthis_Are_Using_Epstein_Files_To_Target_Saudi_Crown_Pr/",
+      "url_mobile": "",
+      "title": "How Houthis Are Using Epstein Files To Target Saudi Crown Prince In Propaganda War",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "article.wn.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.click2houston.com/news/politics/2026/10/24/this-us-house-district-was-once-a-political-battleground-now-it-shows-why-congress-is-dysfunctional/",
+      "url_mobile": "",
+      "title": "This US House district was once a political battleground . Now it shows why Congress is dysfunctional",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://bc.gmg.io/image/upload/c_thumb,q_auto,w_700,f_jpg/media/gmg/DOHPCNWLW5HGPHOZOFS42DC3WM.jpg?api_key=click2houston_85fdeb57f8cd3635",
+      "domain": "click2houston.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://vecer.mk/balkan/albanija-povtorno-na-noze-novi-masovni-protesti-vo-tirana-rama-so-predupreduvanje-koj-ke-ja-frli-drzhavata-na-kolena-ke-plati",
+      "url_mobile": "",
+      "title": "АЛБАНИЈА ПОВТОРНО НА НОЗЕ : Нови масовни протести во Тирана , Рама со предупредување – кој ќе ја фрли државата на колена , ќе плати ! ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cmsnebula.eu-central-1.linodeobjects.com/b79723b0-fe00-4f46-ae15-f16613a5853e/$6e1fa92c-98c4-4e15-a14d-9575d2d94b5f/screenshot-2026-10-24-134655.png",
+      "domain": "vecer.mk",
+      "language": "Macedonian",
+      "sourcecountry": "Macedonia"
+    },
+    {
+      "url": "https://kfgo.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies | The Mighty 790 KFGO",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "kfgo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wgauradio.com/news/politics/aoc-can-draw-crowd/43QKV7G2HM6YJLIK2IF7HA6XXE/",
+      "url_mobile": "https://www.wgauradio.com/news/politics/aoc-can-draw-crowd/43QKV7G2HM6YJLIK2IF7HA6XXE/?outputType=amp",
+      "title": "AOC tests her progressive message . The results could help shape her future",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cmg-cmg-rd-20015-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2F7ACZEBEWZMZ67PDBCYYRWU2WFI.jpg?auth=2d7b68241c42584a782c21dbf200ffe64019a6a11aff6a2264aaa2125d89d273&smart=true",
+      "domain": "wgauradio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://politicalwire.com/2026/10/24/quote-of-the-day-4592/",
+      "url_mobile": "",
+      "title": "Quote of the Day",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://politicalwire.com/wp-content/uploads/pw-social-cards/2020120-0cedb89c.png",
+      "domain": "politicalwire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.infomoney.com.br/mundo/impostos-monopolios-e-contrabando-como-os-houthis-financiam-sua-maquina-de-guerra/",
+      "url_mobile": "https://www.infomoney.com.br/mundo/impostos-monopolios-e-contrabando-como-os-houthis-financiam-sua-maquina-de-guerra/amp/",
+      "title": "Impostos , monopólio e contrabando : como os Houthis financiam sua máquina de guerra ? ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.infomoney.com.br/wp-content/uploads/2026/10/Houthis_Iemen.jpg?fit=1920%2C1280&quality=70&strip=all",
+      "domain": "infomoney.com.br",
+      "language": "Portuguese",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "url": "https://www.capital.gr/story/4025542/iordania-tromokrates-aimatokulisan-ellinorthodoxi-ekklisia-stin-iordania-kata-ti-diarkeia-kideias/",
+      "url_mobile": "https://www.capital.gr/story/4025542/iordania-tromokrates-aimatokulisan-ellinorthodoxi-ekklisia-stin-iordania-kata-ti-diarkeia-kideias/?amp=true",
+      "title": "Ιορδανία : Τρομοκράτες αιματοκύλισαν ελληνορθόδοξη εκκλησία στην Ιορδανία ... ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.capital.gr/Content/ImagesDatabase/fb/1000x523/crop/both/8e/8ed41faf86d241eda0f44e545adffaf1.jpg",
+      "domain": "capital.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://protv.md/international/represalii-israeliene-in-cisiordania-sute-de-familii-de-palestinieni-au-fost-alungate-din-case---2770485.html",
+      "url_mobile": "",
+      "title": "Represalii israeliene în Cisiordania . Sute de familii de palestinieni au fost alungate din case",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://assets.protv.md/articles/files/thumbs/1200x/2026/10/24/1792845863-78a4e8b2-1500-4525-9988-8d0fdace4203.webp",
+      "domain": "protv.md",
+      "language": "Romanian",
+      "sourcecountry": "Moldova"
+    },
+    {
+      "url": "https://isp.netscape.com:443/news/story/0001/20261024/608be19e4c6359d1590717dbead13940",
+      "url_mobile": "",
+      "title": "This US House district was once a political battleground . Now it shows why Congress is dysfunctional",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "isp.netscape.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.one.co.il/Article/536907.html",
+      "url_mobile": "",
+      "title": "  שווה לעקוב אחרי רביבו , לא יהיה באלצ  ה זמן רב  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://photo.one.co.il/Image/GG/17,1/1893112.webp",
+      "domain": "one.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.wmur.com/article/how-reliant-ukraine-us-support-kyiv-russia-war/74237015",
+      "url_mobile": "",
+      "title": "How much does Ukraine still rely on US support ? ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/270abbb2-858a-4f36-82ae-1da949c0a7db.jpg?crop=1.00xw%3A0.847xh%3B0%2C0.0671xh",
+      "domain": "wmur.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://whbl.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "whbl.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.4029tv.com/article/how-reliant-ukraine-us-support-kyiv-russia-war/74237015",
+      "url_mobile": "",
+      "title": "How much does Ukraine still rely on US support ? ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://kubrick.htvapps.com/htv-prod/images/270abbb2-858a-4f36-82ae-1da949c0a7db.jpg?crop=1.00xw%3A0.847xh%3B0%2C0.0671xh",
+      "domain": "4029tv.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kymensanomat.fi/uutissuomalainen/9899200",
+      "url_mobile": "",
+      "title": "Israel aloitti operaatiot Länsirannalla –  Voi parantaa Netanjahun asemaa  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://i.media.fi/incoming/t0fami/11742568.jpg/alternates/OG_IMAGE_KYMENSANOMAT/11742568.jpg",
+      "domain": "kymensanomat.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://rtcg.me/vijesti/bbc/896010/benjamin-netanjahu-moze-li-gospodin-bezbednost-da-osvoji-sedmi-premijerski-mandat-u-izraelu.html",
+      "url_mobile": "",
+      "title": "Benjamin Netanjahu : Može li  Gospodin Bezbednost  da osvoji sedmi premijerski mandat u Izraelu :: BBC :: RTCG - Radio Televizija Crne Gore",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://rtcg.me/upload/",
+      "domain": "rtcg.me",
+      "language": "Serbian",
+      "sourcecountry": "Montenegro"
+    },
+    {
+      "url": "https://www.afrique-asie.fr/jacques-marie-bourget-a-algerie54-la-france-nest-plus-une-democratie-mais-un-etat-semi-policier/",
+      "url_mobile": "",
+      "title": "Jacques - Marie Bourget à Algérie54 : « La France nest plus une démocratie mais un État semi - policier » ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.afrique-asie.fr/wp-content/uploads/2026/10/Bourget.webp",
+      "domain": "afrique-asie.fr",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://wtvbam.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies | WTVB | 1590 AM · 95 . 5 FM",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "wtvbam.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wtvbam.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "wtvbam.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://radio.wpsu.org/2026-10-23/russia-steps-up-election-influence-efforts-in-final-stretch-of-midterms",
+      "url_mobile": "",
+      "title": "Russia steps up election influence efforts in final stretch of midterms",
+      "seendate": "20261024T144500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/55/95/c8c639814cf4b3a58c5fb29284e1/gettyimages-2298571725.jpg",
+      "domain": "radio.wpsu.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thefrontierpost.com/iranian-president-to-meet-putin-in-moscow-iran-media/",
+      "url_mobile": "https://thefrontierpost.com/iranian-president-to-meet-putin-in-moscow-iran-media/amp/",
+      "title": "Iranian president to meet Putin in Moscow : Iran media",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://jetpack.com/redirect/?source=sigenerate&query=t%3DeyJpbWciOiJodHRwczpcL1wvdGhlZnJvbnRpZXJwb3N0LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNlwvMTBcL2JkMGIzNzEyLTExZmMtNDZhNS05MmUyLTY3OWUyODEwYmEwZS0xMDI0eDY5MS53ZWJwIiwidHh0IjoiSXJhbmlhbiBwcmVzaWRlbnQgdG8gbWVldCBQdXRpbiBpbiBNb3Njb3c6IElyYW4gbWVkaWEiLCJ0ZW1wbGF0ZSI6ImhpZ2h3YXkiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM3NTgyMzQzfQ.vzueq5FTH9xhhoC_Ejvl3kqbzs7wkdDonL-a3nODPJYMQ",
+      "domain": "thefrontierpost.com",
+      "language": "English",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://www.021.rs/bbc/bbc/459065/gadi-ajzenkot-ko-je-netanjahuov-glavni-rival-na-izborima-u-izraelu",
+      "url_mobile": "",
+      "title": "Gadi Ajzenkot : Ko je Netanjahuov glavni rival na izborima u Izraelu",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.021.rs/images/3bc67cf2d38648a38469cdf68a6f965f/c9c00b20-cc67-11f1-a64c-550be9e3c66b.png",
+      "domain": "021.rs",
+      "language": "Bosnian",
+      "sourcecountry": "Serbia"
+    },
+    {
+      "url": "https://thearabianpost.com/bank-of-america-penalty-exposes-failures-in-compliance-controls/",
+      "url_mobile": "",
+      "title": "Bank of America penalty exposes failures in compliance controls",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "thearabianpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://rtcg.me/vijesti/svijet/896003/ambasada-palestine-pravo-palestinaca-na-samoopredjeljenje-test-vjerodostojnosti-un-a.html",
+      "url_mobile": "",
+      "title": "Ambasada Palestine : Pravo Palestinaca na samoopredjeljenje test vjerodostojnosti UN - a :: Svijet :: RTCG - Radio Televizija Crne Gore",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://rtcg.me/upload/media/2026/9/24/13/51/627/2688633/thumbs/6890196/thumb0.jpg",
+      "domain": "rtcg.me",
+      "language": "Serbian",
+      "sourcecountry": "Montenegro"
+    },
+    {
+      "url": "http://www.calcuttanews.net/news/279396255/iran-speaker-ghalibaf-unable-to-attend-12th-brics-parliamentary-forum-parliamentary-delegation-to-represent-tehran",
+      "url_mobile": "",
+      "title": "Iran Speaker Ghalibaf unable to attend 12th BRICS Parliamentary Forum ; parliamentary delegation to represent Tehran",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/5c0f359/fe17bf8e-8f2b-49e7-808a-31c2c6a3d9fd/0/ANI-20261024114754-600x315.jpg",
+      "domain": "calcuttanews.net",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://www.wgauradio.com/news/politics/this-us-house/3SHAMWPR7A5ADJCEEVZP5YW2SQ/",
+      "url_mobile": "https://www.wgauradio.com/news/politics/this-us-house/3SHAMWPR7A5ADJCEEVZP5YW2SQ/?outputType=amp",
+      "title": "Swing US House districts are rapidly disappearing",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cmg-cmg-rd-20015-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2F3H47ZTIRPE4PVJT4HYAJTOOPRQ.jpg?auth=9b1babcc634cdcaec2ae88c3602a5e593a32dd7c2b37f655a0a1813e51af6d9f&smart=true",
+      "domain": "wgauradio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.timeturk.com/istanbulda-8-ulke-bulustu-hakan-fidan-savasin-yayilmasini-istemiyoruz-dedi",
+      "url_mobile": "",
+      "title": "İstanbulda 8 ülke buluştu : Hakan Fidan  Savaşın yayılmasını istemiyoruz  dedi",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cdn.timeturk.com/uploads/2026/10/istanbul-da-8-ulke-bulustu-hakan-fidan-savasin-yayilmasini-istemiyoruz-dedi-3.webp",
+      "domain": "timeturk.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://actualidad-rt.com/actualidad/634063-convertiremos-superpotencia-mundial-general-irani-predice-victoria-eeuu",
+      "url_mobile": "https://actualidad-rt.com/actualidad/634063-convertiremos-superpotencia-mundial-general-irani-predice-victoria-eeuu/amp",
+      "title": "  Nos convertiremos en la superpotencia mundial : Irán deja un mensaje a EE . UU . e Israel",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://mf.b37mrtl.ru/actualidad/public_images/2026.10/article/6adcb9b4e9ff71731959e44d.jpg",
+      "domain": "actualidad-rt.com",
+      "language": "Spanish",
+      "sourcecountry": ""
+    },
+    {
+      "url": "https://article.wn.com/view/2026/10/24/Irans_Plots_To_Kill_Americans_Abroad_Reach_Advanced_Stages_U/",
+      "url_mobile": "",
+      "title": "Iran Plots To Kill Americans Abroad Reach  Advanced Stage , US Intelligence Memo Warns",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "article.wn.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.one.co.il/Article/536910.html",
+      "url_mobile": "",
+      "title": "דקה 31 : ווסטהאם - סאות  המפטון 2 : 1",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://photo.one.co.il/Image/GG/17,1/1888738.webp",
+      "domain": "one.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://dominicanrepublicpost.com/iran-says-wont-allow-us-warships-to-get-close-as-trump-ponders-new-attacks/",
+      "url_mobile": "",
+      "title": "Iran says wont allow US warships to get close as Trump ponders new attacks - Dominican Republic Post – Caribbean News , Business , Travel & Culture",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://dominicanrepublicpost.com/app/uploads/2026/10/reuters_6adcacbb-1792847035-dCO6Dt.jpg",
+      "domain": "dominicanrepublicpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.gazetaexpress.com/krijuesja-e-serialit-nobody-wants-this-kundershton-adam-brodyn-per-deklaratat-ne-mbeshtetje-te-palestines/",
+      "url_mobile": "",
+      "title": "Krijuesja e serialit  Nobody Wants This  kundërshton Adam Brodyn për deklaratat në mbështetje të Palestinës",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.gazetaexpress.com/wp-content/uploads/2026/10/adam.jpg",
+      "domain": "gazetaexpress.com",
+      "language": "Albanian",
+      "sourcecountry": "Kosovo"
+    },
+    {
+      "url": "http://www.calcuttanews.net/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "calcuttanews.net",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://www.afrique-asie.fr/la-hausse-des-prix-du-petrole-devrait-se-maintenir/",
+      "url_mobile": "",
+      "title": "La hausse des prix du pétrole devrait se maintenir",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.afrique-asie.fr/wp-content/uploads/2026/10/La-hausse-des-prix-du-petrole-devrait-se-maintenir.webp",
+      "domain": "afrique-asie.fr",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://thefrontierpost.com/uaes-ras-al-khaimah-shuts-all-beaches-as-neighbours-grapple-with-oil-spill/",
+      "url_mobile": "https://thefrontierpost.com/uaes-ras-al-khaimah-shuts-all-beaches-as-neighbours-grapple-with-oil-spill/amp/",
+      "title": "UAE Ras Al Khaimah shuts all beaches as neighbours grapple with oil spill – The Frontier Post",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://jetpack.com/redirect/?source=sigenerate&query=t%3DeyJpbWciOiJodHRwczpcL1wvdGhlZnJvbnRpZXJwb3N0LmNvbVwvd3AtY29udGVudFwvdXBsb2Fkc1wvMjAyNlwvMTBcL2ltYWdlcy00MS5qcGciLCJ0eHQiOiJVQUUmIzgyMTc7cyBSYXMgQWwgS2hhaW1haCBzaHV0cyBhbGwgYmVhY2hlcyBhcyBuZWlnaGJvdXJzIGdyYXBwbGUgd2l0aCBvaWwgc3BpbGwiLCJ0ZW1wbGF0ZSI6ImhpZ2h3YXkiLCJmb250IjoiIiwiYmxvZ19pZCI6MTM3NTgyMzQzfQ.2Pq7zFQB2JQ9QMYtWXrNA0XgXWTVTZ1NckO4ar6zZzAMQ",
+      "domain": "thefrontierpost.com",
+      "language": "English",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://econotimes.com/Italy-Says-Five-Italian-Women-Detained-During-West-Bank-Olive-Harvest-Returned-1762512",
+      "url_mobile": "",
+      "title": "Italy Says Five Italian Women Detained During West Bank Olive Harvest Returned",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://wfuxxvxhdynkhcrlavdu.supabase.co/storage/v1/object/public/article-media/articles/44c1bb935650c32ccc8a60594f40f9cf77e658b68e59cf7b5e78ebd71e8a4e3c.webp",
+      "domain": "econotimes.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.finanznachrichten.de/nachrichten-2026-10/69926572-artmarket-com-artprice-and-its-ceo-thierry-ehrmann-congratulate-brognon-rollin-winners-of-the-2026-marcel-duchamp-prize-650.htm",
+      "url_mobile": "",
+      "title": "Artmarket . com : Artprice and its CEO , thierry Ehrmann , congratulate Brognon Rollin , winners of the 2026 Marcel Duchamp Prize . ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.finanznachrichten.de/chart-artmarket-com-sa-aktie-intraklein-stuttgart.png",
+      "domain": "finanznachrichten.de",
+      "language": "English",
+      "sourcecountry": "Germany"
+    },
+    {
+      "url": "https://www.021.rs/info/region-i-svet/459067/tramp-objavio-sta-mu-je-sledeca-meta-samo-da-resimo-pitanje-irana",
+      "url_mobile": "",
+      "title": "Tramp objavio šta mu je sledeća meta :  Samo da rešimo pitanje Irana  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.021.rs/images/3bc67cf2d38648a38469cdf68a6f965f/Donald_Tramp.jpg",
+      "domain": "021.rs",
+      "language": "Bosnian",
+      "sourcecountry": "Serbia"
+    },
+    {
+      "url": "https://www.breitbart.com/national-security/2026/10/23/iran-claims-parliament-speaker-has-met-with-missing-supreme-leader/",
+      "url_mobile": "https://www.breitbart.com/middle-east/2026/10/23/iran-claims-parliament-speaker-has-met-with-missing-supreme-leader/amp/",
+      "title": "Iran Claims Parliament Speaker Has Met with Missing  Supreme Leader  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://media.breitbart.com/media/2026/10/GettyImages-2297008962-640x335.png",
+      "domain": "breitbart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://politicalwire.com/2026/10/24/iran-has-increased-efforts-to-target-u-s-personnel/",
+      "url_mobile": "",
+      "title": "Iran Has  Increased Efforts to Target U . S . Personnel  ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://politicalwire.com/wp-content/uploads/pw-social-cards/2020118-cdcfef65.png",
+      "domain": "politicalwire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.inewsgr.com/27/ipa-apomakrynoun-diplomates-kai-oikogeneies-apo-ti-mesi-anatoli-ypo-ton-fovo-iranikon-epitheseon.htm",
+      "url_mobile": "https://www.inewsgr.com/27/ipa-apomakrynoun-diplomates-kai-oikogeneies-apo-ti-mesi-anatoli-ypo-ton-fovo-iranikon-epitheseon.htm.amp",
+      "title": "ΗΠΑ : Απομακρύνουν διπλωμάτες και οικογένειες από τη Μέση Ανατολή υπό τον φόβο ιρανικών επιθέσεων",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "inewsgr.com",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.news8000.com/lifestyle/money/halloween-candy-sales-are-off-to-a-slow-start-amid-high-chocolate-prices-and-affordability/article_11816b2d-281b-5889-a8e2-337389349533.html",
+      "url_mobile": "",
+      "title": "Halloween candy sales are off to a slow start amid high chocolate prices and affordability concerns",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/news8000.com/content/tncms/assets/v3/editorial/8/a8/8a8d3bd3-f1be-5ccc-994e-104a4e3197c3/67165808936fa.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "news8000.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://international.sindonews.com/read/1764361/43/pakar-ini-yakin-israel-hadapi-krisis-eksistensial-terbesar-dalam-sejarahnya-1792851023",
+      "url_mobile": "https://international.sindonews.com/newsread/1764361/43/pakar-ini-yakin-israel-hadapi-krisis-eksistensial-terbesar-dalam-sejarahnya-1792851023",
+      "title": "Pakar Ini Yakin Israel Hadapi Krisis Eksistensial Terbesar dalam Sejarahnya",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://pict.sindonews.com/dyn/850/pena/news/2026/10/24/43/1764361/pakar-ini-yakin-israel-hadapi-krisis-eksistensial-terbesar-dalam-sejarahnya-hzb.jpg",
+      "domain": "international.sindonews.com",
+      "language": "Indonesian",
+      "sourcecountry": "Indonesia"
+    },
+    {
+      "url": "https://isp.netscape.com:443/pf/story/0001/20261024/0b1126f30969a21710ba995416c5b905",
+      "url_mobile": "",
+      "title": "Halloween candy sales are off to a slow start amid high chocolate prices and affordability concerns",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "isp.netscape.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nvinoticias.com/mundo/ee-uu-recurre-su-reserva-estrategica-para-abastecer-refineria-de-luisiana/195142",
+      "url_mobile": "",
+      "title": "EE . UU . recurre a su reserva estratégica para abastecer refinería de Luisiana",
+      "seendate": "20261024T144500Z",
+      "socialimage": "http://www.nvinoticias.com/sites/default/files/articulos/2026/Oct/reserva-estrategica-petroleo-eeuu-luisiana.jpg",
+      "domain": "nvinoticias.com",
+      "language": "Spanish",
+      "sourcecountry": "Mexico"
+    },
+    {
+      "url": "https://www.memurlar.net/haber/1181996/israil-gucleri-bati-seria-da-yaklasik-70-filistinliyi-gozaltina-aldi.html",
+      "url_mobile": "",
+      "title": "srail Gleri Batý eriada Yaklak 70 Filistinliyi Gözaltýna Ald",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.memurlar.net/common/news/images/1181996/headline.jpg",
+      "domain": "memurlar.net",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://www.enanyang.my/news/20261024/Finance/1425932",
+      "url_mobile": "",
+      "title": "巴黎精品店怕了 ！ LV 劳力士等钉木板封窗防抢",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://vega.enanyang.my/wp-content/uploads/2026/10/paris241026-2a2719-aspect-ratio-600-3158528.png",
+      "domain": "enanyang.my",
+      "language": "Chinese",
+      "sourcecountry": "Malaysia"
+    },
+    {
+      "url": "https://www.timesargus.com/news/national/aoc-can-draw-a-crowd-the-midterms-will-test-whether-her-politics-can-win-before/article_0df18969-e875-5381-b358-7a2fb4330589.html",
+      "url_mobile": "",
+      "title": "AOC can draw a crowd . The midterms will test whether her politics can win before 2028",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/timesargus.com/content/tncms/assets/v3/editorial/b/f2/bf20d0b4-e3c9-565b-8f37-80d0757ee9f1/6adc202ba66fe.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "timesargus.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://wtvbam.com/2026/10/24/kamala-harris-returns-to-us-campaign-trail-with-midterms-2028-in-view/",
+      "url_mobile": "",
+      "title": "Kamala Harris returns to US campaign trail with midterms , 2028 in view",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100306Z_1_LYNXNPEM9N07G_RTROPTP_3_USA-ELECTION-HARRIS.JPG",
+      "domain": "wtvbam.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.anroca.com.ar/noticias/2026/10/24/229311-trump-amenazo-con-reanudar-los-ataques-militares-y-advirtio-que-puede-controlar-iran",
+      "url_mobile": "/amp/noticias/2026/10/24/229311-trump-amenazo-con-reanudar-los-ataques-militares-y-advirtio-que-puede-controlar-iran",
+      "title": "Trump amenazó con reanudar los ataques militares y advirtió que puede controlar Irán",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://anroca-s3.cdn.net.ar/s3i233/2026/10/anroca/images/02/82/76/2827648_1b205db00a7b8234d57671d6008adf934db3b4270aca22aa23c78c4acf712915/lg.webp?_v=v3-101",
+      "domain": "anroca.com.ar",
+      "language": "Spanish",
+      "sourcecountry": "Argentina"
+    },
+    {
+      "url": "https://www.antena3.ro/externe/sua-isi-evacueaza-discret-diplomatii-si-pe-familiile-lor-din-orientul-mijlociu-serviciile-avertizeaza-ca-iranienii-pregatesc-un-atac-808515.html",
+      "url_mobile": "https://www.antena3.ro/amp/sua-isi-evacueaza-discret-diplomatii-si-pe-familiile-lor-din-orientul-mijlociu-serviciile-avertizeaza-ca-iranienii-pregatesc-un-atac-808515.html",
+      "title": "SUA își evacuează discret diplomații și pe familiile lor din Orientul Mijlociu . Serviciile avertizează că iranienii pregătesc un atac",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.antena3.ro/thumbs/amp/2026/10/24/sua-isi-evacueaza-discret-diplomatii-si-pe-familiile-lor-din-orientul-mijlociu-serviciile-avertizeaza-ca-iranienii-pregatesc-un-atac-1113744.webp",
+      "domain": "antena3.ro",
+      "language": "Romanian",
+      "sourcecountry": "Romania"
+    },
+    {
+      "url": "https://www.breitbart.com/europe/2026/10/24/self-defence-weapons-sales-surge-in-paris-ahead-of-anticipated-act-ii-riots-on-saturday/",
+      "url_mobile": "https://www.breitbart.com/europe/2026/10/24/self-defence-weapons-sales-surge-in-paris-ahead-of-anticipated-act-ii-riots-on-saturday/amp/",
+      "title": "Weapons Sales Surge in Paris Ahead of Anticipated Saturday  Act II  Riots",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://media.breitbart.com/media/2026/10/GettyImages-2301120724-e1792795233299-640x335.jpg",
+      "domain": "breitbart.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.leconomistemaghrebin.com/2026/10/24/turquie-abaisse-taux-directeur/",
+      "url_mobile": "",
+      "title": "La Turquie abaisse son taux directeur à 36 %, une première ... ",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.leconomistemaghrebin.com/wp-content/uploads/2023/08/Turquie.jpg",
+      "domain": "leconomistemaghrebin.com",
+      "language": "French",
+      "sourcecountry": "Tunisia"
+    },
+    {
+      "url": "https://www.in.gr/2026/10/24/world/meta-tin-epithesi-sti-xevrona-to-israil-poliorkei-dytiki-oxthi-2-200-palaistinioi-ekdiokontai-apo-ta-spitia-tous/",
+      "url_mobile": "https://www.in.gr/2026/10/24/world/meta-tin-epithesi-sti-xevrona-to-israil-poliorkei-dytiki-oxthi-2-200-palaistinioi-ekdiokontai-apo-ta-spitia-tous/amp/",
+      "title": "Μετά την επίθεση στη Χεβρώνα , το Ισραήλ πολιορκεί Δυτική Όχθη - 2 . 200 Παλαιστίνιοι εκδιώκονται από τα σπίτια τους",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.in.gr/wp-content/uploads/2026/10/2026-10-23T130411Z_205750246_RC209OAQESQF_RTRMADP_5_ISRAEL-PALESTINIANS-HEBRON-SETTLERS.jpg",
+      "domain": "in.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "http://www.batonrougepost.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "batonrougepost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://isp.netscape.com:443/news/story/0001/20261024/157c0338bc29f3c17c22bbce7c148d7c",
+      "url_mobile": "",
+      "title": "As Trump fights over what America owes , slavery descendants organize for the future",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "isp.netscape.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.hkcd.com/hkcdweb/content/2026/10/24/content_8781657.html",
+      "url_mobile": "",
+      "title": "第二屆粵港澳青少年 「 五樂杯 」 高校籃球邀請賽在南沙開賽",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "hkcd.com",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "http://www.azerbaijannews.net/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "azerbaijannews.net",
+      "language": "English",
+      "sourcecountry": "Azerbaijan"
+    },
+    {
+      "url": "https://www.inewsgr.com/27/flavio-bolsonaro-i-epithesi-tou-klironomou.htm",
+      "url_mobile": "https://www.inewsgr.com/27/flavio-bolsonaro-i-epithesi-tou-klironomou.htm.amp",
+      "title": "Φλάβιο Μπολσονάρο : Η επίθεση του κληρονόμου",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "inewsgr.com",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://hot96.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies | HOT 96 | The Tri State # 1 Hit Music Station",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "hot96.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.wgauradio.com/news/business/halloween-candy/DFCN32OGEIZMJOO5V76ODJSGSY/",
+      "url_mobile": "https://www.wgauradio.com/news/business/halloween-candy/DFCN32OGEIZMJOO5V76ODJSGSY/?outputType=amp",
+      "title": "Higher cocoa and gas prices scare off some early Halloween candy buyers",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://cmg-cmg-rd-20015-prod.cdn.arcpublishing.com/resizer/v2/https%3A%2F%2Fcloudfront-us-east-1.images.arcpublishing.com%2Fcmg%2FZT5CAEMPRY2T7P7X2TMUM3I5VQ.jpg?auth=78cd26833dce4f00db85fa1c3728896f2c2f23eb431e02b5d4834fcb34ba0f58&smart=true",
+      "domain": "wgauradio.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.nayaindia.com/news/world-news-2/iranian-president-will-meet-putin-on-october-27/523602.html",
+      "url_mobile": "https://www.nayaindia.com/news/world-news-2/iranian-president-will-meet-putin-on-october-27/523602.html?amp=1",
+      "title": "ईरानी राष्ट्रपति 27 अक्टूबर को पुतिन से करेंगे मुलाकात - Naya India - Hindi News , Latest Hindi News , Breaking News , Hindi Samachar",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.nayaindia.com/wp-content/uploads/2026/10/Massoud-Pezeshkian-Vladimir-Putin.jpg",
+      "domain": "nayaindia.com",
+      "language": "Hindi",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://politicalwire.com/2026/10/24/iran-in-advanced-stages-of-planning-attacks/",
+      "url_mobile": "",
+      "title": "Iran in  Advanced Stage of Planning Attacks",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://politicalwire.com/wp-content/uploads/pw-social-cards/2020140-6e9d485d.png",
+      "domain": "politicalwire.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.in.gr/2026/10/24/world/o-vasilias-tis-iordanias-diatazei-antidrasi-me-sidira-pygmi-meta-ti-sfagi-stin-elliniki-orthodoksi-ekklisia/",
+      "url_mobile": "https://www.in.gr/2026/10/24/world/o-vasilias-tis-iordanias-diatazei-antidrasi-me-sidira-pygmi-meta-ti-sfagi-stin-elliniki-orthodoksi-ekklisia/amp/",
+      "title": "Ο βασιλιάς της Ιορδανίας διατάζει αντίδραση με « σιδηρά πυγμή » μετά τη σφαγή στην Ελληνική Ορθόδοξη εκκλησία",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.in.gr/wp-content/uploads/2026/10/2026-10-24T103104Z_1013206973_RC2L9OAXPK5K_RTRMADP_5_JORDAN-CHURCH-1.jpg",
+      "domain": "in.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://hot96.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "hot96.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aol.co.uk/articles/rising-us-star-fred-richard-140648000.html",
+      "url_mobile": "",
+      "title": "Rising US star Fred Richard wins first world gymnastics title with floor gold",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://hermes.media.static.aol.com/media/2026/10/24/fde8a02c-a3b2-3424-bcbf-7bf0236333bb/1b1e9049-db76-4335-aa0f-a0db8c239784.jpg",
+      "domain": "aol.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://article.wn.com/view/2026/10/24/What_the_Israeli_Election_Won_t_Change_f/",
+      "url_mobile": "",
+      "title": "What the Israeli Election Wont Change",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "article.wn.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.kymensanomat.fi/uutissuomalainen/9899148",
+      "url_mobile": "",
+      "title": "Palestiinalaishallinto vaatii kansainvälistä painostusta Israelia kohtaan – osa Länsirannan asukkaista pakotetaan jättämn kotinsa",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://i.media.fi/incoming/61vqsw/11742511.jpg/alternates/OG_IMAGE_KYMENSANOMAT/11742511.jpg",
+      "domain": "kymensanomat.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://whbl.com/2026/10/24/uaes-ras-al-khaimah-shuts-all-beaches-as-neighbours-grapple-with-oil-spill/",
+      "url_mobile": "",
+      "title": "UAE Ras Al Khaimah shuts all beaches as neighbours grapple with oil spill",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T122821Z_1_LYNXNPEM9N08W_RTROPTP_3_UAE-OIL-SPILL-UGC-SATELLITE.JPG",
+      "domain": "whbl.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://whbl.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "whbl.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.azerbaijannews.net/news/279396017/on-egypt-visit-un-chief-guterres-says-we-need-to-stop-the-widening-of-war",
+      "url_mobile": "",
+      "title": "On Egypt visit , UN chief Guterres says",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/3c14155/15eb827c-7f7b-45dc-9565-265567a7296e/0/ANI-20261024093417-600x315.jpg",
+      "domain": "azerbaijannews.net",
+      "language": "English",
+      "sourcecountry": "Azerbaijan"
+    },
+    {
+      "url": "http://www.myanmarnews.net/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "myanmarnews.net",
+      "language": "English",
+      "sourcecountry": "Myanmar"
+    },
+    {
+      "url": "https://www.srf.ch/news/international/nahost/nach-tod-israelischer-soldaten-abgeriegelt-fuer-die-palaestinenser-steht-das-leben-still",
+      "url_mobile": "",
+      "title": "Abriegelung der Westbank : Was das für die Palästinenser bedeutet",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.srf.ch/static/cms/images/branded_srf_news/23078f.jpg",
+      "domain": "srf.ch",
+      "language": "German",
+      "sourcecountry": "Switzerland"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/filistin-disisleri-el-halil-de-zorla-yerinden-etme-20362594-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/filistin-disisleri-el-halil-de-zorla-yerinden-etme-20362594-haberi/",
+      "title": "Filistin Dışişleri , El Halilde zorla yerinden etme ve yıkım tehdidine karşı uyardı",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://news.gooya.com/2026/10/post-114326.php",
+      "url_mobile": "",
+      "title": "ولایت فقیه را با مجتبی دفن کنید ؛ این مرده زنده نخواهد شد",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://news.gooya.com/2026/10/24/arnz.jpg",
+      "domain": "news.gooya.com",
+      "language": "Persian",
+      "sourcecountry": "Iran"
+    },
+    {
+      "url": "https://www.beritasatu.com/internasional/3036229/4-negara-tuduh-pendudukan-israel-picu-ketidakstabilan-timur-tengah",
+      "url_mobile": "",
+      "title": "4 Negara Tuduh Pendudukan Israel Picu Ketidakstabilan Timur Tengah",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://img2.beritasatu.com/cache/beritasatu/960x620-w/2026/10/1792847937-1536x1024.webp",
+      "domain": "beritasatu.com",
+      "language": "Indonesian",
+      "sourcecountry": "Indonesia"
+    },
+    {
+      "url": "https://news.gooya.com/2026/10/post-114325.php",
+      "url_mobile": "",
+      "title": "هشدار درباره احتمال گشوده‌شدن دو جبهه زمینی علیه جمهوری اسلامی در کردستان و بلوچستان",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://news.gooya.com/2026/10/24/warning.jpg",
+      "domain": "news.gooya.com",
+      "language": "Persian",
+      "sourcecountry": "Iran"
+    },
+    {
+      "url": "https://www.timeslive.co.za/news/2026-10-24-about-1200-palestinians-displaced-in-hebron-as-israel-begins-military-operation/",
+      "url_mobile": "",
+      "title": "About 1 , 200 Palestinians displaced in Hebron as Israel begins military operation",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://www.timeslive.co.za/resizer/v2/DR7WO62FFJCKVJSSCU26LCHO5M.JPG?smart=true&auth=ea651ec9172ec32c33ba1626ebe20c1cb9f03888a3e47252828655caff44e149",
+      "domain": "timeslive.co.za",
+      "language": "English",
+      "sourcecountry": "South Africa"
+    },
+    {
+      "url": "http://www.batonrougepost.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "batonrougepost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.brazilsun.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "brazilsun.com",
+      "language": "English",
+      "sourcecountry": "Brazil"
+    },
+    {
+      "url": "https://timesofindia.indiatimes.com/world/us/us-mid-term-elections/news/kamala-harris-returns-to-campaign-trail-for-us-midterms-amid-speculation-over-2028-presidential-bid/articleshow/135172049.cms",
+      "url_mobile": "https://timesofindia.indiatimes.com/world/us/us-mid-term-elections/news/kamala-harris-returns-to-campaign-trail-for-us-midterms-amid-speculation-over-2028-presidential-bid/amp_articleshow/135172049.cms",
+      "title": "Kamala Harris returns to campaign trail for US midterms amid speculation over 2028 presidential bid",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://static.toiimg.com/thumb/msid-135172066,width-1280,height-720,resizemode-6,overlay-toi_sw,pt-32,y_pad-600/photo.jpg",
+      "domain": "timesofindia.indiatimes.com",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://kfgo.com/2026/10/24/kamala-harris-returns-to-us-campaign-trail-with-midterms-2028-in-view/",
+      "url_mobile": "",
+      "title": "Kamala Harris returns to US campaign trail with midterms , 2028 in view",
+      "seendate": "20261024T144500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100306Z_1_LYNXNPEM9N07G_RTROPTP_3_USA-ELECTION-HARRIS.JPG",
+      "domain": "kfgo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thearabianpost.com/us-trims-middle-east-embassy-staffing-over-security-threats/",
+      "url_mobile": "",
+      "title": "US trims Middle East embassy staffing over security threats",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "thearabianpost.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.163.com/dy/article/LA1G7L0H0514R9P4.html",
+      "url_mobile": "https://m.163.com/dy/article/LA1G7L0H0514R9P4.html",
+      "title": "八国外长  史无前例  齐聚土耳其 ， 反对对伊朗采取军事行动|法国|以色列",
+      "seendate": "20261024T144500Z",
+      "socialimage": "",
+      "domain": "163.com",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "https://www.sss.fi/2026/10/palestiinalaishallinto-vaatii-kansainvalista-painostusta-israelia-kohtaan-osa-lansirannan-asukkaista-pakotetaan-jattamaan-kotinsa/",
+      "url_mobile": "",
+      "title": "Palestiinalaishallinto vaatii kansainvälistä painostusta Israelia kohtaan – osa Länsirannan asukkaista pakotetaan jättämn kotinsa",
+      "seendate": "20261024T143000Z",
+      "socialimage": "",
+      "domain": "sss.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://www.lematin.ch/story/cisjordanie-occupee-l-armee-israelienne-deplace-des-palestiniens-apres-une-attaque-103655234",
+      "url_mobile": "",
+      "title": "Cisjordanie occupée : Larmée israélienne déplace des Palestiniens après une attaque",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://image.lematin.ch/2026/10/24/8a6de7eb-7dcd-47c6-8ef4-f91cf9a52215.jpg?auto=format%2Ccompress%2Cenhance&fit=max&rect=0%2C0%2C6000%2C4002&s=cbb316d4cf88b426500bddaae721fb8e",
+      "domain": "lematin.ch",
+      "language": "French",
+      "sourcecountry": "Switzerland"
+    },
+    {
+      "url": "https://www.ratopati.com/story/601082/the-price-of-cooking-gas-has-skyrocketed-in-pakistan-reaching-rs-7000-per-cylinder",
+      "url_mobile": "",
+      "title": "पाकिस्तानमा खाना पकाउने ग्यासको मूल्य आकासियो , एउटा सिलिन्डरको ७ हजार रुपैयाँ | Nepal first 24 - hour updated news portal",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://npcdn.ratopati.com/media/news/gyash-pakistan_bp8gzAHvk5.webp",
+      "domain": "ratopati.com",
+      "language": "Nepali",
+      "sourcecountry": "Nepal"
+    },
+    {
+      "url": "https://www.kouvolansanomat.fi/uutissuomalainen/9899200",
+      "url_mobile": "",
+      "title": "Israel aloitti operaatiot Länsirannalla –  Voi parantaa Netanjahun asemaa  ",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://i.media.fi/incoming/t0fami/11742568.jpg/alternates/OG_IMAGE_KOUVOLANSANOMAT/11742568.jpg",
+      "domain": "kouvolansanomat.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://www.panorama.am/en/news/2026/10/24/hijab-dispute-Turkey-Azerbaijan/3171834",
+      "url_mobile": "",
+      "title": "Hijab dispute highlights deeper tensions between Turkey and Azerbaijan , Armenian analyst says",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://static.panorama.am/storage/files/photo-2026-10-24-13-59-48-1200x630.jpg",
+      "domain": "panorama.am",
+      "language": "English",
+      "sourcecountry": "Armenia"
+    },
+    {
+      "url": "https://www.cinaradio.com/2026/10/24/iran-war-has-done-a-lot-of-damage-us-republican-candidate-slams-trump/",
+      "url_mobile": "",
+      "title": "  Iran War Has Done A Lot Of Damage : US Republican Candidate Slams Trump",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://c.ndtvimg.com/2026-10/i9hehas_ro-war_625x300_24_October_26.jpg?im=FeatureCrop,algorithm=dnn,width=1280,height=720",
+      "domain": "cinaradio.com",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://www.lalibre.be/culture/livres-bd/2026/10/24/adele-haenel-ou-lecriture-qui-menace-de-tout-dire-puis-tire-2UNEZFVHARDSHPDZLFYYKCCQN4/",
+      "url_mobile": "",
+      "title": "Adèle Haenel ou l  écriture qui menace de tout dire , puis tire",
+      "seendate": "20261024T143000Z",
+      "socialimage": "https://www.lalibre.be/resizer/v2/ANJOAFBGFJEY7ADCINMAA5C2H4.jpg?auth=bc52694cedabcefaa5f734d02a4e78ecb31db638aced1c2773fd14c9f9d2e76d&quality=85&focal=4551%2C1788",
+      "domain": "lalibre.be",
+      "language": "French",
+      "sourcecountry": "Belgium"
+    },
+    {
+      "url": "http://www.bignewsnetwork.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "bignewsnetwork.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/kilicdaroglu-gaziantep-te-egitim-sisteminin-20362529-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/kilicdaroglu-gaziantep-te-egitim-sisteminin-20362529-haberi/",
+      "title": "Kılıçdaroğlu , Gaziantepte eğitim sisteminin tümüyle değişmesi gerektiğini söyledi",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://mkd.mk/svet/rubio-gi-povika-onie-koi-sakaat-promeni-na-kuba-da-sorabotuvaat-so-cia/",
+      "url_mobile": "",
+      "title": "Рубио ги повика оние кои сакаат промени на Куба да соработуваат со ЦИА",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://mkd.mk/wp-content/uploads/2026/10/13336343-1.jpg",
+      "domain": "mkd.mk",
+      "language": "Macedonian",
+      "sourcecountry": "Macedonia"
+    },
+    {
+      "url": "https://www.fox21online.com/news/us-world/this-us-house-district-was-once-a-political-battleground-now-it-shows-why-congress-is/article_38627e3d-6741-5d19-a825-ece93707bfeb.html",
+      "url_mobile": "",
+      "title": "This US House district was once a political battleground . Now it shows why Congress is dysfunctional",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/fox21online.com/content/tncms/custom/image/4f2040be-d6aa-4b9f-9a7b-87c8d2f67f6d.jpg",
+      "domain": "fox21online.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.freemalaysiatoday.com/category/world/2026/10/24/kamala-harris-returns-to-us-campaign-trail-with-midterms-2028-in-view",
+      "url_mobile": "",
+      "title": "Kamala Harris returns to US campaign trail with midterms , 2028 in view",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.freemalaysiatoday.com/cdn-cgi/image/quality=75,format=auto,fit=cover,dpr=1,width=1200,height=630,gravity=center/https://media.freemalaysiatoday.com/wp-content/uploads/2026/04/9efca6ce-13895263.webp",
+      "domain": "freemalaysiatoday.com",
+      "language": "English",
+      "sourcecountry": "Malaysia"
+    },
+    {
+      "url": "https://www.middle-east-online.com/en/saudi-coalition-intercepts-houthi-missiles-targeting-cities",
+      "url_mobile": "",
+      "title": "Saudi coalition intercepts Houthi missiles targeting cities",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.middle-east-online.com/sites/default/files/styles/social_image/public/2026-10/IMG_2996.jpeg?eac3&itok=mMRyV4c4",
+      "domain": "middle-east-online.com",
+      "language": "English",
+      "sourcecountry": "Iraq"
+    },
+    {
+      "url": "http://www.laosnews.net/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "laosnews.net",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aol.com/articles/iranian-plots-kill-u-officials-114918000.html",
+      "url_mobile": "",
+      "title": "Iranian plots to kill U . S . officials in Middle East have reached  advanced stages , intel memo warns",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://hermes.media.static.aol.com/media/2026/10/24/c723250c-1db3-37c4-9ee5-49164058024b/869b08d4-f9e3-45d9-9eba-f3f5cc6a7676.jpg",
+      "domain": "aol.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.laosnews.net/news/279394881/every-day-we-wake-up-poorer-iranians-battle-economic-woes",
+      "url_mobile": "",
+      "title": "Every Day We  Wake Up Poorer : Iranians Battle Economic Woes",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/4d1cf5a/9bc7a6bf-364c-4055-9f52-7fd8c2654417/0/MzBiMmY4ZDMtMTg-600x315.jpg",
+      "domain": "laosnews.net",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.naharnet.com:443/stories/en/323320-to-bring-down-netanyahu-arab-israeli-parties-ready-for-opposition-alliance",
+      "url_mobile": "",
+      "title": "To bring down Netanyahu , Arab - Israeli parties ready for opposition alliance",
+      "seendate": "20261024T141500Z",
+      "socialimage": "http://images2.naharnet.com/images/277071/w140.jpeg",
+      "domain": "naharnet.com",
+      "language": "English",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "https://www.birgun.net/haber/gazze-deki-katliamda-can-kaybi-74-bin-540-a-yukseldi-742270",
+      "url_mobile": "",
+      "title": "Gazzedeki katliamda can kaybı 74 bin 540  a yükseldi ! ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "birgun.net",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://haqqin.az/newsarchive/396517",
+      "url_mobile": "",
+      "title": "Тень Ходжи над Албанией - Актуальная тема",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://i.haqqin.az/1027573_crop_0_ae195e300f5f3175.webp",
+      "domain": "haqqin.az",
+      "language": "Russian",
+      "sourcecountry": "Azerbaijan"
+    },
+    {
+      "url": "https://javedch.com/international/2026/10/24/1176152",
+      "url_mobile": "",
+      "title": "ایران پر ممکنہ امریکی حملہ ، ترک وزیرِ خارجہ کا اہم بیان سامنے آگیا",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://javedch.com/wp-content/uploads/2026/10/turkey-1.webp",
+      "domain": "javedch.com",
+      "language": "Urdu",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "https://www.adalet.az/az/posts/detail/xii-beynelxalq-baki-kitab-sergisi-dunyani-birlesdiren-soz-edebiyyat-ve-menevi-deyerler-1792847433",
+      "url_mobile": "",
+      "title": "XII BEYNƏLXALQ BAKI KİTAB SƏRGİSİ DÜNYANI BİRLƏŞDİRƏN SÖZ , ƏDƏBİYYAT VƏ MƏNƏVİ DƏYƏRLƏR",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.adalet.az/uploads/img/posts/2026/10/24/tedbirjpg-1792847433.jpg",
+      "domain": "adalet.az",
+      "language": "Azerbaijani",
+      "sourcecountry": "Azerbaijan"
+    },
+    {
+      "url": "https://healthy.walla.co.il:443/healthy/health-products/383958685",
+      "url_mobile": "",
+      "title": "לרכיבה בחוץ ולאימון בבית : Garmin משיקה שלושה מוצרים חדשים",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://image-resizer-walla.walla.cloud/image/2026/10/4/images/1792828254998_walla-media-picture_1600x900.webp",
+      "domain": "healthy.walla.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://news.liga.net/world/news/reuters-iran-gotovit-plan-na-sluchai-novyh-atak-so-storony-ssha-pod-ugrozoi-internet",
+      "url_mobile": "https://news.liga.net/amp/world/news/reuters-iran-gotovit-plan-na-sluchai-novyh-atak-so-storony-ssha-pod-ugrozoi-internet",
+      "title": "Если США вновь начнут войну в Иране , Тегеран уничтожит кабели в Персидском заливе | Новости Украины",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://storage.liga.net/images/general/social/social-4645438-ru.png?v=1792838027",
+      "domain": "news.liga.net",
+      "language": "Russian",
+      "sourcecountry": "Ukraine"
+    },
+    {
+      "url": "https://www.epikaira.gr/tourkolivyko-mnimonio-gkrinia-sti-nd-gia-tous-cheirismous-gerapetriti-anamoni-gia-tin-paremvasi-karamanli/",
+      "url_mobile": "",
+      "title": "Τουρκολιβυκό μνημόνιο : Γκρίνια στη ΝΔ για τους χειρισμούς Γεραπετρίτη – Αναμονή για την παρέμβαση Καραμανλή",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.epikaira.gr/wp-content/uploads/2026/10/4-gerapetritis.webp",
+      "domain": "epikaira.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://elintransigente.com/2026/10/24/lionel-messi-premio-princesa-asturias-argentinos-distinciones-previas/",
+      "url_mobile": "",
+      "title": "Qué argentinos que recibieron el Premio Princesa de Asturias antes que Lionel Messi",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://elintransigente.com/wp-content/uploads/2026/10/messi-premio-princesa-asturias201.webp",
+      "domain": "elintransigente.com",
+      "language": "Spanish",
+      "sourcecountry": "Argentina"
+    },
+    {
+      "url": "https://www.nacional.hr/jared-kushner-pod-povecalom-milijarde-na-tajnim-racunima-trumpov-zet-optuzuje-medije-za-izmisljotine/",
+      "url_mobile": "",
+      "title": "JARED KUSHNER POD POVEĆALOM Milijarde na tajnim računima . Trumpov zet optužuje medije za izmišljotine | NACIONAL . HR",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.nacional.hr/wp-content/uploads/2026/10/05KUSHNERweb1-superJumbo.avif",
+      "domain": "nacional.hr",
+      "language": "Bosnian",
+      "sourcecountry": "Croatia"
+    },
+    {
+      "url": "https://www.ohmynews.com/NWS_Web/Series/series_premium_pg.aspx?CNTN_CD=A0003278344&CMPT_CD=M0146",
+      "url_mobile": "https://m.ohmynews.com/NWS_Web/Mobile/amp.aspx?CNTN_CD=A0003278344",
+      "title": "AI 버블론 속  커브길 추월  에 나선 중국",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://ojsfile.ohmynews.com/BIG_IMG_FILE/2026/1024/IE003688922_BIG.jpg",
+      "domain": "ohmynews.com",
+      "language": "Korean",
+      "sourcecountry": "South Korea"
+    },
+    {
+      "url": "http://www.middleeaststar.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "middleeaststar.com",
+      "language": "English",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "http://www.afghanistansun.com/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "afghanistansun.com",
+      "language": "English",
+      "sourcecountry": "Afghanistan"
+    },
+    {
+      "url": "https://www.obozrevatel.com/ukr/section-novosti-mir/news-izrayil-pochav-masshtabnu-antyterorystychnu-operatsiyu-zablokovano-mista-i-sela-24-10-2026.html",
+      "url_mobile": "https://www.obozrevatel.com/ukr/section-novosti-mir/newsamp-izrayil-pochav-masshtabnu-antyterorystychnu-operatsiyu-zablokovano-mista-i-sela-24-10-2026.html",
+      "title": "Ізраїль почав антитерористичну операцію в Хевроні - яка причина - карта",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "obozrevatel.com",
+      "language": "Ukrainian",
+      "sourcecountry": "Ukraine"
+    },
+    {
+      "url": "https://baijiahao.baidu.com/s?id=1879879360886411900",
+      "url_mobile": "",
+      "title": "以色列总理有关应对国际制裁言论引发国内担忧",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "baijiahao.baidu.com",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "https://www.wxow.com/news/national/airfares-are-way-up-compared-to-last-year-don-t-expect-it-to-change-this/article_f9e75536-084b-5c3f-92cc-961b0d6858cd.html",
+      "url_mobile": "",
+      "title": "Airfares are way up compared to last year . Dont expect it to change this holiday season | National",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/wxow.com/content/tncms/assets/v3/editorial/c/00/c00e5fe6-781b-550a-a258-b6d808a1cc0b/6adb67f190416.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "wxow.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.zazoom.it/2026-10-24/sabato-di-tensione-oggi-le-manifestazioni-del-movimento-17-ottobre-perquisita-e-portato-negli-uffici-della-polizia-la-presunta-mente-della-pagina-social/19842947/",
+      "url_mobile": "",
+      "title": "Sabato di tensione oggi le manifestazioni del Movimento 17 ottobre | Perquisita e portato negli uffici della polizia la presunta mente della pagina social",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://img-api.cloud.mediaset.net/api/images/kn/v1/image_main/1200/675/118066312?r=36",
+      "domain": "zazoom.it",
+      "language": "Italian",
+      "sourcecountry": "Italy"
+    },
+    {
+      "url": "https://www.echopress.com/news/minnesota/rep-michelle-fischbach-talks-trade-fuel-prices-immigration-in-bid-for-reelection",
+      "url_mobile": "",
+      "title": "Rep . Michelle Fischbach talks trade , fuel prices , immigration in bid for reelection",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://forum-communications-production-web.s3.us-west-2.amazonaws.com/brightspot/71/1b/d82cab9546f5bd5305868c808b20/053026-dmg-n-satgop-c15.jpg",
+      "domain": "echopress.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.rockymounttelegram.com/news/state/this-us-house-district-was-once-a-political-battleground-now-it-shows-why-congress-is/article_1a9e78be-08ac-510f-9f22-88b76aff7769.html",
+      "url_mobile": "",
+      "title": "This US House district was once a political battleground . Now it shows why Congress is dysfunctional",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://bloximages.newyork1.vip.townnews.com/rockymounttelegram.com/content/tncms/assets/v3/editorial/3/be/3be695b3-d3aa-513e-89df-f3df726f829c/6adca1acdf133.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "rockymounttelegram.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.aftonbladet.se/nyheter/a/Vg7344/han-kan-tippa-senaten-inte-sett-sedan-obama",
+      "url_mobile": "",
+      "title": "Han kan tippa senaten :  Inte sett sedan Obama  ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://akamai.vgc.no/v2/images/bcc2597b-dd48-30b0-badf-f94035616efe?fit=crop&upscale=true&s=e83e9dab2016cda955a7718cc13321770cdb357d",
+      "domain": "aftonbladet.se",
+      "language": "Swedish",
+      "sourcecountry": "Sweden"
+    },
+    {
+      "url": "https://www.tanea.gr/print/2026/10/24/opinions/th-anoige-neo-dromo-lfgia-na-perasei-t-oneiro/",
+      "url_mobile": "",
+      "title": "Διονύσης Σαββόπουλος : Θ  άνοιγε νέο δρόμο για να περάσει τ  όνειρο",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.tanea.gr/wp-content/uploads/2025/12/Dionysis-savvopoulos.jpg",
+      "domain": "tanea.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://kelo.com/2026/10/24/as-winter-nears-heating-oil-emerges-as-hurdle-for-republicans-in-us-senate-races/",
+      "url_mobile": "",
+      "title": "As winter nears , heating oil emerges as hurdle for Republicans in US Senate races",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T101200Z_1_LYNXNPEM9N07P_RTROPTP_3_IRAN-CRISIS-ENERGY.JPG",
+      "domain": "kelo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.middleeasteye.net/live-blog/live-blog-update/palestinian-authority-calls-international-pressure-over-israeli-attack",
+      "url_mobile": "",
+      "title": "Palestinian Authority calls for international pressure over Israeli attack on Hebron",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.middleeasteye.net/sites/default/files/2026-10/HEBRON_IDF_AFP.jpg",
+      "domain": "middleeasteye.net",
+      "language": "English",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.vetogate.com/5756689",
+      "url_mobile": "",
+      "title": "مع تصاعد الصراعات ، من المستفيد من استمرار الحرب في منطقة الشرق الأوسط ؟ ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "vetogate.com",
+      "language": "Arabic",
+      "sourcecountry": "Egypt"
+    },
+    {
+      "url": "https://sana.sy/fr/international/2337302/",
+      "url_mobile": "",
+      "title": "Trump évoque la possibilité de nouvelles frappes militaires contre lIran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://cdn.sananews.sy/2026/10/Trump-evoque-la-possibilite-de-nouvelles-frappes-militaires-contre-lIran.jpg",
+      "domain": "sana.sy",
+      "language": "French",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "https://spnfa.ir/20261024/31891835.html",
+      "url_mobile": "",
+      "title": "بیانیه سفارت روسیه در ایران در واکنش به شایعات و ادعاهای بیاساس درباره تخلیه کارکنان دیپلماتیک و متخصصان نیروگاه اتمی  بوشهر  ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://cdn1.img.spnfa.ir/img/07ea/0a/18/31891682_0:66:1279:785_2072x0_60_0_0_da53d1975fe8de5fc4e4683aab45a11f.jpg",
+      "domain": "spnfa.ir",
+      "language": "Persian",
+      "sourcecountry": ""
+    },
+    {
+      "url": "https://unternehmen-heute.de/news.php?newsid=6715763",
+      "url_mobile": "",
+      "title": "Nahost - Netanjahu : Palästinenserbehörde steht  große Überraschung  bevor",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://unternehmen-heute.de/newssys/galerie/6715763/6715763_1_690x460.jpg",
+      "domain": "unternehmen-heute.de",
+      "language": "German",
+      "sourcecountry": "Germany"
+    },
+    {
+      "url": "https://www.sankei.com/article/20261024-RNDVIPT4GBMBJDPVHA6ZB3Q6JA/",
+      "url_mobile": "",
+      "title": "原油高止まり … 背景にホルムズ迂回のコスト増 中東産輸出はイラン攻撃前の75 ％ 超に回復",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.sankei.com/resizer/v2/ONI2RGE22RJL5AHOLHZ7Z2HUW4.jpg?auth=fa9c909de276156d9e988dc256ea1cc762bcf8437bff51e712f65aea57b64edd&quality=50&smart=true",
+      "domain": "sankei.com",
+      "language": "Japanese",
+      "sourcecountry": "Japan"
+    },
+    {
+      "url": "https://spnfa.ir/20261024/31894198.html",
+      "url_mobile": "",
+      "title": "حمله نیروهای اسرائیلی به اردوگاه پناهندگان « العروب » در شهر الخلیل ، واقع در کرانه باختری",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://cdn1.img.spnfa.ir/img/07ea/0a/18/31894045_0:294:464:555_2072x0_60_0_0_3d9cbd4b50c9e54b0a71325190573bf1.jpg",
+      "domain": "spnfa.ir",
+      "language": "Persian",
+      "sourcecountry": ""
+    },
+    {
+      "url": "https://cyprus-mail.com/2026/10/24/jordan-king-orders-iron-fist-response-to-deadly-church-attack",
+      "url_mobile": "",
+      "title": "Jordan king orders  iron fist  response to deadly church attack",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://cyprus-mail.com/wp-content/uploads/2026/10/2026-10-12T040049Z_1565761218_RC2E1OABOG42_RTRMADP_3_MALAYSIA-JORDAN.jpg",
+      "domain": "cyprus-mail.com",
+      "language": "English",
+      "sourcecountry": "Cyprus"
+    },
+    {
+      "url": "https://unternehmen-heute.de/news.php?newsid=6715767",
+      "url_mobile": "",
+      "title": "Bayern - CSU - Parteitag : Merz ruft Union zu Geschlossenheit auf",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://unternehmen-heute.de/newssys/galerie/6715767/6715767_1_690x483.jpg",
+      "domain": "unternehmen-heute.de",
+      "language": "German",
+      "sourcecountry": "Germany"
+    },
+    {
+      "url": "https://ria.ru/20261024/rim-2126750752.html",
+      "url_mobile": "",
+      "title": "В Риме проходит крупное антивоенное шествие",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://cdnn21.imgria.ru/images/sharing/article/2126750752.jpg",
+      "domain": "ria.ru",
+      "language": "Russian",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://www.wfmj.com/news/political/as-trump-fights-over-what-america-owes-slavery-descendants-organize-for-the-future/article_d283472e-7ef0-5b6b-ac62-58eff6b94acf.html",
+      "url_mobile": "",
+      "title": "As Trump fights over what America owes , slavery descendants organize for the future",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/wfmj.com/content/tncms/assets/v3/editorial/b/64/b6408933-f124-5b57-ae24-16bdd7a5a58e/6adc9187911f1.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "wfmj.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/kuba-disisleri-bakani-rodriguez-abd-tehditlerine-20362518-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/kuba-disisleri-bakani-rodriguez-abd-tehditlerine-20362518-haberi/",
+      "title": "Küba Dışişleri Bakanı Rodriguez , ABD tehditlerine  asıl tehdit abluka  yanıtını verdi",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://www.naharnet.com:443/stories/en/323319-signs-point-to-renewed-major-us-military-ops-against-iran",
+      "url_mobile": "",
+      "title": "Signs point to renewed major US military ops against Iran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "http://images1.naharnet.com/images/122615/w140.jpg",
+      "domain": "naharnet.com",
+      "language": "English",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "https://www.svoboda.org/a/golosovanie-nachalosj-10-dney-do-vyborov-v-kongress-ssha/33882888.html",
+      "url_mobile": "https://www.svoboda.org/amp/golosovanie-nachalosj-10-dney-do-vyborov-v-kongress-ssha/33882888.html",
+      "title": "Голосование началось ! 10 дней до выборов в Конгресс США",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://gdb.rferl.org/ec5e9217-f005-4300-69d3-08df13a87200_w1200_h630.jpg",
+      "domain": "svoboda.org",
+      "language": "Russian",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://www.dailygazette.com/hv360/ap/business/halloween-candy-sales-are-off-to-a-slow-start-amid-high-chocolate-prices-and-affordability/article_b445d943-6cb8-5089-86e1-e1b3a7b2f8ba.html",
+      "url_mobile": "",
+      "title": "Halloween candy sales are off to a slow start amid high chocolate prices and affordability concerns",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://bloximages.chicago2.vip.townnews.com/dailygazette.com/content/tncms/assets/v3/editorial/0/81/0810d7a0-8bc0-5ace-ba66-8941f513a799/6adcb75b4e0ed.image.jpg?crop=1763%2C926%2C0%2C124",
+      "domain": "dailygazette.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "http://www.orlandoecho.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "orlandoecho.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.yam.md/ro/story/78424190",
+      "url_mobile": "",
+      "title": "Israelul demolează clădiri și evacuează locuitori în Cisiordania după atacul asupra militarilor",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "news.yam.md",
+      "language": "Romanian",
+      "sourcecountry": ""
+    },
+    {
+      "url": "https://www.aspenpublicradio.org/2026-10-23/russia-steps-up-election-influence-efforts-in-final-stretch-of-midterms",
+      "url_mobile": "",
+      "title": "Russia steps up election influence efforts in final stretch of midterms",
+      "seendate": "20261024T141500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/55/95/c8c639814cf4b3a58c5fb29284e1/gettyimages-2298571725.jpg",
+      "domain": "aspenpublicradio.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://thepaper24-7.com/2026/10/iran-increased-efforts-target-us-personnel/",
+      "url_mobile": "",
+      "title": "Iran raises efforts to target US personnel , spy chief warns",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://thepaper24-7.com/wp-content/uploads/2026/10/iran-increased-efforts-target.avif",
+      "domain": "thepaper24-7.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.keski-uusimaa.fi/uutissuomalainen/9899148",
+      "url_mobile": "",
+      "title": "Palestiinalaishallinto vaatii kansainvälistä painostusta Israelia kohtaan – osa Länsirannan asukkaista pakotetaan jättämn kotinsa",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://i.media.fi/incoming/61vqsw/11742511.jpg/alternates/OG_IMAGE_KESKI_UUSIMAA/11742511.jpg",
+      "domain": "keski-uusimaa.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://www.ynet.co.il/news/article/ry9c4zc2ze",
+      "url_mobile": "",
+      "title": "הסרטון של רון מההכנות המפרכות לצבא :  אני רוצה הכי גבוה , מקסימום",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://ynet-pic1.yit.co.il/picserver6/crop_images/2026/10/23/r1gxIgRd3Ge/r1gxIgRd3Ge_0_155_1253_705_0_large.jpg",
+      "domain": "ynet.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/stockholm-de-yuzlerce-kisi-gazze-icin-isvec-20362512-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/stockholm-de-yuzlerce-kisi-gazze-icin-isvec-20362512-haberi/",
+      "title": "Stockholmde yüzlerce kişi Gazze için İsveç Parlamentosu önüne yürüdü",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://www.inforum.com/opinion/columns/mcfeely-farm-welfare-by-any-other-name-is-still-welfare",
+      "url_mobile": "",
+      "title": "McFeely : Farm welfare by any other name is still welfare",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://forum-communications-production-web.s3.us-west-2.amazonaws.com/brightspot/37/49/1a6328ba43f38c64e519bf9ccc2f/biz-farm-corn-harvest-get.jpg",
+      "domain": "inforum.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://newsroomamerica.com/a/3EK4rUl3twTk3wWXFUMshYstcFg/the_journal_s_editorial_board_says_a_stalemate_in_israel_s_election_could_let_netanyahu_stay_in_power_to_finish_the_job_in_iran.html",
+      "url_mobile": "",
+      "title": "WSJ Opinion Weighs Netanyahu Future , Kagan on Gerrymandering and GOP Races",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "newsroomamerica.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://news.republika.co.id/berita/tnezvs393/hukuman-kolektif-israel-usir-2500-warga-palestina-di-hebron",
+      "url_mobile": "",
+      "title": "Hukuman Kolektif , Israel Usir 2 . 500 Warga Palestina di Hebron",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://static.republika.co.id/uploads/images/kanal_slide/_261024204406-849.png",
+      "domain": "news.republika.co.id",
+      "language": "Indonesian",
+      "sourcecountry": "Indonesia"
+    },
+    {
+      "url": "https://www.lanouvellerepublique.fr/a-la-une/guerre-au-moyen-orient-ces-signes-qui-laissent-presager-une-reprise-des-frappes-americaines-contre-l-iran-1792840060",
+      "url_mobile": "",
+      "title": "Guerre au Moyen - Orient : ces signes qui laissent présager une reprise des frappes américaines contre lIran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://images.lanouvellerepublique.fr/image/upload/v1792837382/6adc917b6443e3ba5a8b45d1.jpg",
+      "domain": "lanouvellerepublique.fr",
+      "language": "French",
+      "sourcecountry": "France"
+    },
+    {
+      "url": "https://www.express.pk/story/2840100/petrol-prices-increase-up-to-117-dollar-2840100",
+      "url_mobile": "https://www.express.pk/story/2840100/petrol-prices-increase-up-to-117-dollar-2840100?amp=1",
+      "title": "پیٹرول کی عالمی منڈی میں کہرام ؛ خام تیل 117 ڈالر کا ہوگیا",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://img.express.pk/media/images/chatgpt-image-apr-28-2026-05-45-22-pm1777380457-0/chatgpt-image-apr-28-2026-05-45-22-pm1777380457-0-600x450.webp",
+      "domain": "express.pk",
+      "language": "Urdu",
+      "sourcecountry": "Pakistan"
+    },
+    {
+      "url": "http://www.afghanistannews.net/news/279395973/irgc-claims-full-control-over-hormuz-as-us-contemplates-fresh-strikes-on-iran",
+      "url_mobile": "",
+      "title": "IRGC claims full control over Hormuz as US contemplates fresh strikes on Iran",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/c378e78/709f374f-37f6-4607-af63-5892dcc832b3/0/ANI-20261024084111-600x315.jpg",
+      "domain": "afghanistannews.net",
+      "language": "English",
+      "sourcecountry": "Afghanistan"
+    },
+    {
+      "url": "https://www.ynet.co.il/news/article/s1rt1nf2ze",
+      "url_mobile": "",
+      "title": "הישראלי שמסייע לפוטין לעקוף סנקציות במיליארדים – והקשר לאיראן וחמאס",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://ynet-pic1.yit.co.il/picserver6/crop_images/2026/10/24/B1Mmrgcnze/B1Mmrgcnze_0_0_850_479_0_large.jpg",
+      "domain": "ynet.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "https://www.naharnet.com:443/stories/en/323318-us-could-strike-iran-this-weekend-barrack-says",
+      "url_mobile": "",
+      "title": "US could strike Iran this weekend , Barrack says",
+      "seendate": "20261024T141500Z",
+      "socialimage": "http://images3.naharnet.com/images/269600/w140.jpg",
+      "domain": "naharnet.com",
+      "language": "English",
+      "sourcecountry": "Syria"
+    },
+    {
+      "url": "http://www.laosnews.net/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "laosnews.net",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://athina984.gr/2026/10/24/oi-saoydaravikes-dynameis-anakoinosan-pos-anachaitisan-dyo-pyrayloys-ton-choythi-poy-stocheyan-to-ta-f-kai-to-gianmpoy/",
+      "url_mobile": "",
+      "title": "Οι σαουδαραβικές δυνάμεις ανακοίνωσαν πως αναχαίτισαν δύο πυραύλους των Χούθι που στόχευαν το Ταΐφ και το Γιανμπού",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://athina984.gr/wp-content/uploads/2026/10/w24-142048w1010042212.webp",
+      "domain": "athina984.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://www.ynet.co.il/news/elections2026/article/r1jnsao2mx",
+      "url_mobile": "",
+      "title": "התחזו לחילונים באינטרנט - וקידמו את אבי מעוז : רשת החשבונות הפיקטיביים נחשפת",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://ynet-pic1.yit.co.il/picserver6/crop_images/2025/12/17/SyGRVmfeQWe/SyGRVmfeQWe_458_280_1032_581_0_large.jpg",
+      "domain": "ynet.co.il",
+      "language": "Hebrew",
+      "sourcecountry": "Israel"
+    },
+    {
+      "url": "http://www.afghanistansun.com/news/279396249/us-objective-is-no-more-oil-nuclear-issues-its-total-destruction-of-iran-foreign-affairs-expert-waiel-awwad",
+      "url_mobile": "",
+      "title": "  US objective is no more oil , nuclear issues , its total destruction of Iran : Foreign Affairs Expert Waiel Awwad",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://chitra-api.kreatio.com/api/v1/wps/8afe2ea/80f92340-107e-45f3-b79d-e447665441e4/0/ANI-20261024115959-600x315.jpg",
+      "domain": "afghanistansun.com",
+      "language": "English",
+      "sourcecountry": "Afghanistan"
+    },
+    {
+      "url": "https://www.wfae.org/united-states-world/2026-10-23/russia-steps-up-election-influence-efforts-in-final-stretch-of-midterms",
+      "url_mobile": "https://www.wfae.org/united-states-world/2026-10-23/russia-steps-up-election-influence-efforts-in-final-stretch-of-midterms?_amp=true",
+      "title": "Russia steps up election influence efforts in final stretch of midterms",
+      "seendate": "20261024T141500Z",
+      "socialimage": "http://npr-brightspot.s3.amazonaws.com/55/95/c8c639814cf4b3a58c5fb29284e1/gettyimages-2298571725.jpg",
+      "domain": "wfae.org",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.abcnyheter.no/nyheter/valgtap-kan-gjore-trump-mer-egenradig-cubanerne-har-grunn-til-a-vaere-bekymret/1708626",
+      "url_mobile": "",
+      "title": "Valgtap kan gjøre Trump mer egenrådig : – Cubanerne har grunn til å være bekymret",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://image.abcnyheter.no/1708741.jpg?imageId=1708741&x=0&y=8.06&cropw=100&croph=71.67&panox=0&panoy=8.06&panow=100&panoh=71.67",
+      "domain": "abcnyheter.no",
+      "language": "Norwegian",
+      "sourcecountry": "Norway"
+    },
+    {
+      "url": "https://www.sowetan.co.za/news/2026-10-24-about-1200-palestinians-displaced-in-hebron-as-israel-begins-military-operation/",
+      "url_mobile": "",
+      "title": "About 1 , 200 Palestinians displaced in Hebron as Israel begins military operation",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.sowetan.co.za/resizer/v2/DR7WO62FFJCKVJSSCU26LCHO5M.JPG?smart=true&auth=ea651ec9172ec32c33ba1626ebe20c1cb9f03888a3e47252828655caff44e149",
+      "domain": "sowetan.co.za",
+      "language": "English",
+      "sourcecountry": "South Africa"
+    },
+    {
+      "url": "https://www.24hod.sk/izraelski-vojaci-donutili-ludi-opustit-domovy-na-zapadnom-brehu-netanjahu-slubuje-este-tvrdsi-zasah-cl833042.html",
+      "url_mobile": "",
+      "title": "Izraelskí vojaci donútili ľudí opustiť domovy na Západnom brehu , Netanjahu sľubuje ešte tvrdší zásah",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.24hod.sk/obrazky_clankov/2026-10-24xml/israel_palestinians_shooting_attack__872-676x451-2523285.jpg",
+      "domain": "24hod.sk",
+      "language": "Slovak",
+      "sourcecountry": "Slovak Republic"
+    },
+    {
+      "url": "https://www.haberler.com/guncel/iran-devrim-muhafizlari-sozcusu-abd-ve-israil-e-20362497-haberi/",
+      "url_mobile": "https://www.haberler.com/amp/iran-devrim-muhafizlari-sozcusu-abd-ve-israil-e-20362497-haberi/",
+      "title": "İran Devrim Muhafızları Sözcüsü , ABD ve İsraile misliyle yanıt verileceğini söyledi . ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "haberler.com",
+      "language": "Turkish",
+      "sourcecountry": "Turkey"
+    },
+    {
+      "url": "https://baijiahao.baidu.com/s?id=1879934192899577487",
+      "url_mobile": "",
+      "title": "国际观察丨两场选举临近 ， 美以伊各怀什么心思",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "baijiahao.baidu.com",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "https://www.news247.gr/magazine/world/via-kai-notheia-sti-servia-tha-einai-to-epomeno-simeio-anaflexis-stin-evropi/",
+      "url_mobile": "https://www.news247.gr/magazine/world/via-kai-notheia-sti-servia-tha-einai-to-epomeno-simeio-anaflexis-stin-evropi/?amp",
+      "title": "Βία και νοθεία στη Σερβία - Θα είναι το επόμενο σημείο ανάφλεξης στην Ευρώπη ; ",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.news247.gr/wp-content/uploads/2026/10/AP26295604781467--og-image-5446107.jpg",
+      "domain": "news247.gr",
+      "language": "Greek",
+      "sourcecountry": "Greece"
+    },
+    {
+      "url": "https://kelo.com/2026/10/24/kamala-harris-returns-to-us-campaign-trail-with-midterms-2028-in-view/",
+      "url_mobile": "",
+      "title": "Kamala Harris returns to US campaign trail with midterms , 2028 in view",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100306Z_1_LYNXNPEM9N07G_RTROPTP_3_USA-ELECTION-HARRIS.JPG",
+      "domain": "kelo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://kelo.com/2026/10/24/five-takeaways-from-trumps-midterm-campaign-rallies/",
+      "url_mobile": "",
+      "title": "Five takeaways from Trump midterm campaign rallies",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://storage.googleapis.com/media.mwcradio.com/mimesis/2026-10/24/2026-10-24T100641Z_1_LYNXNPEM9N07D_RTROPTP_3_USA-TRUMP.JPG",
+      "domain": "kelo.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.news.cn/world/20261024/a80d1ca126fc492c9a29760ae0f3c97d/c.html",
+      "url_mobile": "",
+      "title": "国际观察丨两场选举临近 ， 美以伊各怀什么心思 - 新华网",
+      "seendate": "20261024T141500Z",
+      "socialimage": "",
+      "domain": "news.cn",
+      "language": "Chinese",
+      "sourcecountry": "China"
+    },
+    {
+      "url": "https://index.hu/kultur/2026/10/24/william-fox-dedunokak-interju-index-kollarik-tako/",
+      "url_mobile": "",
+      "title": "Index - Kultúr - Ricséről és Tolcsváról igázták le Hollywoodot : megszólal az Indexnek a legenda két dédunokája",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://kep.cdn.index.hu/1/0/7218/72180/721806/72180691_5319955_9901b29894682829d154009659270148_wm.jpg",
+      "domain": "index.hu",
+      "language": "Hungarian",
+      "sourcecountry": "Hungary"
+    },
+    {
+      "url": "https://www.lechodemaskinonge.com/nouvelles-nationales/des-agences-immobilieres-israeliennes-auraient-induit-en-erreur-des-canadiens/",
+      "url_mobile": "",
+      "title": "Des agences immobilières israéliennes auraient induit en erreur des Canadiens",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.lechodemaskinonge.com/wp-content/uploads/sites/8/2026/10/be47bc5581b16400c57961d89b101ccb66084f556b54b53ce2f934af78d7023b.jpg",
+      "domain": "lechodemaskinonge.com",
+      "language": "French",
+      "sourcecountry": "Canada"
+    },
+    {
+      "url": "https://www.targatocn.it/2026/10/24/leggi-notizia/argomenti/attualita/articolo/una-societa-non-e-libera-se-non-lo-sono-le-donne-a-cuneo-la-voce-di-elham-nikzat.html",
+      "url_mobile": "https://www.targatocn.it/2026/10/24/amp/argomenti/attualita/articolo/una-societa-non-e-libera-se-non-lo-sono-le-donne-a-cuneo-la-voce-di-elham-nikzat.html",
+      "title": " « Una società non è libera se non lo sono le donne »: a Cuneo la voce di Elham Nikzat",
+      "seendate": "20261024T141500Z",
+      "socialimage": "https://www.targatocn.it/fileadmin/archivio/lavocedialba/2026/10/foto_comunicato_donne_e_diritti_.jpg",
+      "domain": "targatocn.it",
+      "language": "Italian",
+      "sourcecountry": "Italy"
+    }
+  ]
+}

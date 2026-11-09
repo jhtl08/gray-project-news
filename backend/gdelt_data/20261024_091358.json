@@ -1,0 +1,255 @@
+{
+  "query": "(openai OR anthropic OR spacex)",
+  "articles": [
+    {
+      "url": "https://financialpost.com/news/economy/defence/carney-starlink-case-underscores-risk-u-s-tech-reliance",
+      "url_mobile": "",
+      "title": "Carney says Starlink case underscores risk of U . S . reliance",
+      "seendate": "20261024T084500Z",
+      "socialimage": "",
+      "domain": "financialpost.com",
+      "language": "English",
+      "sourcecountry": "Canada"
+    },
+    {
+      "url": "https://www.bucksfreepress.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T084500Z",
+      "socialimage": "https://www.bucksfreepress.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "bucksfreepress.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.vg.no/nyheter/i/d71wgO/duellen-som-kan-endre-alt",
+      "url_mobile": "",
+      "title": "Duellen som kan endre alt",
+      "seendate": "20261024T084500Z",
+      "socialimage": "https://akamai.vgc.no/v2/images/c2397824-3c2f-3f03-a7d7-848ac95a7472?format=auto&s=1e99c4aa5fa4f6528360157fde3c7984b9b3aa07",
+      "domain": "vg.no",
+      "language": "Norwegian",
+      "sourcecountry": "Norway"
+    },
+    {
+      "url": "https://www.oxfordmail.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.oxfordmail.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "oxfordmail.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "http://www.thejakartapost.com/world/2026/10/24/russia-ukraine-agree-on-ceasefire-in-embattled-town-to-hold-peace-talks",
+      "url_mobile": "",
+      "title": "Russia , Ukraine agree on ceasefire in embattled town , to hold peace talks - Europe",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://img.jakpost.net/c/2026/10/24/2026_10_24_180959_1792812267._large.jpg",
+      "domain": "thejakartapost.com",
+      "language": "English",
+      "sourcecountry": "Indonesia"
+    },
+    {
+      "url": "https://www.acadiananewsfirst.com/2026/10/24/residents-voice-concerns-over-spacex-spaceport-plans-vermilion-parish/",
+      "url_mobile": "https://www.acadiananewsfirst.com/2026/10/24/residents-voice-concerns-over-spacex-spaceport-plans-vermilion-parish/?outputType=amp",
+      "title": "Residents voice concerns over SpaceX spaceport plans in Vermilion Parish",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://gray-katc-prod.gtv-cdn.com/resizer/v2/P6VDW7R4DNGDLDQU3QBPQBIXKQ.jpg?auth=85eae794e5e9064d48d54c55adc356a22375fdc4c67c0c4c592498ac8199a5f5&smart=true",
+      "domain": "acadiananewsfirst.com",
+      "language": "English",
+      "sourcecountry": ""
+    },
+    {
+      "url": "https://www.moneycontrol.com/news/trends/cisco-president-let-ai-check-his-emails-it-found-rs-8-5-lakh-in-yearly-subscription-bills-are-you-sure-14059063.html",
+      "url_mobile": "https://www.moneycontrol.com/news/trends/cisco-president-let-ai-check-his-emails-it-found-rs-8-5-lakh-in-yearly-subscription-bills-are-you-sure-14059063.html/amp",
+      "title": "Cisco President let AI check his emails . It found Rs 8 . 5 lakh in yearly subscription bills :  Are you sure ..? ",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://images.moneycontrol.com/static-mcnews/2026/10/20261024073426_hbfdhfbdjhbjhhjjdjhb.jpg",
+      "domain": "moneycontrol.com",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "https://yle.fi/a/74-20253141",
+      "url_mobile": "",
+      "title": "Kyiv Post : Satelliittijärjestelmät toimivat taas suurilla nopeuksilla Ukrainassa",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://img.img-cdn.yle.fi/crop_fill,w_1200,h_628/f_auto/39-12692236617e49e05397",
+      "domain": "yle.fi",
+      "language": "Finnish",
+      "sourcecountry": "Finland"
+    },
+    {
+      "url": "https://www.dissexpress.co.uk/national/tech-tycoons-must-not-be-allowed-to-let-rip-with-ai-minister-warns-173403/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.dissexpress.co.uk/_media/img/X3Z9HXQXX46U8R6GULJ8.jpg",
+      "domain": "dissexpress.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.warringtonguardian.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.warringtonguardian.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "warringtonguardian.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://digg.com/ai/9l2e04a4",
+      "url_mobile": "",
+      "title": "Thariq Shihipar announces departure from Anthropic after more than a year on Claude Code · Digg",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://digg.com/ai/9l2e04a4/opengraph-image?6a9dc854e855d953",
+      "domain": "digg.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.digit.in/news/general/openai-says-ai-agents-can-communicate-even-without-internet-connection-here-is-how.html",
+      "url_mobile": "https://www.digit.in/news/general/openai-says-ai-agents-can-communicate-even-without-internet-connection-here-is-how.html/amp/",
+      "title": "OpenAI says AI agents can communicate even without internet connection , here is how",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://static.digit.in/Sam-Altman-calls-AI-authoritarianism-a-bigger-risk-than-AI-itself.png",
+      "domain": "digit.in",
+      "language": "English",
+      "sourcecountry": "India"
+    },
+    {
+      "url": "http://www.thejakartapost.com/business/2026/10/24/openai-resumes-frontier-ai-training-after-security-overhaul",
+      "url_mobile": "",
+      "title": "OpenAI resumes frontier AI training after security overhaul - Tech",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://img.jakpost.net/c/2026/09/22/2026_09_22_179968_1790077537._large.jpg",
+      "domain": "thejakartapost.com",
+      "language": "English",
+      "sourcecountry": "Indonesia"
+    },
+    {
+      "url": "https://www.thenorthernecho.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.thenorthernecho.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "thenorthernecho.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.themoscowtimes.com/2026/10/24/russia-ukraine-agree-on-ceasefire-in-embattled-oleshky-plan-new-peace-talks-next-month-a94069",
+      "url_mobile": "",
+      "title": "Russia , Ukraine Agree on Ceasefire in Embattled Oleshky , Plan New Peace Talks Next Month",
+      "seendate": "20261024T083000Z",
+      "socialimage": "",
+      "domain": "themoscowtimes.com",
+      "language": "English",
+      "sourcecountry": "Russia"
+    },
+    {
+      "url": "https://www.gmx.at/magazine/politik/russland-krieg-ukraine/waffenruhe-frontstadt-oleschky-zeichen-moskau-42870064",
+      "url_mobile": "",
+      "title": "Waffenruhe um Frontstadt Oleschky : ein Zeichen aus Moskau ? ",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://i0.gmx.at/image/410/42870410,pd=1,f=opengraph/ukraine-krieg-oleschky.jpg",
+      "domain": "gmx.at",
+      "language": "German",
+      "sourcecountry": "Austria"
+    },
+    {
+      "url": "https://www.cbc.ca/news/science/moon-civilization-water-9.7393267",
+      "url_mobile": "",
+      "title": "Can millions of people live on the moon ? These scientists say yes but not for very long",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://i.cbc.ca/ais/f64619e9-b719-4fb6-b343-0e577f122766,1792773302575/full/max/0/default.jpg?im=Crop%2Crect%3D%280%2C0%2C2880%2C1620%29%3BResize%3D620",
+      "domain": "cbc.ca",
+      "language": "English",
+      "sourcecountry": "Canada"
+    },
+    {
+      "url": "https://www.borehamwoodtimes.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.borehamwoodtimes.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "borehamwoodtimes.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.index.hr/vijesti/clanak/nasa-ubrzava-povratak-na-mjesec-spacex-i-blue-origin-ceka-kljucna-godina/2849193.aspx",
+      "url_mobile": "https://www.index.hr/amp/vijesti/clanak/nasa-ubrzava-povratak-na-mjesec-spacex-i-blue-origin-ceka-kljucna-godina/2849193.aspx",
+      "title": "NASA sprema jednu od najsloženijih svemirskih misija u povijesti",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://ip.index.hr/remote/bucket.index.hr/b/index/a6f9d46e-6e1d-4a69-a05c-f8929ed28948.png?fb_wtrmrk=vijesti.jpg&mode=crop&format=png",
+      "domain": "index.hr",
+      "language": "Croatian",
+      "sourcecountry": "Croatia"
+    },
+    {
+      "url": "https://www.southwalesargus.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.southwalesargus.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "southwalesargus.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.gdnonline.com:443/Details/1410646/Tech-selloff-relents-as-oil-prices-hit-five-month-high",
+      "url_mobile": "",
+      "title": "International Business : Tech selloff relents as oil prices hit five - month high",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.gdnonline.com/gdnimages/20261024%5C20261023_224006_0.jpg",
+      "domain": "gdnonline.com",
+      "language": "English",
+      "sourcecountry": "United States"
+    },
+    {
+      "url": "https://www.huntspost.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.huntspost.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "huntspost.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://timesofoman.com/article/178313-us-midterms-elon-musk-becomes-largest-political-donor-spends-over-442-million-on-republican-campaigns",
+      "url_mobile": "",
+      "title": "US midterms : Elon Musk becomes largest political donor , spends over $442 million on Republican campaigns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://shabiba.eu-central-1.linodeobjects.com/2026/10/1792821065-1792821064-nmblpnzfolmx-700x400.jpg",
+      "domain": "timesofoman.com",
+      "language": "English",
+      "sourcecountry": "Oman"
+    },
+    {
+      "url": "https://www.yourlocalguardian.co.uk/news/national/26666809.tech-tycoons-must-not-allowed-let-rip-ai-minister-warns/",
+      "url_mobile": "",
+      "title": "Tech tycoons must not be allowed to  let rip  with AI , minister warns",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://www.yourlocalguardian.co.uk/resources/images/21568879.jpg?type=og-image",
+      "domain": "yourlocalguardian.co.uk",
+      "language": "English",
+      "sourcecountry": "United Kingdom"
+    },
+    {
+      "url": "https://www.larazon.es/internacional/gobierno-ucraniano-confirma-que-starlink-vuelve-funcionar-restricciones_202610246adc65b51e53586bfbbad79b.html",
+      "url_mobile": "https://www.larazon.es/internacional/gobierno-ucraniano-confirma-que-starlink-vuelve-funcionar-restricciones_202610246adc65b51e53586bfbbad79b.html?outputType=amp",
+      "title": "El Gobierno ucraniano confirma que Starlink vuelve a funcionar sin restricciones",
+      "seendate": "20261024T083000Z",
+      "socialimage": "https://fotografias-2.larazon.es/clipping/cmsimages02/2026/10/23/B4F2682F-A0EE-4497-BCB2-37C21B09856D/98.jpg?crop=1920,1080,x0,y100&optimize=low&format=webply",
+      "domain": "larazon.es",
+      "language": "Spanish",
+      "sourcecountry": "Spain"
+    }
+  ]
+}
