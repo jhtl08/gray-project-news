@@ -287,23 +287,20 @@ CORS is configured for the Vite dev origin. No auth, no proxy in Vite config
      no similarity search endpoint.
    - Comment in code explicitly notes this is deferred until the title-embedding
      model is chosen.
-4. **No tests** anywhere (backend or frontend).
-5. **Scoring only on insert**: previously stored rows are not backfilled; if
-   `score_headlines` fails during ingest, scores stay NULL silently.
-6. **Frontend direction labels are swapped**: in `News.jsx`, the `desc` option
-   is labeled "Ascending" and `asc` "Descending" (backwards). The backend
-   semantics are correct; only labels are wrong.
-7. **Old JSON files lack `query` key** (20261021_*, 20261021_030951, etc.)
-   and cannot be ingested by `ingest_json_file` (raises "no 'query' key").
-   Only files saved by current `get_gdelt_json` (20261023_003705 onward) have it.
-8. **`ON CONFLICT DO NOTHING`** (no target) catches any unique violation
-   (url or title), which can hide which constraint fired. Also title uniqueness
-   can drop legitimate articles that share a title.
-9. `total` counts all rows.
-10. **Laya import side effects**: importing `laya_processes` loads the model;
-    first run downloads weights and can be slow. `laya` sets `USE_TF=0`.
-11. **No deployment config** (no Dockerfile for app, no CI).
-12. **`requirements.txt`** has duplicates and a stray `python-multipart`.
+4. **Scoring robustness improved**: scoring failures are now logged and reported
+   via `scoring_error`/`scoring_failed`; `backfill_disruptiveness_scores()`
+   can score rows with NULL scores. Empty-title rows remain NULL by design.
+5. **Duplicate handling is explicit**: unique constraints on `url` and `title`;
+   `ON CONFLICT DO NOTHING` skips duplicate url/title. Tests cover both.
+6. **Legacy GDELT JSON cleanup**: files without a top-level `query` key were
+   removed; `validate_json_file`/`find_invalid_json_files` guard ingestion.
+7. `total` counts all rows.
+8. **Laya loading improved**: `get_router()` is a lazy, thread-safe singleton;
+   import no longer loads the model; preload happens in FastAPI startup.
+   Persistent caching relies on `HF_HOME` (default `~/.cache/huggingface`).
+9. **No deployment config** (no Dockerfile for app, no CI).
+10. **`requirements.txt`** has duplicates and a stray `python-multipart`.
+11. **Backend tests** now exist under `backend/tests/` (13 passing).
 
 ---
 

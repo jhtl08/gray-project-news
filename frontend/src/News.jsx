@@ -115,7 +115,7 @@ function News() {
             }
           }
         } catch {
-          errMsg = `${res.status} ${res.statusText}` || errMsg;
+          errMsg = `${res.status} ${res.statusText}`.trim() || errMsg;
         }
         throw new Error(errMsg);
       }
@@ -136,6 +136,7 @@ function News() {
 
   useEffect(() => {
     if (subTab === "query") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       fetchNews();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
