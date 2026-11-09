@@ -1,9 +1,41 @@
+import threading
 
-from laya import Router
+# Persistent model cache: set HF_HOME (e.g. a Docker volume) to a stable
+# directory so downloaded weights survive across runs/processes. Defaults to
+# ~/.cache/huggingface when unset.
+# HF_HOME documentation note: export HF_HOME=/path/to/persistent/cache
 
-# Load the multilingual model once and keep it available.
-router = Router(default="multilingual")
-router.preload(["multilingual"])
+_router = None
+_router_lock = threading.Lock()
+
+
+def _get_router_class():
+    """Resolve the laya Router class lazily so importing this module has no
+    model-loading or download side effects."""
+    router_cls = globals().get("Router")
+    if router_cls is None:
+        from laya import Router as router_cls
+
+        globals()["Router"] = router_cls
+    return router_cls
+
+
+def get_router():
+    """Thread-safe singleton accessor for the laya Router.
+
+    Creates ``Router(default="multilingual", max_loaded=1)`` and preloads the
+    ``multilingual`` model on first call only.
+    """
+    global _router
+    if _router is None:
+        with _router_lock:
+            if _router is None:
+                Router = _get_router_class()
+                router = Router(default="multilingual", max_loaded=1)
+                router.preload(["multilingual"])
+                _router = router
+    return _router
+
 
 questions = {
     "disruptiveness": {
@@ -66,14 +98,15 @@ Evaluate two dimensions:
 
 Produce one numeric disruptiveness score from 0 to 100 for each headline. The score should reflect both market relevance and potential impact, with relevance weighted 40% and potential impact weighted 60%.
 
-Use 0 for effectively irrelevant news and 100 for exceptional potential disruption to unresolved prediction-market expectations."""
-        ),
+Use 0 for effectively irrelevant news and 100 for exceptional potential disruption to unresolved prediction-market expectations."""),
         "criteria": [str(i) for i in range(101)],
     }
 }
 
 
 def score_headlines(headlines: list[str]) -> list[int]:
+    router = get_router()
+
     requests = [
         {
             "state": {"headline": headline},
