@@ -14,7 +14,10 @@ Typical use:
 from __future__ import annotations
 
 import json
+import logging
 import os
+
+logger = logging.getLogger(__name__)
 from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
@@ -165,27 +168,43 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
                         break
         inserted = len(inserted_rows)
 
-        # Score newly inserted rows by title
+        # Score newly inserted rows by title. Scoring failures must not fail
+        # ingestion, but they are logged and recorded in the summary.
+        scoring_error = None
+        scoring_failed = 0
         if inserted_rows:
-            try:
-                titles_to_score = []
-                ids_to_score = []
-                for row_res in inserted_rows:
-                    inserted_id = row_res[0]
-                    inserted_title = row_res[1]
-                    if inserted_title and inserted_title.strip():
-                        titles_to_score.append(inserted_title)
-                        ids_to_score.append(inserted_id)
-                if titles_to_score:
+            titles_to_score = []
+            ids_to_score = []
+            for row_res in inserted_rows:
+                inserted_id = row_res[0]
+                inserted_title = row_res[1]
+                if inserted_title and str(inserted_title).strip():
+                    titles_to_score.append(inserted_title)
+                    ids_to_score.append(inserted_id)
+            if titles_to_score:
+                try:
                     scores = score_headlines(titles_to_score)
+                    if len(scores) != len(titles_to_score):
+                        raise ValueError(
+                            f"scorer returned {len(scores)} scores for "
+                            f"{len(titles_to_score)} titles"
+                        )
                     with conn.cursor() as cur:
                         for inserted_id, score in zip(ids_to_score, scores):
                             cur.execute(
                                 "UPDATE news SET disruptiveness_score = %s WHERE id = %s",
                                 (int(score), inserted_id),
                             )
-            except Exception:
-                pass
+                except Exception as exc:  # noqa: BLE001
+                    scoring_failed = len(titles_to_score)
+                    scoring_error = str(exc)
+                    logger.warning(
+                        "scoring failed for %d titles: %s", scoring_failed, exc
+                    )
+                    print(
+                        f"WARNING: scoring failed for {scoring_failed} titles: {exc}",
+                        flush=True,
+                    )
 
     return {
         "file": str(path),
@@ -193,6 +212,76 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
         "total": len(articles),
         "inserted": inserted,
         "skipped": len(articles) - inserted,
+        "scoring_error": scoring_error,
+        "scoring_failed": scoring_failed,
+    }
+
+
+def backfill_disruptiveness_scores(limit: int | None = None) -> dict[str, Any]:
+    """Score rows whose ``disruptiveness_score`` is NULL and store results.
+
+    Returns a summary with ``considered``, ``scored``, ``failed`` and
+    ``errors`` keys. Empty titles are skipped (not scored, not failed).
+    """
+    considered = 0
+    scored = 0
+    failed = 0
+    errors: list[str] = []
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            if limit is None:
+                cur.execute(
+                    "SELECT id, title FROM news WHERE disruptiveness_score IS NULL"
+                )
+            else:
+                cur.execute(
+                    "SELECT id, title FROM news WHERE disruptiveness_score IS NULL LIMIT %s",
+                    (limit,),
+                )
+            rows = cur.fetchall()
+
+    considered = len(rows)
+
+    # Only non-empty titles are scored; empty titles are skipped.
+    items = [
+        (row_id, str(title))
+        for row_id, title in rows
+        if title is not None and str(title).strip()
+    ]
+
+    batch_size = 64
+    for start in range(0, len(items), batch_size):
+        chunk = items[start : start + batch_size]
+        chunk_ids = [item[0] for item in chunk]
+        chunk_titles = [item[1] for item in chunk]
+        try:
+            scores = score_headlines(chunk_titles)
+            if not isinstance(scores, (list, tuple)) or len(scores) != len(chunk_titles):
+                raise ValueError(
+                    f"scorer returned {len(scores) if hasattr(scores, '__len__') else scores!r} "
+                    f"scores for {len(chunk_titles)} titles"
+                )
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    for row_id, score in zip(chunk_ids, scores):
+                        cur.execute(
+                            "UPDATE news SET disruptiveness_score = %s WHERE id = %s",
+                            (int(score), row_id),
+                        )
+            scored += len(chunk_titles)
+        except Exception as exc:  # noqa: BLE001
+            failed += len(chunk_titles)
+            message = f"scoring failed for {len(chunk_titles)} titles: {exc}"
+            errors.append(str(exc))
+            logger.warning(message)
+            print(f"WARNING: {message}", flush=True)
+
+    return {
+        "considered": considered,
+        "scored": scored,
+        "failed": failed,
+        "errors": errors,
     }
 
 
