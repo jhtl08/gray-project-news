@@ -41,6 +41,7 @@ if not DATABASE_URL:
     raise RuntimeError("DATABASE_URL is not set (expected in backend/.env)")
 
 DATA_DIR = BASE_DIR / "gdelt_data"
+POLYMARKET_DATA_DIR = BASE_DIR / "polymarket_data"
 SEENDATE_FORMAT = "%Y%m%dT%H%M%SZ"
 
 # content_vector is left without a fixed dimension because the title-embedding
@@ -67,6 +68,35 @@ ON CONFLICT DO NOTHING
 RETURNING id, title;
 """
 
+CREATE_BETS_TABLE = """
+CREATE TABLE IF NOT EXISTS bets (
+    id                  BIGSERIAL PRIMARY KEY,
+    polymarket_id       TEXT NOT NULL UNIQUE,
+    question            TEXT,
+    slug                TEXT,
+    outcomes            TEXT,
+    outcome_prices      TEXT,
+    prices              TEXT,
+    volume              TEXT,
+    liquidity           TEXT,
+    end_date            TIMESTAMPTZ,
+    active              BOOLEAN,
+    closed              BOOLEAN,
+    tags                TEXT,
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+"""
+
+INSERT_BETS = """
+INSERT INTO bets (polymarket_id, question, slug, outcomes, outcome_prices, prices,
+                  volume, liquidity, end_date, active, closed, tags)
+VALUES (%(polymarket_id)s, %(question)s, %(slug)s, %(outcomes)s, %(outcome_prices)s,
+        %(prices)s, %(volume)s, %(liquidity)s, %(end_date)s, %(active)s,
+        %(closed)s, %(tags)s)
+ON CONFLICT (polymarket_id) DO NOTHING
+RETURNING id, question;
+"""
+
 
 @contextmanager
 def get_connection() -> Iterator[psycopg.Connection]:
@@ -80,6 +110,7 @@ def init_db() -> None:
     with get_connection() as conn:
         conn.execute("CREATE EXTENSION IF NOT EXISTS vector;")
         conn.execute(CREATE_NEWS_TABLE)
+        conn.execute(CREATE_BETS_TABLE)
         # Ensure columns/constraints exist for upgrades
         try:
             conn.execute("ALTER TABLE news ADD COLUMN IF NOT EXISTS disruptiveness_score INTEGER;")
@@ -87,6 +118,15 @@ def init_db() -> None:
             pass
         try:
             conn.execute("ALTER TABLE news ADD CONSTRAINT news_title_key UNIQUE (title);")
+        except Exception:
+            pass
+        # Indexes for bets.
+        try:
+            conn.execute("CREATE INDEX IF NOT EXISTS bets_end_date_idx ON bets (end_date);")
+        except Exception:
+            pass
+        try:
+            conn.execute("CREATE INDEX IF NOT EXISTS bets_active_idx ON bets (active);")
         except Exception:
             pass
 
@@ -131,6 +171,34 @@ def _article_to_row(article: dict[str, Any], query: str) -> dict[str, Any] | Non
         "seendate": _parse_seendate(article.get("seendate")),
         "language": _clean(article.get("language")),
         "sourcecountry": _clean(article.get("sourcecountry")),
+    }
+
+
+def _market_to_row(market: dict[str, Any]) -> dict[str, Any] | None:
+    """Map one Polymarket market to INSERT_BETS params; None if no id."""
+    polymarket_id = _clean(
+        market.get("polymarket_id") if isinstance(market, dict) else None
+    )
+    if polymarket_id is None and isinstance(market, dict):
+        polymarket_id = _clean(market.get("id"))
+    if polymarket_id is None:
+        return None
+    if not isinstance(market, dict):
+        return None
+    prices = market.get("outcomePrices", market.get("outcome_prices", market.get("prices")))
+    return {
+        "polymarket_id": polymarket_id,
+        "question": _clean(market.get("question")),
+        "slug": _clean(market.get("slug")),
+        "outcomes": market.get("outcomes"),
+        "outcome_prices": prices,
+        "prices": prices,
+        "volume": market.get("volume", market.get("volumeNum")),
+        "liquidity": market.get("liquidity", market.get("liquidityNum")),
+        "end_date": market.get("endDate", market.get("end_date")),
+        "active": market.get("active"),
+        "closed": market.get("closed"),
+        "tags": market.get("tags"),
     }
 
 
@@ -324,6 +392,53 @@ def backfill_disruptiveness_scores(limit: int | None = None) -> dict[str, Any]:
 def ingest_latest_json(directory: Path | str = DATA_DIR) -> dict[str, Any]:
     """Ingest the most recent JSON file in `directory`."""
     return ingest_json_file(latest_json_file(directory))
+
+
+def ingest_polymarket_file(path: Path | str) -> dict[str, Any]:
+    """Insert markets of one Polymarket JSON file, skipping existing ids.
+
+    Validates that the file contains a top-level ``markets`` list. Returns a
+    summary dict with ``file``, ``total``, ``inserted`` and ``skipped``.
+    """
+    path = Path(path)
+    with open(path, encoding="utf-8") as f:
+        payload = json.load(f)
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path} is not a JSON object")
+    markets = payload.get("markets")
+    if not isinstance(markets, list):
+        raise ValueError(f"{path} has no 'markets' list")
+
+    rows = [
+        row
+        for market in markets
+        if isinstance(market, dict) and (row := _market_to_row(market)) is not None
+    ]
+
+    inserted_rows = []
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            if rows:
+                cur.executemany(INSERT_BETS, rows, returning=True)
+                while True:
+                    result = cur.fetchone()
+                    if result is not None:
+                        inserted_rows.append(result)
+                    if not cur.nextset():
+                        break
+    inserted = len(inserted_rows)
+
+    return {
+        "file": str(path),
+        "total": len(markets),
+        "inserted": inserted,
+        "skipped": len(markets) - inserted,
+    }
+
+
+def ingest_latest_polymarket_file(directory: Path | str = POLYMARKET_DATA_DIR) -> dict[str, Any]:
+    """Ingest the most recent Polymarket JSON file in `directory`."""
+    return ingest_polymarket_file(latest_json_file(directory))
 
 
 def main() -> None:
