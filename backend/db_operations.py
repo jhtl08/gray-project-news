@@ -277,8 +277,6 @@ def _market_to_row(market: dict[str, Any]) -> dict[str, Any] | None:
         return None
     prices = market.get("outcomePrices", market.get("outcome_prices", market.get("prices")))
     tags = market.get("tags")
-    if isinstance(tags, list):
-        tags = json.dumps(tags, ensure_ascii=False)
     clob_tokens = market.get("clobTokenIds", market.get("clob_token_ids"))
     if isinstance(clob_tokens, str):
         try:
@@ -304,18 +302,19 @@ def _market_to_row(market: dict[str, Any]) -> dict[str, Any] | None:
         "condition_id": _clean(market.get("conditionId", market.get("condition_id"))),
         "outcomes": outcomes,
         "outcome_prices": json.dumps(prices, ensure_ascii=False) if isinstance(prices, (list, dict)) else prices,
+        "prices": json.dumps(prices, ensure_ascii=False) if isinstance(prices, (list, dict)) else prices,
         "price": _to_float(market.get("lastTradePrice", market.get("price"))),
         "one_hour_price_change": _to_float(market.get("oneHourPriceChange", market.get("one_hour_price_change"))),
         "one_day_price_change": _to_float(market.get("oneDayPriceChange", market.get("one_day_price_change"))),
         "one_week_price_change": _to_float(market.get("oneWeekPriceChange", market.get("one_week_price_change"))),
         "one_month_price_change": _to_float(market.get("oneMonthPriceChange", market.get("one_month_price_change"))),
         "one_year_price_change": _to_float(market.get("oneYearPriceChange", market.get("one_year_price_change"))),
-        "volume": _to_float(market.get("volume", market.get("volumeNum"))),
+        "volume": market.get("volume", market.get("volumeNum")),
         "volume_24hr": _to_float(market.get("volume24hr", market.get("volume24hrClob"))),
         "volume_1wk": _to_float(market.get("volume1wk", market.get("volume1wkClob"))),
         "volume_1mo": _to_float(market.get("volume1mo", market.get("volume1moClob"))),
         "volume_1yr": _to_float(market.get("volume1yr", market.get("volume1yrClob"))),
-        "liquidity": _to_float(market.get("liquidity", market.get("liquidityNum", market.get("liquidityClob")))),
+        "liquidity": market.get("liquidity", market.get("liquidityNum", market.get("liquidityClob"))),
         "best_bid": _to_float(market.get("bestBid")),
         "best_ask": _to_float(market.get("bestAsk")),
         "spread": _to_float(market.get("spread")),
@@ -584,11 +583,20 @@ def ingest_polymarket_file(path: Path | str) -> dict[str, Any]:
     if not isinstance(markets, list):
         raise ValueError(f"{path} has no 'markets' list")
 
-    rows = [
-        row
-        for market in markets
-        if isinstance(market, dict) and (row := _market_to_row(market)) is not None
-    ]
+    rows = []
+    for market in markets:
+        if not isinstance(market, dict):
+            continue
+        row = _market_to_row(market)
+        if row is None:
+            continue
+        # Normalize values for database columns.
+        row["volume"] = _to_float(row.get("volume"))
+        row["liquidity"] = _to_float(row.get("liquidity"))
+        for key in ("outcomes", "outcome_prices", "prices", "tags", "clob_token_ids"):
+            if isinstance(row.get(key), (list, dict)):
+                row[key] = json.dumps(row[key], ensure_ascii=False)
+        rows.append(row)
 
     inserted_rows = []
     with get_connection() as conn:
