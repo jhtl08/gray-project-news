@@ -27,8 +27,14 @@ DATA_DIR = BASE_DIR / "polymarket_data"
 
 
 def _request_markets(params: dict[str, Any]) -> list[dict[str, Any]]:
-    response = requests.get(f"{BASE_URL}/markets", params=params, timeout=30)
-    response.raise_for_status()
+    try:
+        response = requests.get(f"{BASE_URL}/markets", params=params, timeout=30)
+        response.raise_for_status()
+    except requests.HTTPError as exc:
+        # Polymarket returns 422 once offset exceeds available rows.
+        if exc.response is not None and exc.response.status_code == 422:
+            return []
+        raise
     data = response.json()
     if not isinstance(data, list):
         raise ValueError("unexpected Polymarket response: expected a list of markets")
