@@ -276,10 +276,11 @@ CORS is configured for the Vite dev origin. No auth, no proxy in Vite config
 
 ## 6. What is NOT done / known issues
 
-1. **Bets tab** (`Bets.jsx`) is a placeholder. `polymarket_collector.py` only
-   fetches and prints Polymarket tags; no persistence, no endpoints, no UI.
+1. **Bets feature implemented**: Polymarket markets are collected, stored with
+   price-change metrics, scored with Laya for emotionality/status-quo deviation
+   (threshold-gated), and browsable in the Bets tab. Remaining: Matches tab.
 2. **Matches tab** (`Matches.jsx`) is a placeholder. No match data source or
-   schema.
+   schema (still pending).
 3. **Vector processing is not implemented**:
    - `content_vector VECTOR` column exists (from first commit) but is never
      populated (0 non-null rows).
@@ -410,3 +411,36 @@ Invariants to respect:
 | USE_TF        | set by laya     | 0 (set automatically)                                    |
 
 No other env vars are currently required.
+
+---
+
+## 11. Bets functionality (done)
+
+### 11.1 Collection (`backend/polymarket_collector.py`)
+
+- Fetches active, non-closed markets from Gamma `/markets`.
+- Priority tag IDs: Politics (2), Economics (100328), Finance (120), Business (107).
+- Also fetches `new=true` markets across all categories.
+- Paginates until 422; dedupes by market id.
+- Saves snapshot to `backend/polymarket_data/<UTC timestamp>.json`.
+
+### 11.2 Database (`bets` table)
+
+Rich schema including price changes (1h/1d/1w/1mo/1y), volumes, liquidity,
+metadata, tags, and Laya scores (`emotionality_score`, `status_quo_deviation`).
+
+### 11.3 Scoring (`backend/laya_processes.py`)
+
+`score_bet_emotionality_and_status_quo(markets)` returns
+`(emotionality 0-100, status_quo_deviation 0/1)` using one Laya request per
+market. Moderate threshold gates scoring. Backfill available.
+
+### 11.4 API (`backend/main.py`)
+
+- `POST /api/bets/collect` — collect + ingest + score.
+- `GET /api/bets` — paginated, filterable, sortable.
+- `POST /api/bets/backfill-scores` — score remaining threshold markets.
+
+### 11.5 Frontend (`frontend/src/Bets.jsx`)
+
+Single view with inline collect controls, filters, sort, pagination, and table.
