@@ -116,12 +116,69 @@ def score_headlines(headlines: list[str]) -> list[int]:
         for headline in headlines
     ]
 
-    results = router.predict_batch(requests, batch_size=64)
+    results = router.predict_batch(requests, batch_size=16)
 
     return [
         round(result["answers"]["disruptiveness"]["score"])
         for result in results
     ]
+
+
+bet_questions = {
+    "emotionality": {
+        "type": "score",
+        "instructions": (
+            "Measure the emotional hype or wave-riding of a prediction market. "
+            "Score 0..100 where higher means more emotionally charged, viral, or "
+            "driven by hype rather than fundamentals."
+        ),
+        "criteria": [str(i) for i in range(101)],
+    },
+    "status_quo_deviation": {
+        "type": "score",
+        "instructions": (
+            "Does this market deviate from the status quo? Return 1 if it "
+            "deviates from the status quo, 0 otherwise."
+        ),
+        "criteria": ["0", "1"],
+    },
+}
+
+
+def score_bet_emotionality_and_status_quo(markets: list[str]) -> list[tuple[int, int]]:
+    """Score a list of markets for emotionality and status-quo deviation.
+
+    Returns a list of ``(emotionality, status_quo_deviation)`` tuples. If Laya
+    is unavailable (import error), returns a list of ``(None, None)`` tuples.
+    """
+    try:
+        router = get_router()
+    except Exception:  # Laya unavailable (import or load error)
+        return [(None, None) for _ in markets]
+
+    requests = [
+        {
+            "state": {"market": market},
+            "questions": bet_questions,
+            "model": "multilingual",
+        }
+        for market in markets
+    ]
+
+    try:
+        results = router.predict_batch(requests, batch_size=16)
+    except Exception:
+        return [(None, None) for _ in markets]
+
+    parsed: list[tuple[int, int]] = []
+    for result in results:
+        answers = result.get("answers", {}) if isinstance(result, dict) else {}
+        emo_raw = answers.get("emotionality", {}).get("score")
+        sq_raw = answers.get("status_quo_deviation", {}).get("score")
+        emo = None if emo_raw is None else round(emo_raw)
+        sq = None if sq_raw is None else round(sq_raw)
+        parsed.append((emo, sq))
+    return parsed
 
 
 if __name__ == "__main__":
