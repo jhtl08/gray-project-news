@@ -35,6 +35,11 @@ function Bets() {
   const [collectLoading, setCollectLoading] = useState(false);
   const [collectFeedback, setCollectFeedback] = useState(null);
 
+  const [deleteStart, setDeleteStart] = useState("");
+  const [deleteEnd, setDeleteEnd] = useState("");
+  const [deleteLoading, setDeleteLoading] = useState(false);
+  const [deleteFeedback, setDeleteFeedback] = useState(null);
+
   const fetchBets = async () => {
     setBetsLoading(true);
     try {
@@ -147,6 +152,32 @@ function Bets() {
       return new Date(dateStr).toLocaleString();
     } catch {
       return dateStr;
+    }
+  };
+
+
+  const handleDelete = async () => {
+    if (!deleteStart && !deleteEnd) {
+      setDeleteFeedback({ type: "error", message: "Provide at least one date." });
+      return;
+    }
+    if (!window.confirm("Delete bets rows in the selected date range?")) return;
+    setDeleteLoading(true);
+    setDeleteFeedback(null);
+    try {
+      const params = new URLSearchParams();
+      if (deleteStart) params.set("start", deleteStart);
+      if (deleteEnd) params.set("end", deleteEnd);
+      const res = await fetch(`${API_BASE}/api/bets?${params}`, { method: "DELETE" });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      setDeleteFeedback({ type: "success", message: `Deleted ${data.deleted} rows.` });
+      setOffset(0);
+      fetchBets();
+    } catch (err) {
+      setDeleteFeedback({ type: "error", message: err.message || "Delete failed" });
+    } finally {
+      setDeleteLoading(false);
     }
   };
 
@@ -345,6 +376,25 @@ function Bets() {
             </div>
           </>
         )}
+        <div className="collect-section" style={{ marginTop: 16 }}>
+          <h3 className="section-title">Delete by date range (collected_at)</h3>
+          <div className="collect-form">
+            <div className="form-group">
+              <label>Start</label>
+              <input type="datetime-local" value={deleteStart} onChange={(e) => setDeleteStart(e.target.value)} />
+            </div>
+            <div className="form-group">
+              <label>End</label>
+              <input type="datetime-local" value={deleteEnd} onChange={(e) => setDeleteEnd(e.target.value)} />
+            </div>
+            <button className="submit-button" onClick={handleDelete} disabled={deleteLoading}>
+              {deleteLoading ? "Deleting..." : "Delete"}
+            </button>
+          </div>
+          {deleteFeedback && (
+            <div className={`feedback ${deleteFeedback.type}`}>{deleteFeedback.message}</div>
+          )}
+        </div>
       </section>
     </div>
   );

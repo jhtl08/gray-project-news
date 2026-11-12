@@ -10,7 +10,15 @@ import pytest
 
 @pytest.fixture
 def clean_news():
-    """Truncate the news table before and after a test."""
+    """Truncate the news table before and after a test.
+
+    Truncation is destructive, so it only runs when ALLOW_DB_TRUNCATE=1 is set.
+    Otherwise the fixture skips, preventing accidental data loss in shared DBs.
+    """
+    import os
+
+    if os.getenv("ALLOW_DB_TRUNCATE") != "1":
+        pytest.skip("ALLOW_DB_TRUNCATE not set; skipping destructive test")
     import db_operations
 
     try:

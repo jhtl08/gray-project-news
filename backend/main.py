@@ -133,6 +133,20 @@ def get_news(
         raise HTTPException(status_code=500, detail=str(e))
 
 
+
+@app.delete("/api/news")
+def delete_news(start: Optional[str] = Query(None), end: Optional[str] = Query(None)):
+    try:
+        from db_operations import delete_news_by_date_range
+
+        deleted = delete_news_by_date_range(start=start, end=end)
+        return {"deleted": deleted, "start": start, "end": end}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
 @app.post("/api/bets/collect")
 def collect_bets(limit: Optional[int] = Query(None), background_tasks: BackgroundTasks = None):
     try:
@@ -282,6 +296,21 @@ def backfill_bets_scores(limit: Optional[int] = Query(None)):
         from db_operations import backfill_bet_scores
 
         return backfill_bet_scores(limit=limit)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+
+
+@app.delete("/api/bets")
+def delete_bets(start: Optional[str] = Query(None), end: Optional[str] = Query(None)):
+    try:
+        from db_operations import delete_bets_by_date_range
+
+        deleted = delete_bets_by_date_range(start=start, end=end)
+        return {"deleted": deleted, "start": start, "end": end}
+    except ValueError as e:
+        raise HTTPException(status_code=400, detail=str(e))
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 

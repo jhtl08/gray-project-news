@@ -239,6 +239,21 @@ def _parse_seendate(value: Any) -> datetime | None:
         return None
 
 
+
+
+def _parse_iso_datetime(value: Any) -> datetime | None:
+    """Parse an ISO-8601 datetime string into an aware UTC datetime."""
+    text = _clean(value)
+    if text is None:
+        return None
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
 def _article_to_row(article: dict[str, Any], query: str) -> dict[str, Any] | None:
     """Map one GDELT article to INSERT_NEWS params; None if it has no url."""
     url = _clean(article.get("url"))
@@ -806,3 +821,76 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
+
+def delete_news_by_date_range(start: Any = None, end: Any = None) -> int:
+    """Delete news rows whose ``seendate`` falls within [start, end].
+
+    Returns the number of deleted rows. Raises ValueError if both bounds are
+    missing, to avoid accidental full-table deletes.
+    """
+    start_dt = _parse_iso_datetime(start) if start is not None else None
+    end_dt = _parse_iso_datetime(end) if end is not None else None
+    if start_dt is None and end_dt is None and start is None and end is None:
+        raise ValueError("at least one of start or end is required")
+    conditions = []
+    params = []
+    if start_dt is not None:
+        conditions.append("seendate >= %s")
+        params.append(start_dt)
+    if end_dt is not None:
+        conditions.append("seendate <= %s")
+        params.append(end_dt)
+    if not conditions:
+        # Fall back to raw string bounds if ISO parsing failed.
+        if start is not None:
+            conditions.append("seendate >= %s")
+            params.append(start)
+        if end is not None:
+            conditions.append("seendate <= %s")
+            params.append(end)
+    if not conditions:
+        raise ValueError("at least one valid date bound is required")
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"DELETE FROM news WHERE {' AND '.join(conditions)}",
+                params,
+            )
+            deleted = cur.rowcount
+    return deleted
+
+
+def delete_bets_by_date_range(start: Any = None, end: Any = None) -> int:
+    """Delete bets rows whose ``collected_at`` falls within [start, end].
+
+    Returns the number of deleted rows. Raises ValueError if no valid bound
+    is provided.
+    """
+    start_dt = _parse_iso_datetime(start) if start is not None else None
+    end_dt = _parse_iso_datetime(end) if end is not None else None
+    conditions = []
+    params = []
+    if start_dt is not None:
+        conditions.append("collected_at >= %s")
+        params.append(start_dt)
+    if end_dt is not None:
+        conditions.append("collected_at <= %s")
+        params.append(end_dt)
+    if not conditions:
+        if start is not None:
+            conditions.append("collected_at >= %s")
+            params.append(start)
+        if end is not None:
+            conditions.append("collected_at <= %s")
+            params.append(end)
+    if not conditions:
+        raise ValueError("at least one valid date bound is required")
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                f"DELETE FROM bets WHERE {' AND '.join(conditions)}",
+                params,
+            )
+            deleted = cur.rowcount
+    return deleted
