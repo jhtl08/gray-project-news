@@ -17,8 +17,6 @@ uses pgvector embeddings and a 0.7 cosine-similarity threshold.
   impact, and link related news/bets semantically.
 - **Done**: news ingestion/scoring, bets ingestion/scoring, pgvector embeddings,
   match seeds/related items, REST APIs, web UI, deletion by date range, tests.
-- **Remaining**: sports Matches data source (the Matches tab currently handles
-  semantic matching, not sports), deployment/CI, deeper test coverage.
 
 ---
 
@@ -74,6 +72,7 @@ gray-project-news/
 ### 4.2 Environment
 
 `backend/.env`:
+
 ```
 DATABASE_URL=postgresql://pguser:pgpassword@localhost:5432/pgdb
 ```
@@ -89,7 +88,7 @@ tables, migrates columns, and creates HNSW indexes. Called on FastAPI startup.
 sourcecountry, disruptiveness_score, content_vector VECTOR(384), created_at.
 
 **bets**: id, polymarket_id (unique), question, slug, condition_id, outcomes,
-outcome_prices, price, one_hour/day/week/month/year_price_change, volume*,
+outcome_prices, price, one_hour/day/week/month/year_price_change, volume\*,
 liquidity, best_bid/ask, spread, active, closed, archived, is_new, featured,
 category, tags, event_id/title, clob_token_ids, dates, emotionality_score,
 status_quo_deviation, scored_at, collected_at, url, content_vector VECTOR(384).
@@ -175,6 +174,7 @@ npm run dev
 ```
 
 Useful:
+
 - pgAdmin: http://localhost:5050
 - Health: http://localhost:8000/api/health
 - Tests: `cd backend && python -m pytest tests/ -q`
@@ -193,10 +193,10 @@ Useful:
 
 ## 12. Environment variables
 
-| Var           | Where used      | Example                                                  |
-|---------------|-----------------|----------------------------------------------------------|
-| DATABASE_URL  | db_operations   | postgresql://pguser:pgpassword@localhost:5432/pgdb        |
-| HF_HOME       | model cache     | C:/models/hf-cache                                       |
-| USE_TF        | set by laya     | 0 (automatic)                                            |
+| Var          | Where used    | Example                                            |
+| ------------ | ------------- | -------------------------------------------------- |
+| DATABASE_URL | db_operations | postgresql://pguser:pgpassword@localhost:5432/pgdb |
+| HF_HOME      | model cache   | C:/models/hf-cache                                 |
+| USE_TF       | set by laya   | 0 (automatic)                                      |
 
 ---
