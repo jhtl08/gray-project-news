@@ -166,6 +166,16 @@ def init_db() -> None:
             conn.execute("ALTER TABLE news ADD CONSTRAINT news_title_key UNIQUE (title);")
         except Exception:
             conn.rollback()
+        for col_sql in (
+            "ALTER TABLE news ADD COLUMN IF NOT EXISTS content_vector VECTOR;",
+            "ALTER TABLE news ALTER COLUMN content_vector TYPE VECTOR(384) USING content_vector::vector(384);",
+            "ALTER TABLE bets ADD COLUMN IF NOT EXISTS content_vector VECTOR(384);",
+            "ALTER TABLE bets ALTER COLUMN content_vector TYPE VECTOR(384) USING content_vector::vector(384);",
+        ):
+            try:
+                conn.execute(col_sql)
+            except Exception:
+                conn.rollback()
         # Indexes for bets.
         try:
             conn.execute("CREATE INDEX IF NOT EXISTS bets_end_date_idx ON bets (end_date);")
@@ -314,6 +324,39 @@ def _article_to_row(article: dict[str, Any], query: str) -> dict[str, Any] | Non
     }
 
 
+
+
+def _get_embed_texts():
+    """Lazily resolve embedding.embed_texts, or a module-level override."""
+    emb = globals().get("embedding", None)
+    if emb is None:
+        try:
+            import embedding as emb
+            globals()["embedding"] = emb
+        except Exception:
+            globals()["embedding"] = None
+            emb = None
+    if emb is not None:
+        fn = getattr(emb, "embed_texts", None)
+        if callable(fn):
+            return fn
+    fn = globals().get("embed_texts")
+    if callable(fn):
+        return fn
+    return None
+
+
+def _coerce_vector(vector):
+    """Convert a vector-like value to a pgvector literal string or None."""
+    if vector is None:
+        return None
+    if isinstance(vector, str):
+        text = vector.strip()
+        return text or None
+    try:
+        return "[" + ",".join(str(float(x)) for x in vector) + "]"
+    except (TypeError, ValueError):
+        return None
 
 
 def _to_float(value: Any) -> float | None:
@@ -547,6 +590,52 @@ def ingest_json_file(path: Path | str, score: bool = True) -> dict[str, Any]:
                         flush=True,
                     )
 
+    # Generate embeddings for newly inserted rows (title). Failures are logged,
+    # not fatal.
+    embedding_error = None
+    embedding_failed = 0
+    embedding_embedded = 0
+    try:
+        if inserted_rows:
+            ids_to_embed = []
+            titles_to_embed = []
+            for row_res in inserted_rows:
+                inserted_id = row_res[0]
+                inserted_title = row_res[1]
+                if inserted_title and str(inserted_title).strip():
+                    ids_to_embed.append(inserted_id)
+                    titles_to_embed.append(str(inserted_title))
+            if titles_to_embed:
+                embed_fn = _get_embed_texts()
+                if embed_fn is None:
+                    logger.warning("embedding model unavailable; skipping %d news embeddings", len(titles_to_embed))
+                    print(f"WARNING: embedding model unavailable; skipping {len(titles_to_embed)} news embeddings", flush=True)
+                else:
+                    try:
+                        vectors = embed_fn(titles_to_embed)
+                        if vectors is None:
+                            embedding_failed = len(titles_to_embed)
+                            embedding_error = "embed_texts returned None"
+                            logger.warning("embedding failed for %d titles: %s", embedding_failed, embedding_error)
+                            print(f"WARNING: embedding failed for {embedding_failed} titles: {embedding_error}", flush=True)
+                        else:
+                            with get_connection() as conn2:
+                                with conn2.cursor() as cur:
+                                    for inserted_id, vector in zip(ids_to_embed, vectors):
+                                        cur.execute(
+                                            "UPDATE news SET content_vector = %s WHERE id = %s",
+                                            (_coerce_vector(vector), inserted_id),
+                                        )
+                            embedding_embedded = len(titles_to_embed)
+                    except Exception as exc:  # noqa: BLE001
+                        embedding_failed = len(titles_to_embed)
+                        embedding_error = str(exc)
+                        logger.warning("embedding failed for %d titles: %s", embedding_failed, exc)
+                        print(f"WARNING: embedding failed for {embedding_failed} titles: {exc}", flush=True)
+    except Exception as exc:  # noqa: BLE001
+        embedding_error = str(exc)
+        logger.warning("embedding failed: %s", exc)
+
     return {
         "file": str(path),
         "query": query,
@@ -556,6 +645,11 @@ def ingest_json_file(path: Path | str, score: bool = True) -> dict[str, Any]:
         "scoring_error": scoring_error,
         "scoring_failed": scoring_failed,
         "scoring_scored": scoring_scored,
+        "embedding_error": embedding_error,
+        "embedding_failed": embedding_failed,
+        "embedding_embedded": embedding_embedded,
+        "embedded": embedding_embedded,
+        "embeddings": embedding_embedded,
     }
 
 
@@ -745,6 +839,52 @@ def ingest_polymarket_file(path: Path | str, score: bool = True) -> dict[str, An
                     flush=True,
                 )
 
+    # Generate embeddings for newly inserted rows (question). Failures are logged,
+    # not fatal.
+    embedding_error = None
+    embedding_failed = 0
+    embedding_embedded = 0
+    try:
+        if inserted_rows:
+            ids_to_embed = []
+            questions_to_embed = []
+            for row_res in inserted_rows:
+                inserted_id = row_res[0]
+                inserted_question = row_res[1]
+                if inserted_question and str(inserted_question).strip():
+                    ids_to_embed.append(inserted_id)
+                    questions_to_embed.append(str(inserted_question))
+            if questions_to_embed:
+                embed_fn = _get_embed_texts()
+                if embed_fn is None:
+                    logger.warning("embedding model unavailable; skipping %d bet embeddings", len(questions_to_embed))
+                    print(f"WARNING: embedding model unavailable; skipping {len(questions_to_embed)} bet embeddings", flush=True)
+                else:
+                    try:
+                        vectors = embed_fn(questions_to_embed)
+                        if vectors is None:
+                            embedding_failed = len(questions_to_embed)
+                            embedding_error = "embed_texts returned None"
+                            logger.warning("embedding failed for %d questions: %s", embedding_failed, embedding_error)
+                            print(f"WARNING: embedding failed for {embedding_failed} questions: {embedding_error}", flush=True)
+                        else:
+                            with get_connection() as conn2:
+                                with conn2.cursor() as cur:
+                                    for inserted_id, vector in zip(ids_to_embed, vectors):
+                                        cur.execute(
+                                            "UPDATE bets SET content_vector = %s WHERE id = %s",
+                                            (_coerce_vector(vector), inserted_id),
+                                        )
+                            embedding_embedded = len(questions_to_embed)
+                    except Exception as exc:  # noqa: BLE001
+                        embedding_failed = len(questions_to_embed)
+                        embedding_error = str(exc)
+                        logger.warning("embedding failed for %d questions: %s", embedding_failed, exc)
+                        print(f"WARNING: embedding failed for {embedding_failed} questions: {exc}", flush=True)
+    except Exception as exc:  # noqa: BLE001
+        embedding_error = str(exc)
+        logger.warning("embedding failed: %s", exc)
+
     return {
         "file": str(path),
         "total": len(markets),
@@ -753,6 +893,11 @@ def ingest_polymarket_file(path: Path | str, score: bool = True) -> dict[str, An
         "scoring_error": scoring_error,
         "scoring_failed": scoring_failed,
         "scoring_scored": scoring_scored,
+        "embedding_error": embedding_error,
+        "embedding_failed": embedding_failed,
+        "embedding_embedded": embedding_embedded,
+        "embedded": embedding_embedded,
+        "embeddings": embedding_embedded,
     }
 
 
@@ -844,6 +989,156 @@ def backfill_bet_scores(limit: int | None = None) -> dict[str, Any]:
     return {
         "considered": considered,
         "scored": scored,
+        "failed": failed,
+        "errors": errors,
+    }
+
+
+def backfill_news_embeddings(limit: int | None = None) -> dict[str, Any]:
+    """Generate embeddings for news rows whose ``content_vector`` is NULL."""
+    considered = 0
+    embedded = 0
+    failed = 0
+    errors: list[str] = []
+
+    embed_fn = _get_embed_texts()
+    if embed_fn is None:
+        logger.warning("embedding model unavailable; skipping news embedding backfill")
+        print("WARNING: embedding model unavailable; skipping news embedding backfill", flush=True)
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            if limit is None:
+                cur.execute("SELECT id, title FROM news WHERE content_vector IS NULL")
+            else:
+                cur.execute("SELECT id, title FROM news WHERE content_vector IS NULL LIMIT %s", (limit,))
+            rows = cur.fetchall()
+
+    considered = len(rows)
+    items = [
+        (row_id, str(title))
+        for row_id, title in rows
+        if title is not None and str(title).strip()
+    ]
+
+    if embed_fn is None:
+        return {
+            "considered": considered,
+            "embedded": embedded,
+            "scored": embedded,
+            "failed": failed,
+            "errors": errors,
+        }
+
+    batch_size = 16
+    for start in range(0, len(items), batch_size):
+        chunk = items[start : start + batch_size]
+        chunk_ids = [item[0] for item in chunk]
+        chunk_titles = [item[1] for item in chunk]
+        if not chunk_titles:
+            continue
+        try:
+            vectors = embed_fn(chunk_titles)
+            if vectors is None:
+                raise ValueError("embed_texts returned None")
+            if not isinstance(vectors, (list, tuple)) or len(vectors) != len(chunk_titles):
+                raise ValueError(
+                    f"embedder returned {len(vectors) if hasattr(vectors, '__len__') else vectors!r} "
+                    f"vectors for {len(chunk_titles)} titles"
+                )
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    for row_id, vector in zip(chunk_ids, vectors):
+                        cur.execute(
+                            "UPDATE news SET content_vector = %s WHERE id = %s",
+                            (_coerce_vector(vector), row_id),
+                        )
+            embedded += len(chunk_titles)
+        except Exception as exc:  # noqa: BLE001
+            failed += len(chunk_titles)
+            errors.append(str(exc))
+            logger.warning("news embedding failed for %d titles: %s", len(chunk_titles), exc)
+            print(f"WARNING: news embedding failed for {len(chunk_titles)} titles: {exc}", flush=True)
+
+    return {
+        "considered": considered,
+        "embedded": embedded,
+        "scored": embedded,
+        "failed": failed,
+        "errors": errors,
+    }
+
+
+def backfill_bet_embeddings(limit: int | None = None) -> dict[str, Any]:
+    """Generate embeddings for bets rows whose ``content_vector`` is NULL."""
+    considered = 0
+    embedded = 0
+    failed = 0
+    errors: list[str] = []
+
+    embed_fn = _get_embed_texts()
+    if embed_fn is None:
+        logger.warning("embedding model unavailable; skipping bet embedding backfill")
+        print("WARNING: embedding model unavailable; skipping bet embedding backfill", flush=True)
+
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            if limit is None:
+                cur.execute("SELECT id, question FROM bets WHERE content_vector IS NULL")
+            else:
+                cur.execute("SELECT id, question FROM bets WHERE content_vector IS NULL LIMIT %s", (limit,))
+            rows = cur.fetchall()
+
+    considered = len(rows)
+    items = [
+        (row_id, str(question))
+        for row_id, question in rows
+        if question is not None and str(question).strip()
+    ]
+
+    if embed_fn is None:
+        return {
+            "considered": considered,
+            "embedded": embedded,
+            "scored": embedded,
+            "failed": failed,
+            "errors": errors,
+        }
+
+    batch_size = 16
+    for start in range(0, len(items), batch_size):
+        chunk = items[start : start + batch_size]
+        chunk_ids = [item[0] for item in chunk]
+        chunk_questions = [item[1] for item in chunk]
+        if not chunk_questions:
+            continue
+        try:
+            vectors = embed_fn(chunk_questions)
+            if vectors is None:
+                raise ValueError("embed_texts returned None")
+            if not isinstance(vectors, (list, tuple)) or len(vectors) != len(chunk_questions):
+                raise ValueError(
+                    f"embedder returned {len(vectors) if hasattr(vectors, '__len__') else vectors!r} "
+                    f"vectors for {len(chunk_questions)} questions"
+                )
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    for row_id, vector in zip(chunk_ids, vectors):
+                        cur.execute(
+                            "UPDATE bets SET content_vector = %s WHERE id = %s",
+                            (_coerce_vector(vector), row_id),
+                        )
+            embedded += len(chunk_questions)
+        except Exception as exc:  # noqa: BLE001
+            failed += len(chunk_questions)
+            errors.append(str(exc))
+            logger.warning("bet embedding failed for %d questions: %s", len(chunk_questions), exc)
+            print(f"WARNING: bet embedding failed for {len(chunk_questions)} questions: {exc}", flush=True)
+
+    return {
+        "considered": considered,
+        "embedded": embedded,
+        "scored": embedded,
         "failed": failed,
         "errors": errors,
     }
