@@ -32,6 +32,11 @@ class GDELTCollectRequest(BaseModel):
     sort: Optional[str] = "datedesc"
 
 
+class MatchSeedRequest(BaseModel):
+    source_type: str
+    source_id: int
+
+
 @app.on_event("startup")
 def startup_event():
     try:
@@ -311,6 +316,317 @@ def delete_bets(start: Optional[str] = Query(None), end: Optional[str] = Query(N
         return {"deleted": deleted, "start": start, "end": end}
     except ValueError as e:
         raise HTTPException(status_code=400, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+def _coerce_vector_local(vector):
+    try:
+        from db_operations import _coerce_vector
+
+        return _coerce_vector(vector)
+    except Exception:
+        if vector is None:
+            return None
+        if isinstance(vector, str):
+            text = vector.strip()
+            return text or None
+        try:
+            return "[" + ",".join(str(float(x)) for x in vector) + "]"
+        except (TypeError, ValueError):
+            return None
+
+
+def _parse_vector_local(value):
+    try:
+        from db_operations import _parse_vector
+
+        return _parse_vector(value)
+    except Exception:
+        if value is None:
+            return None
+        if isinstance(value, (list, tuple)):
+            return [float(x) for x in value]
+        if isinstance(value, str):
+            text = value.strip()
+            if text.startswith("[") and text.endswith("]"):
+                text = text[1:-1].strip()
+            if not text:
+                return []
+            try:
+                return [float(part.strip()) for part in text.split(",") if part.strip() != ""]
+            except ValueError:
+                return None
+        return None
+
+
+def _get_embed_fn():
+    try:
+        import embedding
+
+        fn = getattr(embedding, "embed_texts", None)
+        if callable(fn):
+            return fn
+    except Exception:
+        pass
+    try:
+        from db_operations import _get_embed_texts
+
+        fn = _get_embed_texts()
+        if callable(fn):
+            return fn
+    except Exception:
+        pass
+    return None
+
+
+@app.post("/api/matches")
+def create_match(req: MatchSeedRequest):
+    try:
+        source_type = (req.source_type or "").strip().lower()
+        if source_type not in ("news", "bet"):
+            raise HTTPException(status_code=400, detail="source_type must be 'news' or 'bet'")
+        source_id = int(req.source_id)
+
+        from db_operations import get_connection
+
+        if source_type == "news":
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        "SELECT title, content_vector FROM news WHERE id = %s",
+                        (source_id,),
+                    )
+                    row = cur.fetchone()
+            if not row:
+                raise HTTPException(status_code=404, detail="news not found")
+            title, content_vector = row[0], row[1]
+            text = title
+            table = "news"
+            vector_col_update = "content_vector"
+        else:
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        "SELECT question, content_vector FROM bets WHERE id = %s",
+                        (source_id,),
+                    )
+                    row = cur.fetchone()
+            if not row:
+                raise HTTPException(status_code=404, detail="bet not found")
+            title, content_vector = row[0], row[1]
+            text = title
+            table = "bets"
+            vector_col_update = "content_vector"
+
+        vector = _parse_vector_local(content_vector)
+        if vector is None:
+            embed_fn = _get_embed_fn()
+            if embed_fn is not None and text:
+                try:
+                    vectors = embed_fn([str(text)])
+                    if vectors:
+                        vector = vectors[0]
+                        # persist back to source row when possible
+                        try:
+                            if source_type == "news":
+                                from db_operations import store_news_vector
+
+                                store_news_vector(source_id, vector)
+                            else:
+                                from db_operations import store_bet_vector
+
+                                store_bet_vector(source_id, vector)
+                        except Exception:
+                            try:
+                                with get_connection() as conn:
+                                    with conn.cursor() as cur:
+                                        cur.execute(
+                                            f"UPDATE {table} SET {vector_col_update} = %s WHERE id = %s",
+                                            (_coerce_vector_local(vector), source_id),
+                                        )
+                            except Exception:
+                                pass
+                except Exception:
+                    vector = None
+
+        import json as _json
+
+        metadata = {"source_type": source_type, "source_id": source_id}
+        try:
+            from db_operations import insert_match_seed
+
+            new_id = insert_match_seed(text=text, vector=vector, metadata=metadata)
+        except Exception:
+            with get_connection() as conn:
+                with conn.cursor() as cur:
+                    cur.execute(
+                        "INSERT INTO match_seeds (text, metadata, content_vector) VALUES (%s, %s, %s) RETURNING id",
+                        (text, _json.dumps(metadata), _coerce_vector_local(vector)),
+                    )
+                    new_id = cur.fetchone()[0]
+
+        return {"id": new_id, "source_type": source_type, "source_id": source_id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/matches")
+def list_matches():
+    try:
+        from db_operations import get_connection
+
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "SELECT id, text, metadata, content_vector, created_at FROM match_seeds ORDER BY id DESC"
+                )
+                rows = cur.fetchall()
+        items = []
+        for row in rows:
+            meta = row[2]
+            if isinstance(meta, str):
+                try:
+                    import json as _json
+
+                    meta = _json.loads(meta)
+                except Exception:
+                    pass
+            source_type = None
+            source_id = None
+            if isinstance(meta, dict):
+                source_type = meta.get("source_type")
+                source_id = meta.get("source_id")
+            items.append(
+                {
+                    "id": row[0],
+                    "text": row[1],
+                    "metadata": meta,
+                    "source_type": source_type,
+                    "source_id": source_id,
+                    "content_vector": _parse_vector_local(row[3]),
+                    "created_at": row[4].isoformat() if hasattr(row[4], "isoformat") else row[4],
+                }
+            )
+        return {"matches": items, "total": len(items)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.delete("/api/matches/{match_id}")
+def delete_match(match_id: int):
+    try:
+        from db_operations import get_connection
+
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute("DELETE FROM match_seeds WHERE id = %s", (match_id,))
+                deleted = cur.rowcount
+        if deleted == 0:
+            raise HTTPException(status_code=404, detail="match not found")
+        return {"deleted": deleted, "id": match_id}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.get("/api/matches/{match_id}/related")
+def match_related(match_id: int):
+    try:
+        from db_operations import get_connection
+
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(
+                    "SELECT text, metadata, content_vector FROM match_seeds WHERE id = %s",
+                    (match_id,),
+                )
+                row = cur.fetchone()
+        if not row:
+            raise HTTPException(status_code=404, detail="match not found")
+        text, metadata, content_vector = row[0], row[1], row[2]
+        if isinstance(metadata, str):
+            try:
+                import json as _json
+
+                metadata = _json.loads(metadata)
+            except Exception:
+                metadata = {}
+        if not isinstance(metadata, dict):
+            metadata = {}
+        source_type = metadata.get("source_type")
+        vector = _parse_vector_local(content_vector)
+        if vector is None and text:
+            embed_fn = _get_embed_fn()
+            if embed_fn is not None:
+                try:
+                    vectors = embed_fn([str(text)])
+                    if vectors:
+                        vector = vectors[0]
+                except Exception:
+                    vector = None
+        if vector is None:
+            return {"items": [], "total": 0}
+
+        vector_literal = _coerce_vector_local(vector)
+        if source_type == "news":
+            # related bets
+            sql = (
+                "SELECT id, question, url, 1 - (content_vector <=> %s::vector) AS similarity "
+                "FROM bets WHERE content_vector IS NOT NULL "
+                "AND 1 - (content_vector <=> %s::vector) >= 0.7 "
+                "ORDER BY content_vector <=> %s::vector LIMIT 5"
+            )
+            params = (vector_literal, vector_literal, vector_literal)
+        else:
+            sql = (
+                "SELECT id, title, url, 1 - (content_vector <=> %s::vector) AS similarity "
+                "FROM news WHERE content_vector IS NOT NULL "
+                "AND 1 - (content_vector <=> %s::vector) >= 0.7 "
+                "ORDER BY content_vector <=> %s::vector LIMIT 5"
+            )
+            params = (vector_literal, vector_literal, vector_literal)
+
+        with get_connection() as conn:
+            with conn.cursor() as cur:
+                cur.execute(sql, params)
+                rows = cur.fetchall()
+        items = []
+        for r in rows:
+            item = {"id": r[0], "similarity": float(r[3]) if r[3] is not None else None}
+            if source_type == "news":
+                item["question"] = r[1]
+                item["url"] = r[2]
+            else:
+                item["title"] = r[1]
+                item["url"] = r[2]
+            items.append(item)
+        return {"items": items, "total": len(items)}
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/news/backfill-embeddings")
+def backfill_news_embeddings_endpoint(limit: Optional[int] = Query(None)):
+    try:
+        from db_operations import backfill_news_embeddings
+
+        return backfill_news_embeddings(limit=limit)
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+
+@app.post("/api/bets/backfill-embeddings")
+def backfill_bets_embeddings_endpoint(limit: Optional[int] = Query(None)):
+    try:
+        from db_operations import backfill_bet_embeddings
+
+        return backfill_bet_embeddings(limit=limit)
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
