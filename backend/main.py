@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Query
+from fastapi import FastAPI, HTTPException, Query, BackgroundTasks
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Optional, Any, List
@@ -50,7 +50,7 @@ def health():
 
 
 @app.post("/api/news/collect")
-def collect_news(req: GDELTCollectRequest):
+def collect_news(req: GDELTCollectRequest, background_tasks: BackgroundTasks):
     try:
         query = req.query if req.query and req.query.strip() else DEFAULT_QUERY
         data = get_gdelt_json(
@@ -64,7 +64,10 @@ def collect_news(req: GDELTCollectRequest):
         try:
             from db_operations import ingest_latest_json
 
-            ingested = ingest_latest_json()
+            ingested = ingest_latest_json(score=False)
+            from db_operations import backfill_disruptiveness_scores
+
+            background_tasks.add_task(backfill_disruptiveness_scores)
         except Exception as e:
             ingest_error = str(e)
 
@@ -131,19 +134,21 @@ def get_news(
 
 
 @app.post("/api/bets/collect")
-def collect_bets(limit: Optional[int] = Query(None)):
+def collect_bets(limit: Optional[int] = Query(None), background_tasks: BackgroundTasks = None):
     try:
         from polymarket_collector import collect_markets
-        from db_operations import ingest_latest_polymarket_file
+        from db_operations import ingest_latest_polymarket_file, backfill_bet_scores
 
         payload = collect_markets()
-        ingested = ingest_latest_polymarket_file()
+        ingested = ingest_latest_polymarket_file(score=False)
+        if background_tasks is not None:
+            background_tasks.add_task(backfill_bet_scores)
         return {
             "success": True,
             "collected": len(payload.get("markets", [])),
             "collected_at": payload.get("collected_at"),
             "ingested": ingested,
-            "scoring": None,
+            "scoring": "scheduled",
         }
     except Exception as e:
         import traceback

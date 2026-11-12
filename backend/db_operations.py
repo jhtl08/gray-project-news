@@ -413,7 +413,7 @@ find_legacy_json_files = find_invalid_json_files
 list_invalid_json_files = find_invalid_json_files
 
 
-def ingest_json_file(path: Path | str) -> dict[str, Any]:
+def ingest_json_file(path: Path | str, score: bool = True) -> dict[str, Any]:
     """Insert the articles of one GDELT JSON file, skipping existing urls.
 
     The query is read from the file's top-level "query" key and stored on
@@ -450,7 +450,8 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
         # ingestion, but they are logged and recorded in the summary.
         scoring_error = None
         scoring_failed = 0
-        if inserted_rows:
+        scoring_scored = 0
+        if score and inserted_rows:
             titles_to_score = []
             ids_to_score = []
             for row_res in inserted_rows:
@@ -473,6 +474,7 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
                                 "UPDATE news SET disruptiveness_score = %s WHERE id = %s",
                                 (int(score), inserted_id),
                             )
+                    scoring_scored = len(titles_to_score)
                 except Exception as exc:  # noqa: BLE001
                     scoring_failed = len(titles_to_score)
                     scoring_error = str(exc)
@@ -492,6 +494,7 @@ def ingest_json_file(path: Path | str) -> dict[str, Any]:
         "skipped": len(articles) - inserted,
         "scoring_error": scoring_error,
         "scoring_failed": scoring_failed,
+        "scoring_scored": scoring_scored,
     }
 
 
@@ -563,12 +566,12 @@ def backfill_disruptiveness_scores(limit: int | None = None) -> dict[str, Any]:
     }
 
 
-def ingest_latest_json(directory: Path | str = DATA_DIR) -> dict[str, Any]:
+def ingest_latest_json(directory: Path | str = DATA_DIR, score: bool = True) -> dict[str, Any]:
     """Ingest the most recent JSON file in `directory`."""
-    return ingest_json_file(latest_json_file(directory))
+    return ingest_json_file(latest_json_file(directory), score=score)
 
 
-def ingest_polymarket_file(path: Path | str) -> dict[str, Any]:
+def ingest_polymarket_file(path: Path | str, score: bool = True) -> dict[str, Any]:
     """Insert markets of one Polymarket JSON file, skipping existing ids.
 
     Validates that the file contains a top-level ``markets`` list. Returns a
@@ -615,7 +618,7 @@ def ingest_polymarket_file(path: Path | str) -> dict[str, Any]:
     scoring_error = None
     scoring_failed = 0
     scoring_scored = 0
-    if inserted_rows:
+    if score and inserted_rows:
         ids_to_score = []
         markets_to_score = []
         for row_res in inserted_rows:
@@ -785,9 +788,9 @@ def backfill_bet_scores(limit: int | None = None) -> dict[str, Any]:
     }
 
 
-def ingest_latest_polymarket_file(directory: Path | str = POLYMARKET_DATA_DIR) -> dict[str, Any]:
+def ingest_latest_polymarket_file(directory: Path | str = POLYMARKET_DATA_DIR, score: bool = True) -> dict[str, Any]:
     """Ingest the most recent Polymarket JSON file in `directory`."""
-    return ingest_polymarket_file(latest_json_file(directory))
+    return ingest_polymarket_file(latest_json_file(directory), score=score)
 
 
 def main() -> None:
