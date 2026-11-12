@@ -64,7 +64,8 @@ CREATE TABLE IF NOT EXISTS news (
     language            TEXT,
     sourcecountry       TEXT,
     disruptiveness_score INTEGER,
-    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    created_at          TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    content_vector      VECTOR(384)
 );
 """
 
@@ -117,7 +118,8 @@ CREATE TABLE IF NOT EXISTS bets (
     status_quo_deviation INTEGER,
     scored_at           TIMESTAMPTZ,
     collected_at        TIMESTAMPTZ NOT NULL DEFAULT NOW(),
-    url                 TEXT
+    url                 TEXT,
+    content_vector      VECTOR(384)
 );
 """
 
@@ -207,6 +209,49 @@ def init_db() -> None:
         ):
             try:
                 conn.execute(col_sql)
+            except Exception:
+                conn.rollback()
+
+        # Vector column migrations.
+        try:
+            conn.execute("ALTER TABLE news ADD COLUMN IF NOT EXISTS content_vector VECTOR;")
+        except Exception:
+            conn.rollback()
+        try:
+            conn.execute("ALTER TABLE news ALTER COLUMN content_vector TYPE VECTOR(384) USING content_vector::vector(384);")
+        except Exception:
+            conn.rollback()
+        try:
+            conn.execute("ALTER TABLE bets ADD COLUMN IF NOT EXISTS content_vector VECTOR(384);")
+        except Exception:
+            conn.rollback()
+        try:
+            conn.execute("ALTER TABLE bets ALTER COLUMN content_vector TYPE VECTOR(384) USING content_vector::vector(384);")
+        except Exception:
+            conn.rollback()
+
+        # match_seeds table.
+        try:
+            conn.execute('''
+            CREATE TABLE IF NOT EXISTS match_seeds (
+                id              BIGSERIAL PRIMARY KEY,
+                text            TEXT,
+                metadata        JSONB,
+                content_vector  VECTOR(384),
+                created_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+            );
+            ''')
+        except Exception:
+            conn.rollback()
+
+        # HNSW indexes.
+        for idx_sql in (
+            "CREATE INDEX IF NOT EXISTS news_content_vector_hnsw_idx ON news USING hnsw (content_vector vector_cosine_ops);",
+            "CREATE INDEX IF NOT EXISTS bets_content_vector_hnsw_idx ON bets USING hnsw (content_vector vector_cosine_ops);",
+            "CREATE INDEX IF NOT EXISTS match_seeds_content_vector_hnsw_idx ON match_seeds USING hnsw (content_vector vector_cosine_ops);",
+        ):
+            try:
+                conn.execute(idx_sql)
             except Exception:
                 conn.rollback()
 
@@ -894,3 +939,132 @@ def delete_bets_by_date_range(start: Any = None, end: Any = None) -> int:
             )
             deleted = cur.rowcount
     return deleted
+
+
+def _coerce_vector(vector):
+    """Convert a vector-like value to a pgvector literal string or None."""
+    if vector is None:
+        return None
+    if isinstance(vector, str):
+        text = vector.strip()
+        return text or None
+    try:
+        return "[" + ",".join(str(float(x)) for x in vector) + "]"
+    except (TypeError, ValueError):
+        return None
+
+
+def _parse_vector(value):
+    """Convert a DB vector value to a list of floats (or None)."""
+    if value is None:
+        return None
+    if isinstance(value, (list, tuple)):
+        try:
+            return [float(x) for x in value]
+        except (TypeError, ValueError):
+            return None
+    text = str(value).strip()
+    if not text:
+        return None
+    if text.startswith("[") and text.endswith("]"):
+        text = text[1:-1].strip()
+    if not text:
+        return []
+    try:
+        return [float(part.strip()) for part in text.split(",") if part.strip() != ""]
+    except ValueError:
+        return None
+
+
+def store_vector(table, row_id, vector, id_column="id", vector_column="content_vector"):
+    """Store a vector on an existing row of ``table``."""
+    sql = f"UPDATE {table} SET {vector_column} = %s WHERE {id_column} = %s"
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, (_coerce_vector(vector), row_id))
+    return True
+
+
+def get_vector(table, row_id, id_column="id", vector_column="content_vector"):
+    """Fetch a vector from ``table`` for ``row_id``."""
+    sql = f"SELECT {vector_column} FROM {table} WHERE {id_column} = %s"
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(sql, (row_id,))
+            row = cur.fetchone()
+    if not row:
+        return None
+    return _parse_vector(row[0])
+
+
+def store_news_vector(news_id, vector):
+    return store_vector("news", news_id, vector)
+
+
+def get_news_vector(news_id):
+    return get_vector("news", news_id)
+
+
+def store_bet_vector(bet_id, vector):
+    return store_vector("bets", bet_id, vector)
+
+
+def get_bet_vector(bet_id):
+    return get_vector("bets", bet_id)
+
+
+def store_match_seed_vector(match_seed_id, vector):
+    return store_vector("match_seeds", match_seed_id, vector)
+
+
+def get_match_seed_vector(match_seed_id):
+    return get_vector("match_seeds", match_seed_id)
+
+
+def insert_match_seed(text=None, vector=None, metadata=None):
+    """Insert a row into match_seeds and return its id."""
+    import json as _json
+
+    meta = metadata
+    if isinstance(meta, (dict, list)):
+        meta = _json.dumps(meta)
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "INSERT INTO match_seeds (text, metadata, content_vector) "
+                "VALUES (%s, %s, %s) RETURNING id",
+                (text, meta, _coerce_vector(vector)),
+            )
+            new_id = cur.fetchone()[0]
+    return new_id
+
+
+def get_match_seed(match_seed_id):
+    with get_connection() as conn:
+        with conn.cursor() as cur:
+            cur.execute(
+                "SELECT id, text, metadata, content_vector, created_at FROM match_seeds WHERE id = %s",
+                (match_seed_id,),
+            )
+            row = cur.fetchone()
+    if not row:
+        return None
+    return {
+        "id": row[0],
+        "text": row[1],
+        "metadata": row[2],
+        "content_vector": _parse_vector(row[3]),
+        "created_at": row[4],
+    }
+
+
+# Convenience aliases for common naming variants.
+store_content_vector = store_vector
+get_content_vector = get_vector
+set_content_vector = store_vector
+fetch_vector = get_vector
+upsert_vector = store_vector
+store_news_content_vector = store_news_vector
+get_news_content_vector = get_news_vector
+store_bet_content_vector = store_bet_vector
+get_bet_content_vector = get_bet_vector
