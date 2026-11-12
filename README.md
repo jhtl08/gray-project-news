@@ -279,8 +279,9 @@ CORS is configured for the Vite dev origin. No auth, no proxy in Vite config
 1. **Bets feature implemented**: Polymarket markets are collected, stored with
    price-change metrics, scored with Laya for emotionality/status-quo deviation
    (threshold-gated), and browsable in the Bets tab. Remaining: Matches tab.
-2. **Matches tab** (`Matches.jsx`) is a placeholder. No match data source or
-   schema (still pending).
+2. **Matches feature implemented**: news and bets have pgvector embeddings;
+   users can mark items as match seeds and view top 5 semantically related
+   items from the opposite type (threshold 0.7).
 3. **Vector processing is not implemented**:
    - `content_vector VECTOR` column exists (from first commit) but is never
      populated (0 non-null rows).
@@ -444,3 +445,31 @@ market. Moderate threshold gates scoring. Backfill available.
 ### 11.5 Frontend (`frontend/src/Bets.jsx`)
 
 Single view with inline collect controls, filters, sort, pagination, and table.
+
+---
+
+## 12. Matches functionality (done)
+
+### 12.1 Embeddings
+
+- `backend/embedding.py` uses `intfloat/multilingual-e5-small` via `transformers`
+  with average pooling and L2 normalization (384 dimensions).
+- `news.content_vector` and `bets.content_vector` are `VECTOR(384)` with HNSW
+  indexes.
+- Embeddings are generated during ingestion and via backfill endpoints.
+
+### 12.2 Match seeds
+
+- `POST /api/matches` creates a seed from a news or bet item.
+- `GET /api/matches` lists seeds.
+- `DELETE /api/matches/{id}` removes a seed.
+
+### 12.3 Related items
+
+- `GET /api/matches/{id}/related` returns the top 5 items from the opposite
+  type with cosine similarity >= 0.7.
+
+### 12.4 Frontend
+
+- News and Bets tables have a "Match" button.
+- Matches tab lists seeds and shows related items with similarity scores.
