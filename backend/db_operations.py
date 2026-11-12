@@ -159,20 +159,20 @@ def init_db() -> None:
         try:
             conn.execute("ALTER TABLE news ADD COLUMN IF NOT EXISTS disruptiveness_score INTEGER;")
         except Exception:
-            pass
+            conn.rollback()
         try:
             conn.execute("ALTER TABLE news ADD CONSTRAINT news_title_key UNIQUE (title);")
         except Exception:
-            pass
+            conn.rollback()
         # Indexes for bets.
         try:
             conn.execute("CREATE INDEX IF NOT EXISTS bets_end_date_idx ON bets (end_date);")
         except Exception:
-            pass
+            conn.rollback()
         try:
             conn.execute("CREATE INDEX IF NOT EXISTS bets_active_idx ON bets (active);")
         except Exception:
-            pass
+            conn.rollback()
 
         for col_sql in (
             "ALTER TABLE bets ADD COLUMN IF NOT EXISTS condition_id TEXT;",
@@ -207,7 +207,7 @@ def init_db() -> None:
             try:
                 conn.execute(col_sql)
             except Exception:
-                pass
+                conn.rollback()
 
 
 def latest_json_file(directory: Path | str = DATA_DIR) -> Path:
