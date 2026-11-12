@@ -20,6 +20,8 @@ function formatChange(value) {
 function Bets() {
   const [bets, setBets] = useState([]);
   const [betsTotal, setBetsTotal] = useState(0);
+  const [matchingId, setMatchingId] = useState(null);
+  const [matchFeedback, setMatchFeedback] = useState(null);
   const [betsLoading, setBetsLoading] = useState(false);
 
   const [activeOnly, setActiveOnly] = useState(false);
@@ -181,6 +183,25 @@ function Bets() {
     }
   };
 
+  const handleMatch = async (id) => {
+    setMatchingId(id);
+    setMatchFeedback(null);
+    try {
+      const res = await fetch(`${API_BASE}/api/matches`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source_type: "bet", source_id: id }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      setMatchFeedback({ type: "success", message: `Matched bet ${id} (seed ${data.id}).` });
+    } catch (err) {
+      setMatchFeedback({ type: "error", message: err.message || "Match failed" });
+    } finally {
+      setMatchingId(null);
+    }
+  };
+
   return (
     <div className="news-container">
       <section className="collect-section">
@@ -306,6 +327,9 @@ function Bets() {
           <div className="placeholder">No bets found.</div>
         ) : (
           <>
+            {matchFeedback && (
+              <div className={`feedback ${matchFeedback.type}`}>{matchFeedback.message}</div>
+            )}
             <div className="table-container">
               <table className="news-table">
                 <thead>
@@ -320,6 +344,7 @@ function Bets() {
                     <th>Tags</th>
                     <th>End Date</th>
                     <th>Link</th>
+                    <th>Match</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -346,6 +371,15 @@ function Bets() {
                         ) : (
                           "-"
                         )}
+                      </td>
+                      <td>
+                        <button
+                          className="submit-button"
+                          onClick={() => handleMatch(item.id)}
+                          disabled={matchingId === item.id}
+                        >
+                          {matchingId === item.id ? "Matching..." : "Match"}
+                        </button>
                       </td>
                     </tr>
                   ))}
