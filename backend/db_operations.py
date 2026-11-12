@@ -203,6 +203,7 @@ def init_db() -> None:
             "ALTER TABLE bets ADD COLUMN IF NOT EXISTS status_quo_deviation INTEGER;",
             "ALTER TABLE bets ADD COLUMN IF NOT EXISTS scored_at TIMESTAMPTZ;",
             "ALTER TABLE bets ADD COLUMN IF NOT EXISTS url TEXT;",
+            "ALTER TABLE bets ADD COLUMN IF NOT EXISTS collected_at TIMESTAMPTZ NOT NULL DEFAULT NOW();",
         ):
             try:
                 conn.execute(col_sql)
