@@ -1,0 +1,176 @@
+/* ==========================================================================
+   Base
+   --------------------------------------------------------------------------
+   Root type, a small reset, focus, selection and the utilities the shell
+   needs. Component styling lives in components.css, layout in views.css.
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: dark;
+  scroll-padding-block-start: var(--header-h);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--text-base-lh);
+  color: var(--color-text);
+  background: var(--color-bg-base);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+}
+
+h1 {
+  font-size: var(--text-2xl);
+  line-height: var(--text-2xl-lh);
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: var(--text-xl);
+  line-height: var(--text-xl-lh);
+  text-wrap: balance;
+}
+
+h3 {
+  font-size: var(--text-lg);
+  line-height: var(--text-lg-lh);
+}
+
+p {
+  margin: 0;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+dl,
+dd {
+  margin: 0;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration-thickness: from-font;
+  text-underline-offset: from-font;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  padding: 0;
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+time {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Keyboard focus. The browser ring is replaced only because the project
+   surface is a custom dark color; the ring color is measured at 8.21:1
+   against the surface. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: var(--color-on-accent);
+}
+
+
+/* The shell hides panels and disclosure content with [hidden], so the
+   attribute must win over a component's own display rule. */
+[hidden] {
+  display: none !important;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  inset-inline-start: var(--gutter);
+  inset-block-start: var(--space-2);
+  z-index: 100;
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  color: var(--color-on-accent);
+  background: var(--color-accent-fill);
+  border-radius: var(--radius-md);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus-visible {
+  transform: translateY(0);
+}
+
+/* Movement is opt-in everywhere it is used, but scrolling and any inherited
+   animation still respect the preference. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .skip-link {
+    transform: none;
+    inset-block-start: calc(var(--space-2) * -4);
+  }
+
+  .skip-link:focus-visible {
+    inset-block-start: var(--space-2);
+  }
+}

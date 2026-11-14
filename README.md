@@ -42,11 +42,15 @@ gray-project-news/
 │   ├── tests/
 │   └── .venv/
 └── frontend/
+    ├── public/            # favicon
     └── src/
-        ├── App.jsx
+        ├── App.jsx        # shell, tablist, live regions
         ├── News.jsx
         ├── Bets.jsx
-        └── Matches.jsx
+        ├── Matches.jsx
+        ├── components/    # Button, Dialog, Field, Tabs, states and meters
+        ├── lib/           # api, formatting, hooks
+        └── styles/        # tokens, base, components, views
 ```
 
 ---
@@ -146,11 +150,13 @@ created_at, unique(source_type, source_id).
 
 ## 9. Frontend
 
-- Tabs: News, Bets, Matches.
-- News: collect + query subtabs, delete by date range.
-- Bets: single view with inline collect, filters, sort, pagination, delete.
-- Matches: seeds + related items.
-- Dark theme; `npm run lint` and `npm run build` pass.
+- Shell: sticky header with a tablist for News, Bets and Matches. Panels mount on first visit and stay mounted, so sort and filter state survives a tab switch. A skip link, a roving-tabindex tablist and always-mounted live regions cover keyboard and screen-reader use.
+- Design system: `src/styles/tokens.css` holds primitive ramps and the semantic tokens that components use. Every text pair is measured against the surface it renders on; `src/styles/components.css` and `src/styles/views.css` contain no raw color values.
+- News: one page with Collect in a dialog and a table at 760px, cards below it. The toolbar carries server-side sort and a filter over the loaded rows. Unscored stories show a Pending badge, and range delete sits behind a two-step confirm.
+- Bets: direct collect, toggle chips for active and new markets, and debounced tag and minimum-move filters. Sorting and pagination are server-side. Prices render as probabilities and moves as signed percentages, volume is compact currency, and tags parse into chips. The table switches to cards below 1024px.
+- Matches: seeds on the left and related items on the right at 1024px and up, stacked below. Seeds can be removed, related items show rank and similarity, and a successful match links straight to its seed.
+- Motion: press, hover and dialog entry only, all gated behind `prefers-reduced-motion`; hover styles sit behind `(hover: hover)`.
+- `npm run lint` and `npm run build` pass.
 
 ---
 

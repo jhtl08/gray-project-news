@@ -1,435 +1,673 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Button from "./components/Button.jsx";
+import DeleteRangeDialog from "./components/DeleteRangeDialog.jsx";
+import EmptyState from "./components/EmptyState.jsx";
+import ErrorState from "./components/ErrorState.jsx";
+import Feedback from "./components/Feedback.jsx";
+import Field from "./components/Field.jsx";
+import Icon from "./components/Icon.jsx";
+import Meter from "./components/Meter.jsx";
+import Pagination from "./components/Pagination.jsx";
+import RecordLink from "./components/RecordLink.jsx";
+import Skeleton from "./components/Skeleton.jsx";
+import { apiFetch, apiPost } from "./lib/api.js";
+import { useAnnounce } from "./lib/announce.js";
+import {
+  deltaTone,
+  formatCompactCurrency,
+  formatCount,
+  formatDate,
+  formatDelta,
+  formatProbability,
+  formatScore,
+  parseTags,
+} from "./lib/format.js";
+import { useDebouncedValue, useMediaQuery } from "./lib/hooks.js";
 
-const API_BASE = "http://localhost:8000";
+// Nine columns need more room than the four-column news table, so this view
+// switches to cards later. The width comes from the content, not a device.
+const WIDE_QUERY = "(min-width: 1024px)";
 
-function formatNumber(value) {
-  if (value === null || value === undefined || value === "") return "-";
-  const num = Number(value);
-  if (Number.isNaN(num)) return String(value);
-  return num.toLocaleString(undefined, { maximumFractionDigits: 4 });
+const SORT_OPTIONS = [
+  { value: "collected_at", label: "Collected at" },
+  { value: "question", label: "Question" },
+  { value: "volume", label: "Volume" },
+  { value: "one_day_price_change", label: "1D change" },
+  { value: "one_week_price_change", label: "1W change" },
+  { value: "one_month_price_change", label: "1M change" },
+  { value: "emotionality_score", label: "Unrest" },
+  { value: "status_quo_deviation", label: "Status quo" },
+  { value: "end_date", label: "End date" },
+];
+
+function FilterChip({ pressed, onClick, children }) {
+  return (
+    <button type="button" className="chip" aria-pressed={pressed} onClick={onClick}>
+      {pressed ? <Icon name="check" size={14} /> : null}
+      {children}
+    </button>
+  );
 }
 
-function formatChange(value) {
-  if (value === null || value === undefined || value === "") return "-";
-  const num = Number(value);
-  if (Number.isNaN(num)) return String(value);
-  const sign = num > 0 ? "+" : "";
-  return `${sign}${num.toFixed(4)}`;
+function Delta({ value }) {
+  const text = formatDelta(value);
+  if (text === null) return <span className="delta delta--flat">—</span>;
+
+  const tone = deltaTone(value);
+
+  return (
+    <span className={`delta delta--${tone}`}>
+      {tone === "flat" ? null : (
+        <Icon name={tone === "up" ? "arrowUp" : "arrowDown"} size={12} />
+      )}
+      {text}
+    </span>
+  );
 }
 
-function Bets() {
-  const [bets, setBets] = useState([]);
-  const [betsTotal, setBetsTotal] = useState(0);
-  const [matchingId, setMatchingId] = useState(null);
-  const [matchFeedback, setMatchFeedback] = useState(null);
-  const [betsLoading, setBetsLoading] = useState(false);
+function Unrest({ value }) {
+  const score = formatScore(value);
+  if (score === null) return <span className="badge badge--warning">Pending</span>;
+  return <Meter value={value} format={formatScore} />;
+}
+
+function StatusBadge({ item }) {
+  if (item.status_quo_deviation === null || item.status_quo_deviation === undefined) return null;
+
+  const deviates = Boolean(Number(item.status_quo_deviation));
+
+  return (
+    <span className={`badge ${deviates ? "badge--accent" : "badge--neutral"}`}>
+      <Icon name={deviates ? "alert" : "check"} size={12} />
+      {deviates ? "Unsettling" : "Status quo"}
+    </span>
+  );
+}
+
+function MarketBadges({ item }) {
+  const tags = parseTags(item.tags);
+
+  return (
+    <div className="record-badges">
+      <StatusBadge item={item} />
+      {item.is_new ? <span className="badge badge--accent">New</span> : null}
+      {item.active ? (
+        <span className="badge badge--success">Active</span>
+      ) : item.closed ? (
+        <span className="badge badge--neutral">Closed</span>
+      ) : null}
+      {tags.map((tag) => (
+        <span className="badge badge--neutral tag" key={tag}>
+          {tag}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function Bets({ onNavigate }) {
+  const announce = useAnnounce();
+  const wide = useMediaQuery(WIDE_QUERY);
 
   const [activeOnly, setActiveOnly] = useState(false);
   const [newOnly, setNewOnly] = useState(false);
   const [tag, setTag] = useState("");
-  const [minAbsChange, setMinAbsChange] = useState("");
+  const [minMove, setMinMove] = useState("");
 
-  const [orderBy, setOrderBy] = useState("collected_at");
-  const [orderDir, setOrderDir] = useState("desc");
-  const [limit] = useState(100);
+  const debouncedTag = useDebouncedValue(tag, 250);
+  const debouncedMinMove = useDebouncedValue(minMove, 250);
+
+  const [sort, setSort] = useState("collected_at");
+  const [direction, setDirection] = useState("desc");
   const [offset, setOffset] = useState(0);
+  const [loadedOffset, setLoadedOffset] = useState(0);
+  const [limit, setLimit] = useState(100);
+  const [reloadToken, setReloadToken] = useState(0);
+
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   const [collectLoading, setCollectLoading] = useState(false);
-  const [collectFeedback, setCollectFeedback] = useState(null);
+  const [rowState, setRowState] = useState({});
+  const [lastSeed, setLastSeed] = useState(null);
+  const [pageFeedback, setPageFeedback] = useState(null);
+  const [manageOpen, setManageOpen] = useState(false);
 
-  const [deleteStart, setDeleteStart] = useState("");
-  const [deleteEnd, setDeleteEnd] = useState("");
-  const [deleteLoading, setDeleteLoading] = useState(false);
-  const [deleteFeedback, setDeleteFeedback] = useState(null);
-
-  const fetchBets = async () => {
-    setBetsLoading(true);
-    try {
-      const params = new URLSearchParams({
-        limit: limit.toString(),
-        offset: offset.toString(),
-        order_by: orderBy,
-        order_dir: orderDir,
-      });
-      if (activeOnly) params.set("active", "true");
-      if (newOnly) params.set("is_new", "true");
-      if (tag.trim()) params.set("tag", tag.trim());
-      if (minAbsChange.trim()) params.set("min_abs_change", minAbsChange.trim());
-
-      const res = await fetch(`${API_BASE}/api/bets?${params}`);
-      if (!res.ok) {
-        let errMsg = "Failed to fetch bets";
-        try {
-          const err = await res.json();
-          if (err.detail) {
-            if (typeof err.detail === "string") {
-              errMsg = err.detail;
-            } else if (typeof err.detail === "object") {
-              errMsg = err.detail.error || JSON.stringify(err.detail);
-            }
-          }
-        } catch {
-          errMsg = `${res.status} ${res.statusText}`.trim() || errMsg;
-        }
-        throw new Error(errMsg);
-      }
-      const data = await res.json();
-      setBets(data.bets || []);
-      setBetsTotal(data.total || 0);
-    } catch (err) {
-      console.error(err);
-      if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
-        console.error(
-          `Network error: Could not reach backend at ${API_BASE}. Is the API server running?`,
-        );
-      }
-    } finally {
-      setBetsLoading(false);
-    }
-  };
+  const tagParam = debouncedTag.trim();
+  const minMoveNumber = Number(debouncedMinMove);
+  const minMoveParam =
+    debouncedMinMove.trim() && Number.isFinite(minMoveNumber) && minMoveNumber > 0
+      ? minMoveNumber / 100
+      : null;
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
-    fetchBets();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orderBy, orderDir, offset, activeOnly, newOnly, tag, minAbsChange]);
+    const controller = new AbortController();
+    const params = new URLSearchParams({
+      limit: String(limit),
+      offset: String(offset),
+      order_by: sort,
+      order_dir: direction,
+    });
+
+    if (activeOnly) params.set("active", "true");
+    if (newOnly) params.set("is_new", "true");
+    if (tagParam) params.set("tag", tagParam);
+    if (minMoveParam !== null) params.set("min_abs_change", String(minMoveParam));
+
+    setLoading(true);
+    setError(null);
+
+    apiFetch(`/api/bets?${params}`, { signal: controller.signal })
+      .then((data) => {
+        const loaded = data?.bets ?? [];
+        const count = data?.total ?? 0;
+        setRows(loaded);
+        setTotal(count);
+        setLoadedOffset(offset);
+        setLoading(false);
+        announce(`Showing ${formatCount(count)} markets.`);
+      })
+      .catch((requestError) => {
+        if (requestError.name === "AbortError") return;
+        setError(requestError.message);
+        setLoading(false);
+        announce(`Can't load bets. ${requestError.message}`, { urgent: true });
+      });
+
+    return () => controller.abort();
+  }, [
+    activeOnly,
+    newOnly,
+    tagParam,
+    minMoveParam,
+    sort,
+    direction,
+    offset,
+    limit,
+    reloadToken,
+    announce,
+  ]);
+
+  const reload = () => setReloadToken((token) => token + 1);
+
+  const hasFilters =
+    activeOnly || newOnly || tag.trim().length > 0 || minMove.trim().length > 0;
+
+  const clearFilters = () => {
+    setActiveOnly(false);
+    setNewOnly(false);
+    setTag("");
+    setMinMove("");
+    setOffset(0);
+  };
+
+  const changeSort = (event) => {
+    setSort(event.target.value);
+    setOffset(0);
+  };
+
+  const changeDirection = (event) => {
+    setDirection(event.target.value);
+    setOffset(0);
+  };
+
+  const changeLimit = (nextLimit) => {
+    setLimit(nextLimit);
+    setOffset(0);
+  };
 
   const handleCollect = async () => {
     setCollectLoading(true);
-    setCollectFeedback(null);
+    setPageFeedback(null);
+
     try {
-      const res = await fetch(`${API_BASE}/api/bets/collect`, {
-        method: "POST",
-      });
-      if (!res.ok) {
-        let errMsg = "Request failed";
-        try {
-          const err = await res.json();
-          if (err.detail) {
-            if (typeof err.detail === "string") {
-              errMsg = err.detail;
-            } else if (typeof err.detail === "object") {
-              errMsg = err.detail.error || JSON.stringify(err.detail);
-              if (err.detail.traceback) {
-                console.error("Backend traceback:", err.detail.traceback);
-              }
-            }
-          }
-        } catch {
-          errMsg = res.statusText || errMsg;
-        }
-        throw new Error(errMsg);
+      const data = await apiPost("/api/bets/collect");
+      let message = `Collected ${formatCount(data?.collected)} markets.`;
+
+      if (data?.ingested?.inserted !== undefined) {
+        message += ` ${formatCount(data.ingested.inserted)} new, ${formatCount(
+          data.ingested.skipped,
+        )} already stored.`;
       }
-      const data = await res.json();
-      let message = `Success! Collected ${data.collected} bets`;
-      if (data.collected_at) {
-        message += ` (collected at ${data.collected_at})`;
-      }
-      if (data.ingested) {
-        if (typeof data.ingested === "object") {
-          if (data.ingested.inserted !== undefined) {
-            message += ` | Ingested ${data.ingested.inserted} new, skipped ${data.ingested.skipped} existing.`;
-          } else {
-            message += ` | Ingested: ${JSON.stringify(data.ingested)}`;
-          }
-        }
-      }
-      setCollectFeedback({ type: "success", message });
+
+      setPageFeedback({ tone: "success", message });
+      announce(message);
       setOffset(0);
-      fetchBets();
-    } catch (err) {
-      let message = err.message || "Error occurred";
-      if (err instanceof TypeError && message.includes("Failed to fetch")) {
-        message = `Network error: Could not reach backend at ${API_BASE}. Is the API server running?`;
-      }
-      setCollectFeedback({ type: "error", message });
+      reload();
+    } catch (requestError) {
+      const message = `Collection failed. ${requestError.message}`;
+      setPageFeedback({ tone: "danger", message });
+      announce(message, { urgent: true });
     } finally {
       setCollectLoading(false);
     }
   };
 
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "-";
-    try {
-      return new Date(dateStr).toLocaleString();
-    } catch {
-      return dateStr;
-    }
-  };
+  const findRelated = async (item) => {
+    setRowState((previous) => ({ ...previous, [item.id]: { state: "pending" } }));
 
-
-  const handleDelete = async () => {
-    if (!deleteStart && !deleteEnd) {
-      setDeleteFeedback({ type: "error", message: "Provide at least one date." });
-      return;
-    }
-    if (!window.confirm("Delete bets rows in the selected date range?")) return;
-    setDeleteLoading(true);
-    setDeleteFeedback(null);
     try {
-      const params = new URLSearchParams();
-      if (deleteStart) params.set("start", deleteStart);
-      if (deleteEnd) params.set("end", deleteEnd);
-      const res = await fetch(`${API_BASE}/api/bets?${params}`, { method: "DELETE" });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      setDeleteFeedback({ type: "success", message: `Deleted ${data.deleted} rows.` });
-      setOffset(0);
-      fetchBets();
-    } catch (err) {
-      setDeleteFeedback({ type: "error", message: err.message || "Delete failed" });
-    } finally {
-      setDeleteLoading(false);
-    }
-  };
-
-  const handleMatch = async (id) => {
-    setMatchingId(id);
-    setMatchFeedback(null);
-    try {
-      const res = await fetch(`${API_BASE}/api/matches`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source_type: "bet", source_id: id }),
+      const data = await apiPost("/api/matches", {
+        source_type: "bet",
+        source_id: item.id,
       });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      setMatchFeedback({ type: "success", message: `Matched bet ${id} (seed ${data.id}).` });
-    } catch (err) {
-      setMatchFeedback({ type: "error", message: err.message || "Match failed" });
-    } finally {
-      setMatchingId(null);
+
+      setRowState((previous) => ({
+        ...previous,
+        [item.id]: { state: "success", seedId: data?.id },
+      }));
+      setLastSeed({ id: data?.id, title: item.question });
+      announce(`Seed created for ${item.question}.`);
+    } catch (requestError) {
+      setRowState((previous) => ({
+        ...previous,
+        [item.id]: { state: "error", message: requestError.message },
+      }));
+      announce(`Match failed. ${requestError.message}`, { urgent: true });
     }
   };
+
+  const renderAction = (item, compact) => {
+    const state = rowState[item.id];
+
+    if (state?.state === "success") {
+      return (
+        <span className="row-note row-note--success">
+          <Icon name="check" size={14} /> Seed created
+        </span>
+      );
+    }
+
+    if (state?.state === "pending") {
+      return <span className="row-note">Matching…</span>;
+    }
+
+    if (state?.state === "error") {
+      return (
+        <span className="row-note-group">
+          <span className="row-note row-note--danger">{state.message}</span>
+          <Button size="sm" onClick={() => findRelated(item)}>
+            Retry
+          </Button>
+        </span>
+      );
+    }
+
+    return (
+      <Button
+        variant="ghost"
+        size={compact ? "md" : "sm"}
+        icon="target"
+        iconOnly={!compact}
+        label={`Find related news for “${item.question}”`}
+        onClick={() => findRelated(item)}
+      >
+        Find related news
+      </Button>
+    );
+  };
+
+  const listState = (() => {
+    if (rows.length === 0 && loading) {
+      return (
+        <div className="table-panel">
+          <Skeleton rows={6} />
+        </div>
+      );
+    }
+
+    if (rows.length === 0 && error) {
+      return (
+        <ErrorState
+          title="Can't load bets"
+          message={error}
+          onRetry={reload}
+          retrying={loading}
+        />
+      );
+    }
+
+    if (rows.length === 0 && hasFilters) {
+      return (
+        <EmptyState
+          title="No markets match these filters"
+          action={<Button onClick={clearFilters}>Clear filters</Button>}
+        >
+          Every filter is applied by the API. Clearing them shows the full list again.
+        </EmptyState>
+      );
+    }
+
+    if (rows.length === 0) {
+      return (
+        <EmptyState
+          title="No markets collected yet"
+          action={
+            <Button variant="primary" icon="collect" onClick={handleCollect} loading={collectLoading}>
+              Collect bets
+            </Button>
+          }
+        >
+          Bets are collected from Polymarket and scored for emotionality and status-quo deviation.
+        </EmptyState>
+      );
+    }
+
+    if (!wide) {
+      return (
+        <ul className="cards">
+          {rows.map((item) => (
+            <li className="card" key={item.id}>
+              <div className="card__top">
+                <span className="card__price">
+                  {formatProbability(item.price) ?? "Price unknown"}
+                </span>
+                <span className="card__time">
+                  {item.end_date ? `Ends ${formatDate(item.end_date)}` : "No end date"}
+                </span>
+              </div>
+
+              <RecordLink className="card__title" href={item.url}>
+                {item.question || "Untitled market"}
+              </RecordLink>
+
+              <MarketBadges item={item} />
+
+              <dl className="card__stats">
+                <div className="card__stat">
+                  <dt>1D</dt>
+                  <dd>
+                    <Delta value={item.one_day_price_change} />
+                  </dd>
+                </div>
+                <div className="card__stat">
+                  <dt>1W</dt>
+                  <dd>
+                    <Delta value={item.one_week_price_change} />
+                  </dd>
+                </div>
+                <div className="card__stat">
+                  <dt>1M</dt>
+                  <dd>
+                    <Delta value={item.one_month_price_change} />
+                  </dd>
+                </div>
+              </dl>
+
+              <p className="card__meta">
+                {`Volume ${formatCompactCurrency(item.volume) ?? "unknown"} · Liquidity ${
+                  formatCompactCurrency(item.liquidity) ?? "unknown"
+                }`}
+              </p>
+
+              <p className="card__meta card__meta--meter">
+                <span>Unrest</span>
+                <Unrest value={item.emotionality_score} />
+              </p>
+
+              <div className="card__actions">{renderAction(item, true)}</div>
+            </li>
+          ))}
+        </ul>
+      );
+    }
+
+    return (
+      <div className="table-panel">
+        <table className="table table--bets">
+          <thead>
+            <tr>
+              <th scope="col">Market</th>
+              <th scope="col" className="col-price numeric">
+                Price
+              </th>
+              <th scope="col" className="col-delta numeric">
+                1D
+              </th>
+              <th scope="col" className="col-delta numeric">
+                1W
+              </th>
+              <th scope="col" className="col-delta numeric">
+                1M
+              </th>
+              <th scope="col" className="col-volume numeric">
+                Volume
+              </th>
+              <th scope="col" className="col-unrest">
+                Unrest
+              </th>
+              <th scope="col" className="col-ends">
+                Ends
+              </th>
+              <th scope="col" className="row-action">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((item) => (
+              <tr key={item.id}>
+                <td>
+                  <RecordLink href={item.url}>
+                    {item.question || "Untitled market"}
+                  </RecordLink>
+                  <MarketBadges item={item} />
+                  {item.category ? <span className="record-meta">{item.category}</span> : null}
+                </td>
+                <td className="col-price numeric">
+                  {formatProbability(item.price) ?? "—"}
+                </td>
+                <td className="col-delta numeric">
+                  <Delta value={item.one_day_price_change} />
+                </td>
+                <td className="col-delta numeric">
+                  <Delta value={item.one_week_price_change} />
+                </td>
+                <td className="col-delta numeric">
+                  <Delta value={item.one_month_price_change} />
+                </td>
+                <td className="col-volume numeric">
+                  {formatCompactCurrency(item.volume) ?? "—"}
+                </td>
+                <td className="col-unrest">
+                  <Unrest value={item.emotionality_score} />
+                </td>
+                <td className="col-ends">{formatDate(item.end_date) ?? "—"}</td>
+                <td className="row-action">
+                  <div className="row-action__inner">{renderAction(item, false)}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  })();
 
   return (
-    <div className="news-container">
-      <section className="collect-section">
-        <h2 className="section-title">Collect Bets</h2>
-        <div className="collect-form">
-          <button
-            type="button"
-            className="submit-button"
+    <div className="view">
+      <header className="view-header">
+        <div className="view-header__text">
+          <h1>Bets</h1>
+          <p className="view-header__description">
+            Polymarket markets, scored for how much they unsettle the status quo.
+          </p>
+        </div>
+        <div className="view-header__actions">
+          <Button variant="ghost" onClick={() => setManageOpen(true)}>
+            Manage data
+          </Button>
+          <Button
+            variant="primary"
+            icon="collect"
             onClick={handleCollect}
+            loading={collectLoading}
             disabled={collectLoading}
           >
-            {collectLoading ? "Collecting..." : "Collect"}
-          </button>
+            {collectLoading ? "Collecting…" : "Collect bets"}
+          </Button>
         </div>
-        {collectFeedback && (
-          <div className={`feedback ${collectFeedback.type}`}>
-            {collectFeedback.message}
-          </div>
-        )}
-      </section>
+      </header>
 
-      <section className="query-section">
-        <h2 className="section-title">Bets</h2>
-        <div className="controls">
-          <div className="control-group">
-            <label>
-              <input
-                type="checkbox"
-                checked={activeOnly}
-                onChange={(e) => {
-                  setActiveOnly(e.target.checked);
-                  setOffset(0);
-                }}
-              />
-              Active only
-            </label>
-          </div>
-          <div className="control-group">
-            <label>
-              <input
-                type="checkbox"
-                checked={newOnly}
-                onChange={(e) => {
-                  setNewOnly(e.target.checked);
-                  setOffset(0);
-                }}
-              />
-              New only
-            </label>
-          </div>
-          <div className="control-group">
-            <label htmlFor="tag">Tag</label>
-            <input
-              id="tag"
-              type="text"
-              value={tag}
-              onChange={(e) => {
-                setTag(e.target.value);
-                setOffset(0);
-              }}
-              placeholder="tag"
-              style={{ padding: "6px 10px" }}
-            />
-          </div>
-          <div className="control-group">
-            <label htmlFor="minAbsChange">Min abs change</label>
-            <input
-              id="minAbsChange"
-              type="number"
-              step="any"
-              value={minAbsChange}
-              onChange={(e) => {
-                setMinAbsChange(e.target.value);
-                setOffset(0);
-              }}
-              placeholder="0.0"
-              style={{ padding: "6px 10px" }}
-            />
-          </div>
-          <div className="control-group">
-            <label htmlFor="orderBy">Order by</label>
-            <select
-              id="orderBy"
-              value={orderBy}
-              onChange={(e) => {
-                setOrderBy(e.target.value);
-                setOffset(0);
-              }}
-            >
-              <option value="collected_at">Collected At</option>
-              <option value="question">Question</option>
-              <option value="volume">Volume</option>
-              <option value="one_day_price_change">1D Change</option>
-              <option value="one_week_price_change">1W Change</option>
-              <option value="one_month_price_change">1M Change</option>
-              <option value="emotionality_score">Emotionality</option>
-              <option value="status_quo_deviation">Status Quo</option>
-              <option value="end_date">End Date</option>
-            </select>
-          </div>
-          <div className="control-group">
-            <label htmlFor="orderDir">Direction</label>
-            <select
-              id="orderDir"
-              value={orderDir}
-              onChange={(e) => {
-                setOrderDir(e.target.value);
-                setOffset(0);
-              }}
-            >
-              <option value="asc">Ascending</option>
-              <option value="desc">Descending</option>
-            </select>
-          </div>
-          <button onClick={() => fetchBets()} className="pagination-button">
-            Refresh
-          </button>
+      <div className="toolbar">
+        <div className="toolbar__chips">
+          <FilterChip pressed={activeOnly} onClick={() => setActiveOnly((value) => !value)}>
+            Active only
+          </FilterChip>
+          <FilterChip pressed={newOnly} onClick={() => setNewOnly((value) => !value)}>
+            New only
+          </FilterChip>
         </div>
 
-        {betsLoading ? (
-          <div className="placeholder">Loading...</div>
-        ) : bets.length === 0 ? (
-          <div className="placeholder">No bets found.</div>
-        ) : (
-          <>
-            {matchFeedback && (
-              <div className={`feedback ${matchFeedback.type}`}>{matchFeedback.message}</div>
-            )}
-            <div className="table-container">
-              <table className="news-table">
-                <thead>
-                  <tr>
-                    <th>Question</th>
-                    <th>Price</th>
-                    <th>1D/1W/1M change</th>
-                    <th>Volume</th>
-                    <th>Liquidity</th>
-                    <th>Emotionality</th>
-                    <th>Status Quo</th>
-                    <th>Tags</th>
-                    <th>End Date</th>
-                    <th>Link</th>
-                    <th>Match</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {bets.map((item) => (
-                    <tr key={item.id}>
-                      <td>{item.question || "-"}</td>
-                      <td>{formatNumber(item.price)}</td>
-                      <td>
-                        {formatChange(item.one_day_price_change)} /{" "}
-                        {formatChange(item.one_week_price_change)} /{" "}
-                        {formatChange(item.one_month_price_change)}
-                      </td>
-                      <td>{formatNumber(item.volume)}</td>
-                      <td>{formatNumber(item.liquidity)}</td>
-                      <td>{item.emotionality_score ?? "-"}</td>
-                      <td>{item.status_quo_deviation ?? "-"}</td>
-                      <td>{item.tags || "-"}</td>
-                      <td>{formatDate(item.end_date)}</td>
-                      <td>
-                        {item.url ? (
-                          <a href={item.url} target="_blank" rel="noopener noreferrer">
-                            Link
-                          </a>
-                        ) : (
-                          "-"
-                        )}
-                      </td>
-                      <td>
-                        <button
-                          className="submit-button"
-                          onClick={() => handleMatch(item.id)}
-                          disabled={matchingId === item.id}
-                        >
-                          {matchingId === item.id ? "Matching..." : "Match"}
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+        <Field id="bets-tag" label="Tag" className="field--narrow">
+          <input
+            className="input"
+            type="search"
+            value={tag}
+            onChange={(event) => setTag(event.target.value)}
+            placeholder="Politics"
+          />
+        </Field>
+
+        <Field id="bets-min-move" label="Minimum move (%)" className="field--narrow">
+          <input
+            className="input"
+            type="number"
+            min="0"
+            step="0.1"
+            value={minMove}
+            onChange={(event) => setMinMove(event.target.value)}
+            placeholder="0"
+          />
+        </Field>
+
+        <Field id="bets-sort" label="Sort by" className="field--narrow">
+          <select className="select" value={sort} onChange={changeSort}>
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field id="bets-direction" label="Direction" className="field--narrow">
+          <select className="select" value={direction} onChange={changeDirection}>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </Field>
+
+        <div className="toolbar__spacer" />
+
+        <p className="toolbar__count">
+          {formatCount(total)} markets{hasFilters ? " match" : ""}
+        </p>
+
+        {hasFilters ? <Button onClick={clearFilters}>Clear filters</Button> : null}
+
+        <Button onClick={reload} disabled={loading}>
+          Refresh
+        </Button>
+      </div>
+
+      {pageFeedback ? (
+        <Feedback
+          tone={pageFeedback.tone}
+          action={
+            <Button
+              variant="ghost"
+              size="sm"
+              iconOnly
+              icon="close"
+              label="Dismiss message"
+              onClick={() => setPageFeedback(null)}
+            />
+          }
+        >
+          {pageFeedback.message}
+        </Feedback>
+      ) : null}
+
+      {lastSeed ? (
+        <Feedback
+          tone="success"
+          action={
+            <div className="feedback__buttons">
+              <Button
+                size="sm"
+                onClick={() => onNavigate("matches", { seedId: lastSeed.id })}
+              >
+                View in Matches
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                iconOnly
+                icon="close"
+                label="Dismiss message"
+                onClick={() => setLastSeed(null)}
+              />
             </div>
-            <div className="pagination">
-              <div className="pagination-info">
-                Showing {offset + 1} to {Math.min(offset + limit, betsTotal)} of{" "}
-                {betsTotal}
-              </div>
-              <div className="pagination-buttons">
-                <button
-                  className="pagination-button"
-                  onClick={() => setOffset(Math.max(0, offset - limit))}
-                  disabled={offset === 0}
-                >
-                  Previous
-                </button>
-                <button
-                  className="pagination-button"
-                  onClick={() => setOffset(offset + limit)}
-                  disabled={offset + limit >= betsTotal}
-                >
-                  Next
-                </button>
-              </div>
-            </div>
-          </>
-        )}
-        <div className="collect-section" style={{ marginTop: 16 }}>
-          <h3 className="section-title">Delete by date range (collected_at)</h3>
-          <div className="collect-form">
-            <div className="form-group">
-              <label>Start</label>
-              <input type="datetime-local" value={deleteStart} onChange={(e) => setDeleteStart(e.target.value)} />
-            </div>
-            <div className="form-group">
-              <label>End</label>
-              <input type="datetime-local" value={deleteEnd} onChange={(e) => setDeleteEnd(e.target.value)} />
-            </div>
-            <button className="submit-button" onClick={handleDelete} disabled={deleteLoading}>
-              {deleteLoading ? "Deleting..." : "Delete"}
-            </button>
-          </div>
-          {deleteFeedback && (
-            <div className={`feedback ${deleteFeedback.type}`}>{deleteFeedback.message}</div>
-          )}
-        </div>
-      </section>
+          }
+        >
+          {`Seed created for ${lastSeed.title}.`}
+        </Feedback>
+      ) : null}
+
+      {error && rows.length > 0 ? (
+        <Feedback
+          tone="danger"
+          action={
+            <Button size="sm" onClick={reload} disabled={loading}>
+              Try again
+            </Button>
+          }
+        >
+          {`Couldn't refresh the list. ${error}`}
+        </Feedback>
+      ) : null}
+
+      <div
+        className="list"
+        aria-busy={loading || undefined}
+        aria-label="Bets results"
+        role="region"
+      >
+        {listState}
+        {rows.length > 0 ? (
+          <Pagination
+            total={total}
+            offset={loadedOffset}
+            limit={limit}
+            onOffsetChange={setOffset}
+            onLimitChange={changeLimit}
+            busy={loading}
+          />
+        ) : null}
+      </div>
+
+      <DeleteRangeDialog
+        key={manageOpen ? "manage-open" : "manage-closed"}
+        open={manageOpen}
+        onClose={() => setManageOpen(false)}
+        titleId="manage-bets-title"
+        formTitle="Delete bets by date"
+        formDescription="Rows are matched on the date they were collected. Everything outside the range stays."
+        confirmTitle="Delete these bets?"
+        subject="Bets"
+        verb="collected"
+        noun="bets"
+        endpoint="/api/bets"
+        announce={announce}
+        onDeleted={(message) => {
+          setPageFeedback({ tone: "success", message });
+          setOffset(0);
+          reload();
+        }}
+      />
     </div>
   );
 }

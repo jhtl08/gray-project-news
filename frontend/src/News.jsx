@@ -1,9 +1,72 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+import Button from "./components/Button.jsx";
+import DeleteRangeDialog from "./components/DeleteRangeDialog.jsx";
+import Dialog, { DialogFooter, DialogHeader } from "./components/Dialog.jsx";
+import EmptyState from "./components/EmptyState.jsx";
+import ErrorState from "./components/ErrorState.jsx";
+import Feedback from "./components/Feedback.jsx";
+import Field from "./components/Field.jsx";
+import Icon from "./components/Icon.jsx";
+import Meter from "./components/Meter.jsx";
+import Pagination from "./components/Pagination.jsx";
+import RecordLink from "./components/RecordLink.jsx";
+import Skeleton from "./components/Skeleton.jsx";
+import { apiFetch, apiPost } from "./lib/api.js";
+import { useAnnounce } from "./lib/announce.js";
+import {
+  formatCount,
+  formatDate,
+  formatRelative,
+  formatScore,
+  hostnameOf,
+} from "./lib/format.js";
+import { useDebouncedValue, useMediaQuery } from "./lib/hooks.js";
 
-const API_BASE = "http://localhost:8000";
+const SORT_OPTIONS = [
+  { value: "seendate", label: "Seen date" },
+  { value: "disruptiveness_score", label: "Disruptiveness" },
+  { value: "created_at", label: "Collected at" },
+  { value: "id", label: "ID" },
+];
 
-function News() {
-  const [subTab, setSubTab] = useState("collect");
+const COLLECT_SORT_OPTIONS = [
+  { value: "datedesc", label: "Date descending" },
+  { value: "dateasc", label: "Date ascending" },
+  { value: "hybridrel", label: "Hybrid relevance" },
+];
+
+function Score({ value }) {
+  const score = formatScore(value);
+  if (score === null) {
+    return <span className="badge badge--warning">Pending</span>;
+  }
+  return <Meter value={value} format={formatScore} />;
+}
+
+function News({ onNavigate }) {
+  const announce = useAnnounce();
+  const wide = useMediaQuery("(min-width: 760px)");
+
+  const [sort, setSort] = useState("seendate");
+  const [direction, setDirection] = useState("desc");
+  const [offset, setOffset] = useState(0);
+  const [loadedOffset, setLoadedOffset] = useState(0);
+  const [limit, setLimit] = useState(100);
+  const [reloadToken, setReloadToken] = useState(0);
+
+  const [rows, setRows] = useState([]);
+  const [total, setTotal] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const [filter, setFilter] = useState("");
+  const debouncedFilter = useDebouncedValue(filter, 200);
+
+  const [rowState, setRowState] = useState({});
+  const [lastSeed, setLastSeed] = useState(null);
+  const [pageFeedback, setPageFeedback] = useState(null);
+
+  const [collectOpen, setCollectOpen] = useState(false);
   const [collectForm, setCollectForm] = useState({
     query: "",
     maxrecords: "",
@@ -11,437 +74,565 @@ function News() {
     sort: "datedesc",
   });
   const [collectLoading, setCollectLoading] = useState(false);
-  const [collectFeedback, setCollectFeedback] = useState(null);
+  const [collectError, setCollectError] = useState(null);
+  const [collectFieldError, setCollectFieldError] = useState(null);
+  const [collectResult, setCollectResult] = useState(null);
 
-  const [news, setNews] = useState([]);
-  const [newsTotal, setNewsTotal] = useState(0);
-  const [matchingId, setMatchingId] = useState(null);
-  const [matchFeedback, setMatchFeedback] = useState(null);
-  const [newsLoading, setNewsLoading] = useState(false);
-  const [orderBy, setOrderBy] = useState("seendate");
-  const [orderDir, setOrderDir] = useState("desc");
-  const [limit] = useState(100);
-  const [offset, setOffset] = useState(0);
+  const [manageOpen, setManageOpen] = useState(false);
 
-  const [deleteStart, setDeleteStart] = useState("");
-  const [deleteEnd, setDeleteEnd] = useState("");
-  const [deleteLoading, setDeleteLoading] = useState(false);
-  const [deleteFeedback, setDeleteFeedback] = useState(null);
+  useEffect(() => {
+    const controller = new AbortController();
+    const params = new URLSearchParams({
+      limit: String(limit),
+      offset: String(offset),
+      order_by: sort,
+      order_dir: direction,
+    });
 
-  const handleCollectChange = (e) => {
-    const { name, value } = e.target;
-    setCollectForm((prev) => ({ ...prev, [name]: value }));
+    setLoading(true);
+    setError(null);
+
+    apiFetch(`/api/news?${params}`, { signal: controller.signal })
+      .then((data) => {
+        const loaded = data?.news ?? [];
+        const count = data?.total ?? 0;
+        setRows(loaded);
+        setTotal(count);
+        setLoadedOffset(offset);
+        setLoading(false);
+        announce(`Showing ${formatCount(count)} news rows.`);
+      })
+      .catch((requestError) => {
+        if (requestError.name === "AbortError") return;
+        setError(requestError.message);
+        setLoading(false);
+        announce(`Can't load news. ${requestError.message}`, { urgent: true });
+      });
+
+    return () => controller.abort();
+  }, [sort, direction, offset, limit, reloadToken, announce]);
+
+  const reload = () => setReloadToken((token) => token + 1);
+
+  const term = debouncedFilter.trim().toLowerCase();
+  const filtered = term
+    ? rows.filter((item) =>
+        [item.title, item.query, item.sourcecountry, item.language, hostnameOf(item.url)].some(
+          (value) => String(value ?? "").toLowerCase().includes(term),
+        ),
+      )
+    : rows;
+
+  const changeSort = (event) => {
+    setSort(event.target.value);
+    setOffset(0);
   };
 
-  const handleCollectSubmit = async (e) => {
-    e.preventDefault();
+  const changeDirection = (event) => {
+    setDirection(event.target.value);
+    setOffset(0);
+  };
+
+  const changeLimit = (nextLimit) => {
+    setLimit(nextLimit);
+    setOffset(0);
+  };
+
+  const findRelated = async (item) => {
+    setRowState((previous) => ({ ...previous, [item.id]: { state: "pending" } }));
+    try {
+      const data = await apiPost("/api/matches", {
+        source_type: "news",
+        source_id: item.id,
+      });
+      setRowState((previous) => ({
+        ...previous,
+        [item.id]: { state: "success", seedId: data?.id },
+      }));
+      setLastSeed({ id: data?.id, title: item.title });
+      announce(`Seed created for ${item.title}.`);
+    } catch (requestError) {
+      setRowState((previous) => ({
+        ...previous,
+        [item.id]: { state: "error", message: requestError.message },
+      }));
+      announce(`Match failed. ${requestError.message}`, { urgent: true });
+    }
+  };
+
+  const openCollect = () => {
+    setCollectError(null);
+    setCollectFieldError(null);
+    setCollectResult(null);
+    setCollectOpen(true);
+  };
+
+  const closeCollect = () => setCollectOpen(false);
+
+  const handleCollect = async (event) => {
+    event.preventDefault();
+
+    const maxrecords = collectForm.maxrecords.trim();
+    if (maxrecords && !/^\d+$/.test(maxrecords)) {
+      setCollectFieldError("Enter a whole number, for example 200.");
+      document.getElementById("collect-maxrecords")?.focus();
+      return;
+    }
+
+    setCollectFieldError(null);
+    setCollectError(null);
     setCollectLoading(true);
-    setCollectFeedback(null);
 
     try {
-      const payload = {
+      const data = await apiPost("/api/news/collect", {
         query: collectForm.query.trim() || null,
-        maxrecords: collectForm.maxrecords
-          ? parseInt(collectForm.maxrecords)
-          : null,
+        maxrecords: maxrecords ? Number(maxrecords) : null,
         timespan: collectForm.timespan.trim() || null,
-        sort: collectForm.sort || "datedesc",
-      };
-
-      const res = await fetch(`${API_BASE}/api/news/collect`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        sort: collectForm.sort,
       });
 
-      if (!res.ok) {
-        let errMsg = "Request failed";
-        try {
-          const err = await res.json();
-          if (err.detail) {
-            if (typeof err.detail === "string") {
-              errMsg = err.detail;
-            } else if (typeof err.detail === "object") {
-              errMsg = err.detail.error || JSON.stringify(err.detail);
-              if (err.detail.traceback) {
-                console.error("Backend traceback:", err.detail.traceback);
-              }
-            }
-          }
-        } catch {
-          errMsg = res.statusText || errMsg;
-        }
-        throw new Error(errMsg);
+      let message = `Collected ${formatCount(data?.articles)} articles.`;
+      if (data?.ingested) {
+        message += ` ${formatCount(data.ingested.inserted)} new, ${formatCount(
+          data.ingested.skipped,
+        )} already stored.`;
+      }
+      if (data?.ingest_error) {
+        message += ` Ingestion warning: ${data.ingest_error}`;
       }
 
-      const data = await res.json();
-      let message = `Success! Collected ${data.articles} articles (query: ${data.query_used}, maxrecords: ${data.maxrecords}, timespan: ${data.timespan}, sort: ${data.sort})`;
-      if (data.ingested) {
-        message += ` | Ingested ${data.ingested.inserted} new, skipped ${data.ingested.skipped} existing.`;
-      }
-      if (data.ingest_error) {
-        message += ` | Ingestion warning: ${data.ingest_error}`;
-      }
-      setCollectFeedback({
-        type: "success",
-        message: message,
-      });
-    } catch (err) {
-      let message = err.message || "Error occurred";
-      if (err instanceof TypeError && message.includes("Failed to fetch")) {
-        message = `Network error: Could not reach backend at ${API_BASE}. Is the API server running?`;
-      }
-      setCollectFeedback({
-        type: "error",
-        message: message,
-      });
+      setCollectResult({ message, warning: Boolean(data?.ingest_error) });
+      announce(message);
+      setOffset(0);
+      reload();
+    } catch (requestError) {
+      setCollectError(requestError.message);
+      announce(`Collection failed. ${requestError.message}`, { urgent: true });
     } finally {
       setCollectLoading(false);
     }
   };
 
-  const fetchNews = async () => {
-    setNewsLoading(true);
-    try {
-      const params = new URLSearchParams({
-        limit: limit.toString(),
-        offset: offset.toString(),
-        order_by: orderBy,
-        order_dir: orderDir,
-      });
-      const res = await fetch(`${API_BASE}/api/news?${params}`);
-      if (!res.ok) {
-        let errMsg = "Failed to fetch news";
-        try {
-          const err = await res.json();
-          if (err.detail) {
-            if (typeof err.detail === "string") {
-              errMsg = err.detail;
-            } else if (typeof err.detail === "object") {
-              errMsg = err.detail.error || JSON.stringify(err.detail);
-            }
+  const openManage = () => setManageOpen(true);
+
+  const metaFor = (item) =>
+    [hostnameOf(item.url), item.sourcecountry, item.language].filter(Boolean).join(" · ");
+
+  const renderAction = (item, compact) => {
+    const state = rowState[item.id];
+
+    if (state?.state === "success") {
+      return (
+        <span className="row-note row-note--success">
+          <Icon name="check" size={14} /> Seed created
+        </span>
+      );
+    }
+
+    if (state?.state === "pending") {
+      return <span className="row-note">Matching…</span>;
+    }
+
+    if (state?.state === "error") {
+      return (
+        <span className="row-note-group">
+          <span className="row-note row-note--danger">{state.message}</span>
+          <Button size="sm" onClick={() => findRelated(item)}>
+            Retry
+          </Button>
+        </span>
+      );
+    }
+
+    return (
+      <Button
+        variant="ghost"
+        size={compact ? "md" : "sm"}
+        icon="target"
+        iconOnly={!compact}
+        label={`Find related bets for “${item.title}”`}
+        onClick={() => findRelated(item)}
+      >
+        Find related bets
+      </Button>
+    );
+  };
+
+  const listState = (() => {
+    if (rows.length === 0 && loading) {
+      return (
+        <div className="table-panel">
+          <Skeleton rows={6} />
+        </div>
+      );
+    }
+
+    if (rows.length === 0 && error) {
+      return (
+        <ErrorState
+          title="Can't load news"
+          message={error}
+          onRetry={reload}
+          retrying={loading}
+        />
+      );
+    }
+
+    if (rows.length === 0) {
+      return (
+        <EmptyState
+          title="No news stored yet"
+          action={
+            <Button variant="primary" icon="collect" onClick={openCollect}>
+              Collect news
+            </Button>
           }
-        } catch {
-          errMsg = `${res.status} ${res.statusText}`.trim() || errMsg;
-        }
-        throw new Error(errMsg);
-      }
-      const data = await res.json();
-      setNews(data.news || []);
-      setNewsTotal(data.total || 0);
-    } catch (err) {
-      console.error(err);
-      if (err instanceof TypeError && err.message.includes("Failed to fetch")) {
-        console.error(
-          `Network error: Could not reach backend at ${API_BASE}. Is the API server running?`,
-        );
-      }
-    } finally {
-      setNewsLoading(false);
+        >
+          News is collected from GDELT and scored for how much each story could move a market.
+        </EmptyState>
+      );
     }
-  };
 
-  useEffect(() => {
-    if (subTab === "query") {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      fetchNews();
+    if (filtered.length === 0) {
+      return (
+        <EmptyState
+          title="No loaded rows match"
+          action={<Button onClick={() => setFilter("")}>Clear filter</Button>}
+        >
+          {`Your filter matches none of the ${formatCount(rows.length)} rows on this page.`}
+        </EmptyState>
+      );
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [orderBy, orderDir, offset]);
 
-  const handleQueryTabClick = () => {
-    setSubTab("query");
-    setOffset(0);
-  };
-
-  const handleRefresh = () => {
-    fetchNews();
-  };
-
-  const handleMatch = async (id) => {
-    setMatchingId(id);
-    setMatchFeedback(null);
-    try {
-      const res = await fetch(`${API_BASE}/api/matches`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source_type: "news", source_id: id }),
-      });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      setMatchFeedback({ type: "success", message: `Matched news ${id} (seed ${data.id}).` });
-    } catch (err) {
-      setMatchFeedback({ type: "error", message: err.message || "Match failed" });
-    } finally {
-      setMatchingId(null);
+    if (!wide) {
+      return (
+        <ul className="cards">
+          {filtered.map((item) => (
+            <li className="card" key={item.id}>
+              <div className="card__top">
+                <Score value={item.disruptiveness_score} />
+                <span className="card__meta">{metaFor(item)}</span>
+                <time className="card__time" dateTime={item.seendate ?? undefined}>
+                  {formatRelative(item.seendate) ?? "Date unknown"}
+                </time>
+              </div>
+              <RecordLink className="card__title" href={item.url}>
+                {item.title || "Untitled story"}
+              </RecordLink>
+              {item.query ? <p className="card__meta">{`Collected with ${item.query}`}</p> : null}
+              <div className="card__actions">{renderAction(item, true)}</div>
+            </li>
+          ))}
+        </ul>
+      );
     }
-  };
 
-  const handleDelete = async () => {
-    if (!deleteStart && !deleteEnd) {
-      setDeleteFeedback({ type: "error", message: "Provide at least one date." });
-      return;
-    }
-    if (!window.confirm("Delete news rows in the selected date range?")) return;
-    setDeleteLoading(true);
-    setDeleteFeedback(null);
-    try {
-      const params = new URLSearchParams();
-      if (deleteStart) params.set("start", deleteStart);
-      if (deleteEnd) params.set("end", deleteEnd);
-      const res = await fetch(`${API_BASE}/api/news?${params}`, { method: "DELETE" });
-      if (!res.ok) throw new Error(await res.text());
-      const data = await res.json();
-      setDeleteFeedback({ type: "success", message: `Deleted ${data.deleted} rows.` });
-      fetchNews();
-    } catch (err) {
-      setDeleteFeedback({ type: "error", message: err.message || "Delete failed" });
-    } finally {
-      setDeleteLoading(false);
-    }
-  };
-
-  const formatDate = (dateStr) => {
-    if (!dateStr) return "-";
-    try {
-      return new Date(dateStr).toLocaleString();
-    } catch {
-      return dateStr;
-    }
-  };
+    return (
+      <div className="table-panel">
+        <table className="table">
+          <thead>
+            <tr>
+              <th scope="col" className="col-score">
+                Score
+              </th>
+              <th scope="col">Story</th>
+              <th scope="col" className="col-seen">
+                Seen
+              </th>
+              <th scope="col" className="row-action">
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {filtered.map((item) => (
+              <tr key={item.id}>
+                <td className="col-score">
+                  <Score value={item.disruptiveness_score} />
+                </td>
+                <td>
+                  <RecordLink href={item.url}>{item.title || "Untitled story"}</RecordLink>
+                  <span className="record-meta">{metaFor(item)}</span>
+                </td>
+                <td className="col-seen">
+                  <time dateTime={item.seendate ?? undefined}>
+                    {formatDate(item.seendate) ?? "Date unknown"}
+                  </time>
+                </td>
+                <td className="row-action">
+                  <div className="row-action__inner">{renderAction(item, false)}</div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    );
+  })();
 
   return (
-    <div className="news-container">
-      <div className="news-subtabs">
-        <button
-          className={`news-subtab-button ${subTab === "collect" ? "active" : ""}`}
-          onClick={() => setSubTab("collect")}
-        >
-          Collect New Data
-        </button>
-        <button
-          className={`news-subtab-button ${subTab === "query" ? "active" : ""}`}
-          onClick={handleQueryTabClick}
-        >
-          Query Local News Database
-        </button>
+    <div className="view">
+      <header className="view-header">
+        <div className="view-header__text">
+          <h1>News</h1>
+          <p className="view-header__description">
+            Worldwide coverage, ranked by how much each story could move a market.
+          </p>
+        </div>
+        <div className="view-header__actions">
+          <Button variant="ghost" onClick={openManage}>
+            Manage data
+          </Button>
+          <Button variant="primary" icon="collect" onClick={openCollect}>
+            Collect news
+          </Button>
+        </div>
+      </header>
+
+      <div className="toolbar">
+        <Field id="news-sort" label="Sort by" className="field--narrow">
+          <select className="select" value={sort} onChange={changeSort}>
+            {SORT_OPTIONS.map((option) => (
+              <option key={option.value} value={option.value}>
+                {option.label}
+              </option>
+            ))}
+          </select>
+        </Field>
+
+        <Field id="news-direction" label="Direction" className="field--narrow">
+          <select className="select" value={direction} onChange={changeDirection}>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+          </select>
+        </Field>
+
+        <Field id="news-filter" label="Filter loaded rows" className="field--inline">
+          <input
+            className="input"
+            type="search"
+            value={filter}
+            onChange={(event) => setFilter(event.target.value)}
+            placeholder="Title, query or source"
+          />
+        </Field>
+
+        <div className="toolbar__spacer" />
+
+        <p className="toolbar__count">
+          {formatCount(filtered.length)} of {formatCount(rows.length)} loaded
+        </p>
+
+        <Button onClick={reload} disabled={loading}>
+          Refresh
+        </Button>
       </div>
 
-      {subTab === "collect" && (
-        <section className="collect-section">
-          <h2 className="section-title">Collect New Data</h2>
-          <form onSubmit={handleCollectSubmit} className="collect-form">
-            <div className="form-group">
-              <label htmlFor="query">Query</label>
+      {pageFeedback ? (
+        <Feedback
+          tone={pageFeedback.tone}
+          action={
+            <Button
+              variant="ghost"
+              size="sm"
+              iconOnly
+              icon="close"
+              label="Dismiss message"
+              onClick={() => setPageFeedback(null)}
+            />
+          }
+        >
+          {pageFeedback.message}
+        </Feedback>
+      ) : null}
+
+      {lastSeed ? (
+        <Feedback
+          tone="success"
+          action={
+            <div className="feedback__buttons">
+              <Button
+                size="sm"
+                onClick={() => onNavigate("matches", { seedId: lastSeed.id })}
+              >
+                View in Matches
+              </Button>
+              <Button
+                variant="ghost"
+                size="sm"
+                iconOnly
+                icon="close"
+                label="Dismiss message"
+                onClick={() => setLastSeed(null)}
+              />
+            </div>
+          }
+        >
+          {`Seed created for ${lastSeed.title}.`}
+        </Feedback>
+      ) : null}
+
+      {error && rows.length > 0 ? (
+        <Feedback
+          tone="danger"
+          action={
+            <Button size="sm" onClick={reload} disabled={loading}>
+              Try again
+            </Button>
+          }
+        >
+          {`Couldn't refresh the list. ${error}`}
+        </Feedback>
+      ) : null}
+
+      <div
+        className="list"
+        aria-busy={loading || undefined}
+        aria-label="News results"
+        role="region"
+      >
+        {listState}
+        {rows.length > 0 && filtered.length > 0 ? (
+          <Pagination
+            total={total}
+            offset={loadedOffset}
+            limit={limit}
+            onOffsetChange={setOffset}
+            onLimitChange={changeLimit}
+            busy={loading}
+          />
+        ) : null}
+      </div>
+
+      <Dialog open={collectOpen} onClose={closeCollect} labelledBy="collect-news-title">
+        <DialogHeader
+          titleId="collect-news-title"
+          title="Collect news"
+          description="Fetch articles from GDELT and store the new ones."
+          onClose={closeCollect}
+        />
+
+        {collectResult ? (
+          <>
+            <Feedback tone={collectResult.warning ? "warning" : "success"}>
+              {collectResult.message}
+            </Feedback>
+            <DialogFooter>
+              <Button onClick={closeCollect}>Close</Button>
+              <Button variant="primary" onClick={closeCollect}>
+                View news
+              </Button>
+            </DialogFooter>
+          </>
+        ) : (
+          <form className="dialog__form" onSubmit={handleCollect} noValidate>
+            <Field
+              id="collect-query"
+              label="Query"
+              hint="GDELT search syntax. Leave it blank for the default feed."
+            >
               <input
-                id="query"
+                className="input"
+                type="text"
                 name="query"
-                type="text"
                 value={collectForm.query}
-                onChange={handleCollectChange}
-                placeholder="e.g., (iran OR hormuz)"
+                onChange={(event) =>
+                  setCollectForm((form) => ({ ...form, query: event.target.value }))
+                }
+                placeholder="(iran OR hormuz)"
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="maxrecords">Max Records</label>
+            </Field>
+
+            <Field
+              id="collect-maxrecords"
+              label="Max records"
+              hint="Defaults to 200."
+              error={collectFieldError}
+            >
               <input
-                id="maxrecords"
-                name="maxrecords"
+                className="input"
                 type="number"
+                name="maxrecords"
+                min="1"
+                step="1"
                 value={collectForm.maxrecords}
-                onChange={handleCollectChange}
-                placeholder="200 (default)"
+                onChange={(event) => {
+                  setCollectForm((form) => ({ ...form, maxrecords: event.target.value }));
+                  if (collectFieldError) setCollectFieldError(null);
+                }}
+                placeholder="200"
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="timespan">Timespan</label>
+            </Field>
+
+            <Field id="collect-timespan" label="Timespan" hint="A window such as 1h, 24h or 7d.">
               <input
-                id="timespan"
-                name="timespan"
+                className="input"
                 type="text"
+                name="timespan"
                 value={collectForm.timespan}
-                onChange={handleCollectChange}
-                placeholder="1h (default)"
+                onChange={(event) =>
+                  setCollectForm((form) => ({ ...form, timespan: event.target.value }))
+                }
+                placeholder="1h"
               />
-            </div>
-            <div className="form-group">
-              <label htmlFor="sort">Sort</label>
+            </Field>
+
+            <Field id="collect-sort" label="Sort">
               <select
-                id="sort"
+                className="select"
                 name="sort"
                 value={collectForm.sort}
-                onChange={handleCollectChange}
+                onChange={(event) =>
+                  setCollectForm((form) => ({ ...form, sort: event.target.value }))
+                }
               >
-                <option value="datedesc">Date Descending</option>
-                <option value="dateasc">Date Ascending</option>
-                <option value="hybridrel">Hybrid Relevance</option>
+                {COLLECT_SORT_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>
+                    {option.label}
+                  </option>
+                ))}
               </select>
-            </div>
-            <button
-              type="submit"
-              className="submit-button"
-              disabled={collectLoading}
-            >
-              {collectLoading ? "Collecting..." : "Submit"}
-            </button>
+            </Field>
+
+            {collectError ? (
+              <Feedback tone="danger">{collectError}</Feedback>
+            ) : null}
+
+            <DialogFooter>
+              <Button onClick={closeCollect}>Cancel</Button>
+              <Button
+                type="submit"
+                variant="primary"
+                icon="collect"
+                loading={collectLoading}
+                disabled={collectLoading}
+              >
+                {collectLoading ? "Collecting…" : "Collect news"}
+              </Button>
+            </DialogFooter>
           </form>
-          {collectFeedback && (
-            <div className={`feedback ${collectFeedback.type}`}>
-              {collectFeedback.message}
-            </div>
-          )}
-        </section>
-      )}
+        )}
+      </Dialog>
 
-      {subTab === "query" && (
-        <section className="query-section">
-          <h2 className="section-title">Query Local News Database</h2>
-          <div className="controls">
-            <div className="control-group">
-              <label htmlFor="orderBy">Order by</label>
-              <select
-                id="orderBy"
-                value={orderBy}
-                onChange={(e) => {
-                  setOrderBy(e.target.value);
-                  setOffset(0);
-                  setTimeout(() => fetchNews(), 0);
-                }}
-              >
-                <option value="seendate">Seendate</option>
-                <option value="disruptiveness_score">
-                  Disruptiveness Score
-                </option>
-                <option value="created_at">Created At</option>
-                <option value="id">ID</option>
-              </select>
-            </div>
-            <div className="control-group">
-              <label htmlFor="orderDir">Direction</label>
-              <select
-                id="orderDir"
-                value={orderDir}
-                onChange={(e) => {
-                  setOrderDir(e.target.value);
-                  setOffset(0);
-                  setTimeout(() => fetchNews(), 0);
-                }}
-              >
-                <option value="desc">Ascending</option>
-                <option value="asc">Descending</option>
-              </select>
-            </div>
-            <button onClick={handleRefresh} className="pagination-button">
-              Refresh
-            </button>
-          </div>
-
-          {matchFeedback && (
-            <div className={`feedback ${matchFeedback.type}`}>{matchFeedback.message}</div>
-          )}
-          {newsLoading ? (
-            <div className="placeholder">Loading...</div>
-          ) : news.length === 0 ? (
-            <div className="placeholder">No news entries found.</div>
-          ) : (
-            <>
-              <div className="table-container">
-                <table className="news-table">
-                  <thead>
-                    <tr>
-                      <th>ID</th>
-                      <th>Title</th>
-                      <th>Disruptiveness</th>
-                      <th>Query</th>
-                      <th>Seendate</th>
-                      <th>Language</th>
-                      <th>Source Country</th>
-                      <th>URL</th>
-                      <th>Match</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {news.map((item) => (
-                      <tr key={item.id}>
-                        <td>{item.id}</td>
-                        <td>{item.title || "-"}</td>
-                        <td>{item.disruptiveness_score ?? "-"}</td>
-                        <td>{item.query}</td>
-                        <td>{formatDate(item.seendate)}</td>
-                        <td>{item.language || "-"}</td>
-                        <td>{item.sourcecountry || "-"}</td>
-                        <td>
-                          {item.url ? (
-                            <a
-                              href={item.url}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              Link
-                            </a>
-                          ) : (
-                            "-"
-                          )}
-                        </td>
-                        <td>
-                          <button
-                            className="submit-button"
-                            onClick={() => handleMatch(item.id)}
-                            disabled={matchingId === item.id}
-                          >
-                            {matchingId === item.id ? "Matching..." : "Match"}
-                          </button>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <div className="pagination">
-                <div className="pagination-info">
-                  Showing {offset + 1} to {Math.min(offset + limit, newsTotal)}{" "}
-                  of {newsTotal}
-                </div>
-                <div className="pagination-buttons">
-                  <button
-                    className="pagination-button"
-                    onClick={() => setOffset(Math.max(0, offset - limit))}
-                    disabled={offset === 0}
-                  >
-                    Previous
-                  </button>
-                  <button
-                    className="pagination-button"
-                    onClick={() => setOffset(offset + limit)}
-                    disabled={offset + limit >= newsTotal}
-                  >
-                    Next
-                  </button>
-                </div>
-              </div>
-              <div className="collect-section" style={{ marginTop: 16 }}>
-                <h3 className="section-title">Delete by date range (seendate)</h3>
-                <div className="collect-form">
-                  <div className="form-group">
-                    <label>Start</label>
-                    <input type="datetime-local" value={deleteStart} onChange={(e) => setDeleteStart(e.target.value)} />
-                  </div>
-                  <div className="form-group">
-                    <label>End</label>
-                    <input type="datetime-local" value={deleteEnd} onChange={(e) => setDeleteEnd(e.target.value)} />
-                  </div>
-                  <button className="submit-button" onClick={handleDelete} disabled={deleteLoading}>
-                    {deleteLoading ? "Deleting..." : "Delete"}
-                  </button>
-                </div>
-                {deleteFeedback && (
-                  <div className={`feedback ${deleteFeedback.type}`}>{deleteFeedback.message}</div>
-                )}
-              </div>
-            </>
-          )}
-        </section>
-      )}
+      <DeleteRangeDialog
+        key={manageOpen ? "manage-open" : "manage-closed"}
+        open={manageOpen}
+        onClose={() => setManageOpen(false)}
+        titleId="manage-news-title"
+        formTitle="Delete news by date"
+        formDescription="Rows are matched on the date each article was seen. Everything outside the range stays."
+        confirmTitle="Delete these news rows?"
+        subject="News"
+        verb="seen"
+        noun="news rows"
+        endpoint="/api/news"
+        announce={announce}
+        onDeleted={(message) => {
+          setPageFeedback({ tone: "success", message });
+          setOffset(0);
+          reload();
+        }}
+      />
     </div>
   );
 }
